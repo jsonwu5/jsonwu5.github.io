@@ -6,14 +6,13 @@ module.exports = {
     // 你的GitHub仓库，请正确填写
     repo: 'https://github.com/jsonwu5',
     // 自定义仓库链接文字。
-    repoLabel: 'My GitHub',
+    repoLabel: 'GitHub',
     nav: [
-      { text: 'Home', link: '/' },
       { text: 'uni-app', link: '/uniapp/bug.md' }
     ],
     sidebar: [
-      ['/', '首页'],
-      ['/uniapp/bug.md', 'uni-app']
+      ['/uniapp/bug.md', 'uni-app'],
+      ['/css/scss.md', 'css']
     ]
   }
 }
