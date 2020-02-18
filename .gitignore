@@ -16,3 +16,10 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+Thumbs.db
+db.json
+*.log
+docs/.vuepress/dist/
+*.bat
+*.sh
