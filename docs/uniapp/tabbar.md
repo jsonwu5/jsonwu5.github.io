@@ -1,6 +1,6 @@
 # 自定义tabbar
 
-> 在首页加载底部多个tabbar页面组件，点击tabbar的item时切换对应页面组件来模拟原生tabbar切换效果，无闪屏等问题。
+在首页加载底部多个tabbar页面组件，点击tabbar的item时切换对应页面组件来模拟原生tabbar切换效果，无闪屏等问题。
 
 ## 兼容平台
 
@@ -17,7 +17,7 @@
 
 ## Code Pen示例
 
-> Code Pen中代码语法经过转换，与uni-app代码不同，实际使用请参考下方index源码 
+Code Pen中代码语法经过转换，与uni-app代码不同，实际使用请参考下方index源码 
 
 [Code Pen地址](https://codepen.io/jsonwu5/pen/VwLKMBw "code pen")
   
@@ -35,7 +35,7 @@ allowfullscreen>
 
 ## page.json配置
 
-> 这里需要去掉tabbar的相关配置，才能使用自定义tabbar
+这里需要去掉tabbar的相关配置，才能使用自定义tabbar
 
 ```json
 {
@@ -275,7 +275,7 @@ export default {
 
 ## 兼容全面屏
 
-> 兼容iPhone X等全面屏底部有返回按钮横条的机型
+兼容iPhone X等全面屏底部有返回按钮横条的机型
 
 ```scss
 // 底部tabbar占位css
@@ -284,6 +284,7 @@ export default {
 	height: calc(100rpx + env(safe-area-inset-bottom) / 2);
 }
 ```
+
 ```safe-area-inset-bottom```是WebKit内置的css常量，比如为列表底部添加内边距避开安全区，在 iPhoneX 上列表底部会有内边距，在其他设备上没有内边距。
 
 ![3naOSI.png](https://s2.ax1x.com/2020/02/21/3naOSI.png)
