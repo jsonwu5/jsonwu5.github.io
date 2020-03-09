@@ -30,7 +30,7 @@ module.exports = {
       {
         title: 'uni-app',
         collapsable: true,
-        children: ['/uniapp/skill.md', '/uniapp/tabbar.md']
+        children: ['/uniapp/skill.md', '/uniapp/tabbar.md', 'uniapp/Painter.md']
       },
       {
         title: 'CSS相关',
