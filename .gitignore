@@ -3,6 +3,7 @@ node_modules
 dist
 /dist
 .temp
+cache
 
 # Log files
 npm-debug.log*
@@ -18,9 +19,3 @@ yarn-error.log*
 *.sln
 *.sw?
 
-Thumbs.db
-db.json
-*.log
-docs/.vuepress/dist/
-*.bat
-*.sh
