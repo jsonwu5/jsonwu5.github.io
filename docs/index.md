@@ -1,6 +1,6 @@
 ---
 layout: home
-layoutClass: ''
+#layoutClass: ''
 
 hero:
   name: 乐呜瑞
