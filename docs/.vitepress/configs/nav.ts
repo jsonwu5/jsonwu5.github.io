@@ -3,10 +3,11 @@ import type {DefaultTheme} from "vitepress";
 export const nav: DefaultTheme.Config['nav'] = [
     {
         text: 'UniApp',
-        items: [{text: 'skill', link: '/uniapp/skill.md'}, {
-            text: 'tabbar',
-            link: '/uniapp/tabbar.md'
-        }, {text: 'Painter', link: 'uniapp/Painter.md'}]
+        items: [
+            {text: 'skill', link: '/uniapp/skill.md'},
+            {text: 'tabbar', link: '/uniapp/tabbar.md'},
+            {text: 'Painter', link: 'uniapp/Painter.md'}
+        ]
     },
     {
         text: 'CSS相关',
