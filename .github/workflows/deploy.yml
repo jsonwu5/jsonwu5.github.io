@@ -1,0 +1,40 @@
+name: Deploy VitePress
+
+on:
+  push:
+    branches:
+      - master  # 修改为你的默认分支
+    paths:
+      - 'docs/**'
+      - 'package.json'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  # 修改为你需要的 Node.js 版本
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8  # 修改为你需要的 pnpm 版本
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build VitePress
+        run: pnpm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          REPOSITORY_NAME: jsonwu5/jsonwu5.github.io
+          BRANCH: gh-pages  # 修改为你想要部署到的分支
+          FOLDER: dist  # 修改为 VitePress 输出目录
