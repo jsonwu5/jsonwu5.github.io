@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北疆金秋环线 · 单人单车逐日行程</title>
+<style>
+  :root{
+    --ink:#1f2329; --sub:#6b7280; --line:#e5e7eb;
+    --gold:#B8860B; --gold-soft:#fdf6e3;
+    --blue:#1d4ed8; --red:#b91c1c; --green:#15803d;
+    --card:#ffffff; --bg:#f8f7f2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.7;
+    padding:0 0 60px;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 20px;}
+  header{
+    background:linear-gradient(135deg,#3b2f1d 0%,#6b4f2a 45%,#B8860B 100%);
+    color:#fff; padding:54px 0 42px; text-align:center;
+    text-shadow:0 1px 3px rgba(0,0,0,.3);
+  }
+  header .kicker{letter-spacing:6px; font-size:13px; opacity:.9; margin-bottom:10px;}
+  header h1{font-size:34px; font-weight:700; margin-bottom:8px;}
+  header p{font-size:15px; opacity:.92;}
+  .meta-bar{
+    background:#fff; border-bottom:1px solid var(--line);
+    position:sticky; top:0; z-index:50;
+  }
+  .meta-bar .wrap{display:flex; flex-wrap:wrap; gap:8px 26px; align-items:center; padding:12px 20px;}
+  .meta-bar span{font-size:14px; color:var(--sub);}
+  .meta-bar b{color:var(--ink); font-weight:600;}
+  .overview{margin:26px 0 6px;}
+  h2.sec{
+    font-size:22px; margin:34px 0 14px; padding-left:12px;
+    border-left:5px solid var(--gold); line-height:1.3;
+  }
+  table{width:100%; border-collapse:collapse; background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.06);}
+  th,td{padding:10px 12px; font-size:14px; text-align:left; border-bottom:1px solid var(--line);}
+  th{background:#f3f0e6; color:#4a3c1e; font-weight:600; white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  .tag{display:inline-block; font-size:12px; padding:2px 9px; border-radius:20px; white-space:nowrap;}
+  .tag-y{background:var(--gold-soft); color:var(--gold); border:1px solid #ecd7a0;}
+  .tag-g{background:#eaf7ee; color:var(--green); border:1px solid #bfe5cd;}
+  .tag-b{background:#eaf1ff; color:var(--blue); border:1px solid #c3d4fb;}
+  .tag-r{background:#fdecea; color:var(--red); border:1px solid #f6c9c4;}
+
+  .day{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    margin:18px 0; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.05);
+  }
+  .day-head{
+    display:flex; flex-wrap:wrap; align-items:center; gap:12px; justify-content:space-between;
+    padding:16px 20px; background:linear-gradient(90deg,#faf7ec,#fff); border-bottom:1px solid var(--line);
+  }
+  .day-no{font-size:13px; font-weight:700; color:#fff; background:var(--gold); border-radius:6px; padding:3px 10px; letter-spacing:1px;}
+  .day-title{font-size:19px; font-weight:700;}
+  .day-date{font-size:14px; color:var(--sub);}
+  .day-route{font-size:14px; color:#4a3c1e; font-weight:600; background:var(--gold-soft); border-radius:20px; padding:4px 12px;}
+  .day-body{padding:8px 20px 20px;}
+  .kv{font-size:14px; color:var(--sub); margin:12px 0 4px;}
+  .kv b{color:var(--ink); font-weight:600;}
+  ul.timeline{list-style:none; margin-top:6px;}
+  ul.timeline>li{position:relative; padding:0 0 14px 26px; font-size:14.5px;}
+  ul.timeline>li::before{content:""; position:absolute; left:6px; top:8px; width:9px; height:9px; border-radius:50%; background:var(--gold);}
+  ul.timeline>li:not(:last-child)::after{content:""; position:absolute; left:10px; top:17px; bottom:2px; width:1px; background:var(--line);}
+  ul.timeline .t{display:inline-block; font-weight:700; color:var(--gold); min-width:74px;}
+  ul.timeline .stop{color:var(--sub);}
+  .note{
+    font-size:13.5px; color:#4b3a17; background:var(--gold-soft); border:1px dashed #e3c980;
+    border-radius:8px; padding:8px 12px; margin-top:8px;
+  }
+  .how{
+    font-size:13.5px; color:#6b7280; background:#f6f6f3; border-radius:8px; padding:12px 14px; margin-top:10px;
+  }
+  .how b{color:var(--ink);}
+  .block-title{font-weight:700; color:#4a3c1e; margin-top:14px; border-bottom:1px solid var(--line); padding-bottom:4px; font-size:14px; letter-spacing:1px;}
+  .tags-row{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px;}
+  .practical{background:#fff; border:1px solid var(--line); border-radius:14px; padding:6px 22px 20px; box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .practical h3{font-size:16px; margin:18px 0 6px; color:#4a3c1e;}
+  .practical ol{margin-left:20px;}
+  .practical li{font-size:14.5px; margin:5px 0;}
+  footer{text-align:center; color:var(--sub); font-size:13px; margin-top:34px; padding-top:20px; border-top:1px solid var(--line);}
+  @media(max-width:600px){
+    header h1{font-size:25px;}
+    .day-title{font-size:17px;}
+    .table-scroll{overflow-x:auto;}
+  }
+
+  /* ===== 左侧目录（侧边栏式导航）===== */
+  #tocToggle{
+    display:block; position:fixed; left:0; top:140px; z-index:60;
+    background:var(--gold); color:#fff; border:none; cursor:pointer;
+    border-radius:0 10px 10px 0; padding:10px 12px;
+    font-size:13px; font-weight:700; letter-spacing:1px;
+    box-shadow:0 2px 8px rgba(0,0,0,.25);
+  }
+  #tocOverlay{position:fixed; inset:0; background:rgba(30,25,15,.35); z-index:64; opacity:0; visibility:hidden; transition:.25s;}
+  #tocOverlay.show{opacity:1; visibility:visible;}
+  #toc{
+    position:fixed; top:0; bottom:0; left:0; width:252px; z-index:70;
+    background:#fbf9f3; border-right:1px solid #ece6d8;
+    box-shadow:4px 0 20px rgba(0,0,0,.08);
+    display:flex; flex-direction:column; padding:0 0 22px; overflow-y:auto;
+    transform:translateX(-104%); transition:transform .28s ease;
+  }
+  #toc.open{transform:translateX(0);}
+  #toc::-webkit-scrollbar{width:6px;}
+  #toc::-webkit-scrollbar-thumb{background:#ddd6c6; border-radius:3px;}
+  .toc-brand{padding:20px 20px 16px; border-bottom:1px solid #ece6d8; margin-bottom:6px;}
+  .toc-brand .bk{font-size:11px; letter-spacing:3px; color:var(--gold); font-weight:700;}
+  .toc-brand .bt{font-size:16px; font-weight:700; color:#3d3318; margin-top:5px; line-height:1.3;}
+  .toc-brand .bs{font-size:11.5px; color:var(--sub); margin-top:3px;}
+  .toc-group{font-size:11px; letter-spacing:2px; color:#a99b72; font-weight:700; padding:15px 21px 5px;}
+  #toc a{
+    display:flex; align-items:center; gap:10px; margin:1px 8px;
+    padding:6px 12px; font-size:13px; color:#4a422c; text-decoration:none;
+    border-left:3px solid transparent; border-radius:6px; line-height:1.35;
+  }
+  #toc a .toc-day{
+    flex:none; width:27px; font-size:11px; font-weight:700; color:var(--gold);
+    background:#f3ead0; border-radius:6px; text-align:center; padding:2px 0;
+  }
+  #toc a .toc-route{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  #toc a:hover{color:var(--gold);}
+  #toc a:hover .toc-day{background:var(--gold); color:#fff;}
+  #toc a.on{background:#f6efda;}
+  #toc a.on .toc-day{background:var(--gold); color:#fff;}
+  #toc a.on .toc-route{color:#3d3318; font-weight:600;}
+  #toc a.sec-mode{display:flex; align-items:center; padding:6px 12px; color:#8a8061; font-weight:600;}
+  #toc a.sec-mode::before{content:""; flex:none; width:5px; height:5px; border-radius:50%; background:#cfc6a8; margin-left:11px; margin-right:11px;}
+  #toc a.sec-mode.on{color:var(--gold); background:#f6efda;}
+  .toc-close{
+    position:absolute; top:14px; right:12px; background:transparent; border:1px solid #ece6d8;
+    border-radius:8px; font-size:13px; color:var(--sub); cursor:pointer; padding:4px 9px; z-index:2;
+  }
+  #overview,#practical{scroll-margin-top:74px;}
+  .day[id]{scroll-margin-top:74px;}
+  table tbody tr{cursor:pointer;}
+  table tbody tr:hover{background:#faf7ec;}
+      @media(min-width:1200px){
+    #tocToggle,#tocOverlay,.toc-close{display:none !important;}
+    .page{max-width:1320px; margin:0 auto; padding:18px 20px 0;}
+    .body3{display:flex; align-items:flex-start; flex-wrap:nowrap;}
+    #toc{position:sticky; top:56px; height:calc(100vh - 68px); width:248px; flex:0 0 248px; transform:none !important; box-shadow:none; border-radius:12px; border:1px solid var(--line); background:#fff;}
+    #toc .toc-brand{background:#f9f6ec; border-radius:12px 12px 0 0; margin-bottom:0;}
+    .wrap{flex:1 1 auto; min-width:0; max-width:900px; margin:0 auto;}
+    .day[id],#overview,#practical{scroll-margin-top:70px;}
+  }
+  .mapcard{background:#fff; border:1px solid var(--line); border-radius:14px; margin:22px 0; padding:18px 20px 16px; box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .mapcard-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:8px;}
+  .mapcard-title{font-size:17px; font-weight:700; color:#4a3c1e; border-left:4px solid var(--gold); padding-left:10px;}
+  .mapcard-sub{font-size:12.5px; color:var(--sub);}
+  .mapcard-svg{max-width:880px; margin:0 auto;}
+  .mapcard svg{width:100%; height:auto; display:block;}
+  .amap-box{height:460px; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#eef2f5;}
+  .mapfallback svg{width:100%; height:auto; display:block;}
+  .am-mk{background:#fff; border:2px solid #B8860B; color:#4a3c1e; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:700; box-shadow:0 1px 4px rgba(0,0,0,.25); white-space:nowrap; line-height:1.5;}
+  .am-mk.start{background:#1d4ed8; border-color:#1d4ed8; color:#fff;}
+  .am-mk.end{background:#15803d; border-color:#15803d; color:#fff;}
+  .am-mk i{font-style:normal; font-weight:600; margin-left:4px;}
+  .mapcard .mc-dot{fill:#fff; stroke:#B8860B; stroke-width:2.5;}
+  .mapcard .mc-day{font-size:9.5px; fill:#B8860B; font-weight:700; text-anchor:middle;}
+  .mapcard .mc-city{font-size:13px; fill:#3f3a2e; font-weight:600; text-anchor:middle; paint-order:stroke; stroke:#fbf9f3; stroke-width:4; stroke-linejoin:round;}
+  .mapcard .mc-start .mc-city{fill:#1d4ed8;} .mapcard .mc-end .mc-city{fill:#15803d;}
+</style>
+</head>
+<body>
+
+<button id="tocToggle" title="行程目录" aria-label="展开行程目录">☰ 目录</button>
+<div id="tocOverlay"></div>
+<div class="page">
+<header>
+  <div class="kicker">SINGLE · SOLO · SELF-DRIVE</div>
+  <h1>北疆金秋环线 · 长沙往返 · 逐日自驾行程</h1>
+  <p>单人单车 · 长沙出发 · 2026年9月25日 — 10月7日 · 共13天（含省际长途＋环线）</p>
+</header>
+
+
+<div class="meta-bar">
+  <div class="wrap">
+    <span>全程约 <b>10,600 km</b></span>
+    <span>驾驶强度 <b>高（含长途赶路段）</b></span>
+    <span>季节 <b>深秋（山区需防雪）</b></span>
+    <span>证件 <b>身份证随行</b></span>
+  </div>
+</div>
+<div class="body3">
+<nav id="toc" aria-label="行程目录">
+  <button class="toc-close" id="tocClose" aria-label="收起">✕ 收起</button>
+  <div class="toc-brand">
+    <div class="bk">SELF-DRIVE · SOLO</div>
+    <div class="bt">北疆金秋环线</div>
+    <div class="bs">长沙往返 · 13 天 · 单人单车</div>
+  </div>
+  <div class="toc-group">总览</div>
+  <a href="#overview" class="sec-mode">总览与行程表</a>
+  <div class="toc-group">逐日行程</div>
+  <a href="#d1"><span class="toc-day">D1</span><span class="toc-route">长沙 → 长城驿</span></a>
+  <a href="#d2"><span class="toc-day">D2</span><span class="toc-route">长城驿 → 乌鲁木齐</span></a>
+  <a href="#d3"><span class="toc-day">D3</span><span class="toc-route">乌鲁木齐 → 阿勒泰</span></a>
+  <a href="#d4"><span class="toc-day">D4</span><span class="toc-route">阿勒泰 → 禾木</span></a>
+  <a href="#d5"><span class="toc-day">D5</span><span class="toc-route">禾木 → 喀纳斯</span></a>
+  <a href="#d6"><span class="toc-day">D6</span><span class="toc-route">喀纳斯 → 克拉玛依</span></a>
+  <a href="#d7"><span class="toc-day">D7</span><span class="toc-route">克拉玛依 → 赛里木湖</span></a>
+  <a href="#d8"><span class="toc-day">D8</span><span class="toc-route">赛里木湖 → 昭苏</span></a>
+  <a href="#d9"><span class="toc-day">D9</span><span class="toc-route">昭苏 → 巴音布鲁克</span></a>
+  <a href="#d10"><span class="toc-day">D10</span><span class="toc-route">巴音布鲁克 → 库车</span></a>
+  <a href="#d11"><span class="toc-day">D11</span><span class="toc-route">库车 → 库尔勒</span></a>
+  <a href="#d12"><span class="toc-day">D12</span><span class="toc-route">库尔勒 → 武威服务区</span></a>
+  <a href="#d13"><span class="toc-day">D13</span><span class="toc-route">武威服务区 → 长沙</span></a>
+  <div class="toc-group">提示</div>
+  <a href="#practical" class="sec-mode">实用清单与注意</a>
+</nav>
+<div class="wrap">
+
+  <div class="overview table-scroll">
+    <h2 class="sec" id="overview">总览</h2>
+    <table>
+      <thead><tr><th>日期</th><th>Day</th><th>起点 → 终点</th><th>参考里程</th><th>参考时长</th><th>主要看点</th><th>住宿安排</th></tr></thead>
+      <tbody>
+        <tr data-href="#d1"><td>9/25</td><td>Day 1</td><td>长沙 → 甘肃长城驿服务区</td><td>≈2000 km</td><td>约21h</td><td>全程高速（二广/连霍）赶路</td><td>长城驿·司机之家</td></tr>
+        <tr data-href="#d2"><td>9/26</td><td>Day 2</td><td>甘肃长城驿 → 乌鲁木齐</td><td>≈1650 km</td><td>约18h</td><td>河西走廊、嘉峪关、G30连霍</td><td>乌鲁木齐市区</td></tr>
+        <tr data-href="#d3"><td>9/27</td><td>Day 3</td><td>乌鲁木齐 → 阿勒泰</td><td>≈440 km</td><td>约5h</td><td>S21沙漠公路、乌伦古湖</td><td>阿勒泰市区</td></tr>
+        <tr data-href="#d4"><td>9/28</td><td>Day 4</td><td>阿勒泰 → 禾木</td><td>≈210 km</td><td>约3.5h</td><td>阿禾公路、禾木村、白桦林、日落</td><td>禾木村小木屋</td></tr>
+        <tr data-href="#d5"><td>9/29</td><td>Day 5</td><td>禾木 → 喀纳斯</td><td>≈70 km</td><td>约2h</td><td>观鱼台、喀纳斯湖</td><td>喀纳斯村／贾登峪</td></tr>
+        <tr data-href="#d6"><td>9/30</td><td>Day 6</td><td>喀纳斯 → 克拉玛依</td><td>≈470 km</td><td>约7h</td><td>三湾晨雾、乌尔禾魔鬼城</td><td>克拉玛依市区</td></tr>
+        <tr data-href="#d7"><td>10/1</td><td>Day 7</td><td>克拉玛依 → 赛里木湖</td><td>≈480 km</td><td>约6h</td><td>赛里木湖环湖、日落</td><td>赛里木湖东门</td></tr>
+        <tr data-href="#d8"><td>10/2</td><td>Day 8</td><td>赛里木湖 → 昭苏</td><td>≈300 km</td><td>约5h</td><td>果子沟大桥、伊犁河谷</td><td>昭苏县城</td></tr>
+        <tr data-href="#d9"><td>10/3</td><td>Day 9</td><td>昭苏 → 巴音布鲁克镇</td><td>≈360 km</td><td>约6h</td><td>特克斯八卦城、九曲十八弯日落</td><td>巴音布鲁克镇</td></tr>
+        <tr data-href="#d10"><td>10/4</td><td>Day 10</td><td>巴音布鲁克 → 库车</td><td>≈260 km</td><td>约5h</td><td>独库南段、大小龙池、库车大峡谷</td><td>库车市</td></tr>
+        <tr data-href="#d11"><td>10/5</td><td>Day 11</td><td>库车 → 库尔勒</td><td>≈300 km</td><td>约4.5h</td><td>轮台胡杨、库尔勒收尾</td><td>库尔勒（或离场）</td></tr>
+        <tr data-href="#d12"><td>10/6</td><td>Day 12</td><td>库尔勒 → 甘肃武威服务区</td><td>≈2100 km</td><td>约22h</td><td>G30连霍穿哈密、星星峡、河西</td><td>武威·司机之家</td></tr>
+        <tr data-href="#d13"><td>10/7</td><td>Day 13</td><td>武威服务区 → 长沙</td><td>≈1887 km</td><td>约20h</td><td>兰州、西安、二广高速奔长沙</td><td>家里</td></tr>
+      </tbody>
+    </table>
+  </div><div class="mapcard">
+    <div class="mapcard-head">
+      <span class="mapcard-title">北疆金秋环线路线图</span>
+      <span class="mapcard-sub" id="amapInfo">DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· 高德真实驾车路线（需联网）</span>
+    </div>
+    <div class="mapcard-svg">
+            <div id="amap" class="amap-box" style="display:none;"></div>
+      <div id="mapFallback" class="mapfallback">
+<svg viewBox="0 0 820 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="北疆金秋环线 DAY3 至 DAY11 路线图">
+        <defs>
+          <marker id="mc-arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#B8860B"/>
+          </marker>
+        </defs>
+        <rect x="1" y="1" width="818" height="518" fill="#fbf9f3" rx="12"/>
+        <text x="352" y="30" font-size="12" fill="#d3cbb3" letter-spacing="3">阿尔泰山</text>
+        <path d="M40,470 Q410,360 790,470" fill="none" stroke="#e0d9c6" stroke-width="20" stroke-linecap="round" opacity="0.5"/>
+        <text x="520" y="452" font-size="12" fill="#c6bda2" letter-spacing="6">天 山 山 脉</text>
+        <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>
+        <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#B8860B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mc-arw)"/>
+        <g class="mc-start" transform="translate(240,462)"><circle class="mc-dot" r="12" style="stroke:#1d4ed8;"/><text class="mc-day" dy="3.5" style="fill:#1d4ed8;">D3</text><text class="mc-city" y="26">乌鲁木齐</text></g>
+        <g transform="translate(250,92)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D4</text><text class="mc-city" y="-17">阿勒泰</text></g>
+        <g transform="translate(330,58)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D5</text><text class="mc-city" y="-17">禾木</text></g>
+        <g transform="translate(400,42)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D6</text><text class="mc-city" y="-17">喀纳斯</text></g>
+        <g transform="translate(112,242)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D7</text><text class="mc-city" y="-17">克拉玛依</text></g>
+        <g transform="translate(92,362)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D8</text><text class="mc-city" x="-16" y="5" style="text-anchor:end;">赛里木湖</text></g>
+        <g transform="translate(72,472)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D9</text><text class="mc-city" y="26">昭苏</text></g>
+        <g transform="translate(332,424)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D10</text><text class="mc-city" y="26">巴音布鲁克</text></g>
+        <g transform="translate(470,424)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D11</text><text class="mc-city" y="26">库车</text></g>
+        <g class="mc-end" transform="translate(600,382)"><circle class="mc-dot" r="12" style="stroke:#15803d;"/><text class="mc-day" dy="3.5" style="fill:#15803d;">终</text><text class="mc-city" y="26">库尔勒</text></g>
+        <g transform="translate(778,44)"><path d="M0,-14 L9,7 L0,3 L-9,7 Z" fill="#c6bda2"/><text x="0" y="-20" font-size="11" fill="#c6bda2" text-anchor="middle" font-weight="700">北</text></g>
+      </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 出疆第1天 -->
+  <div class="day" id="d1">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 1</span>
+        <span class="day-title">长沙 → 甘肃长城驿服务区</span>
+        <div class="day-date">2026年9月25日 · 高速赶路</div>
+      </div>
+      <div class="day-route">≈2000 km · 行车约21小时（建议中途拆分）</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">全程高速：长沙 →（二广/许广高速）→ 西安 →（连霍高速 G30）→ 兰州 → 甘肃长城驿服务区</div>
+      <ul class="timeline">
+        <li><span class="t">05:00</span>长沙出发，出城上高速（早高峰前避开，注意出城段照明）。</li>
+        <li><span class="t">07:00</span>途经湖北（荆门/十堰一带）服务区休息、加油。</li>
+        <li><span class="t">12:00</span>西安附近服务区午餐。</li>
+        <li><span class="t">17:00</span>兰州附近服务区休息（转入河西走廊前）。</li>
+        <li><span class="t">次日00:30</span>抵<b>甘肃长城驿服务区</b>，入住<b>司机之家</b>过夜（超长约2000km，务必在西安或兰州补休）。</li>
+      </ul>
+      <div class="how"><b>注意：</b>该段约 2000 km、单日行车近 21 小时，强度极大。<b>单人单车强烈建议中途加一夜</b>（例如西安或兰州），否则务必每 2 小时强制休息，避免疲劳驾驶。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：全程服务区</span>
+        <span class="tag tag-b">宿：长城驿·司机之家</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 出疆第2天 -->
+  <div class="day" id="d2">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 2</span>
+        <span class="day-title">甘肃长城驿 → 乌鲁木齐</span>
+        <div class="day-date">2026年9月26日 · 高速赶路</div>
+      </div>
+      <div class="day-route">≈1650 km · 行车约18小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">全程高速：长城驿 →（连霍高速 G30）→ 张掖/酒泉/嘉峪关 → 星星峡 → 哈密 → 吐鲁番 → 乌鲁木齐</div>
+      <ul class="timeline">
+        <li><span class="t">06:00</span>司机之家早饭后出发，沿<b>连霍高速 G30</b> 西行，穿河西走廊。证件随身备查。</li>
+        <li><span class="t">09:00</span>嘉峪关一带服务区休息、远眺长城雄关。</li>
+        <li><span class="t">12:30</span><b>哈密</b>服务区午餐、加油。</li>
+        <li><span class="t">17:00</span>吐鲁番方向服务区休息。</li>
+        <li><span class="t">22:00</span>抵<b>乌鲁木齐</b>市区入住，为次日环线首日蓄力。</li>
+      </ul>
+      <div class="how"><b>注意：</b>该段近 1650 km、单日行车约 18 小时，强度极大，务必每 2 小时休息；若前一程已过劳，建议在哈密或吐鲁番补一夜缓冲。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：全程服务区</span>
+        <span class="tag tag-b">宿：乌鲁木齐市区</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 1 -->
+  <div class="day" id="d3">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 3</span>
+        <span class="day-title">乌鲁木齐 → 阿勒泰</span>
+        <div class="day-date">2026年9月27日 · 北疆环线首日</div>
+      </div>
+      <div class="day-route">≈440 km · 约5小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">当日光线 · 乌鲁木齐 天亮 7:33 · 日出 8:00 · 日落 19:59（阿勒泰相近）</div>
+      <ul class="timeline">
+        <li><span class="t">07:15</span>乌鲁木齐出发（天亮 7:33，天色已可辨路面）——单人首日长途，前一晚切记睡足。经<b>阜康</b>上 S21〈阿乌高速〉穿越古尔班通古特沙漠。</li>
+        <li><span class="t">09:30</span>沙漠公路服务区停车休息、拍公路照。</li>
+        <li><span class="t">12:00</span>途经<b>福海县</b>·<b>乌伦古湖</b>观景台停留（深秋湖水湛蓝）。
+          <span class="stop">（赶路可跳过，直接进阿勒泰午餐。）</span></li>
+        <li><span class="t">14:00</span>抵达<b>阿勒泰市</b>，午餐。</li>
+        <li><span class="t">15:30</span><b>桦林公园</b>或市区慢逛，检查车况、加满油（明日进山，山区加油点少）。</li>
+        <li><span class="t">18:30</span><b>额尔齐斯河畔等晚霞</b>（当地日落约 19:56），随后晚餐、就寝。</li>
+      </ul>
+      <div class="how"><b>今日要点：</b>过渡日，从乌鲁木齐绿洲过渡到阿尔泰山区。建议提前预订禾木村住宿（深秋一房难求）。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：福海／阿勒泰</span>
+        <span class="tag tag-b">宿：阿勒泰市区</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day" id="d4">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 4</span>
+        <span class="day-title">阿勒泰 → 禾木</span>
+        <div class="day-date">2026年9月28日</div>
+      </div>
+      <div class="day-route">≈210 km · 约3.5小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">当日光线 · 阿勒泰/布尔津 天亮 7:36 · 日出 8:05 · 日落 19:59 · 天黑 20:29</div>
+      <ul class="timeline">
+        <li><span class="t">09:00</span>到<b>阿禾公路（G681）</b>入口排队，7座以下一般每日 09:30—15:00 放行穿行阿尔泰山区，高山草甸、金黄针叶林与雪山相伴。</li>
+        <li><span class="t">11:00</span>途中垭口/观景台停车拍照，山区天气多变。</li>
+        <li><span class="t">13:00</span>抵<b>禾木门票站</b>寄存车辆、购票；村内<b>私家车禁行</b>，换乘区间车进村（约1小时山路）。</li>
+        <li><span class="t">14:00</span>到<b>禾木村</b>，入住小木屋（提前订）。</li>
+        <li><span class="t">15:00</span><b>禾木河＋白桦林</b>木栈道慢走，金桦倒映河中，午后光影正佳。</li>
+        <li><span class="t">18:00</span>登<b>禾木观景台</b>等日落（约 19:59），俯瞰全村木屋炊烟与金黄林海；蓝调时刻 20:17–20:41。</li>
+        <li><span class="t">21:00</span>天黑后下山，村里晚餐，夜里看星空。</li>
+      </ul>
+      <div class="how"><b>今日要点：</b>阿禾公路为山区旅游公路，注意放行窗口（7座以下一般每日 09:30—15:00），前晚务必查公告与路况；若遇封闭，则改走<b>布尔津—冲乎尔</b>老路绕行（约260 km）。禾木是金秋核心，住村里才看得见清晨，山里夜间约 0℃上下，备厚羽绒、暖宝宝。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：村里的家常木屋宴</span>
+        <span class="tag tag-b">宿：禾木村小木屋</span>
+        <span class="tag tag-r">提示：区间车进出</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day" id="d5">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 5</span>
+        <span class="day-title">禾木 → 喀纳斯</span>
+        <div class="day-date">2026年9月29日</div>
+      </div>
+      <div class="day-route">≈70 km · 约2小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">当日光线 · 布尔津/禾木 天亮 7:37 · 日出 8:06 · 天黑 20:27 · 晨蓝调 7:25–7:49</div>
+      <ul class="timeline">
+        <li><span class="t">07:10</span>登<b>禾木观景台看晨雾＋日出</b>（日出约 8:06，晨蓝调 7:25–7:49）——晨雾村庄是禾木招牌画面。</li>
+        <li><span class="t">08:30</span>回民宿早餐、退房，区间车出村，门站取车。</li>
+        <li><span class="t">10:00</span>自驾经<b>贾登峪</b>抵<b>喀纳斯门票站</b>，购票换乘景区车进景区。</li>
+        <li><span class="t">11:30</span>喀纳斯游客中心午餐。</li>
+        <li><span class="t">13:00</span><b>观鱼台</b>登顶俯瞰喀纳斯湖全景（约2小时来回）。</li>
+        <li><span class="t">15:30</span>湖畔<b>喀纳斯湖码头/木栈道</b>慢走，深秋碧水如翡翠。</li>
+        <li><span class="t">18:00</span>宿喀纳斯村或贾登峪，早休息，明晨看三湾日出。</li>
+      </ul>
+      <div class="how"><b>今日要点：</b>喀纳斯景区较大，区间车＋摆渡，建议提前查观鱼台当日开放情况；票可网上提前购。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：景区简餐</span>
+        <span class="tag tag-b">宿：喀纳斯村／贾登峪</span>
+        <span class="tag tag-r">提示：景区车进出</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day" id="d6">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 6</span>
+        <span class="day-title">喀纳斯 → 克拉玛依</span>
+        <div class="day-date">2026年9月30日</div>
+      </div>
+      <div class="day-route">≈470 km · 约7小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">当日光线 · 布尔津/喀纳斯 天亮 7:38 · 日出 8:08 · 天黑 20:25 · 晨蓝调 7:27–7:50；克拉玛依 日落 20:04</div>
+      <ul class="timeline">
+        <li><span class="t">07:00</span><b>月亮湾、神仙湾晨雾</b>——三湾（神仙湾-月亮湾-卧龙湾）木栈道晨曦（日出约 8:08），顺光晨拍最美。</li>
+        <li><span class="t">09:30</span>返回游客中心，景区车出，贾登峪取车。</li>
+        <li><span class="t">11:30</span>返程经<b>布尔津</b>午餐。</li>
+        <li><span class="t">15:00</span>途中<b>乌尔禾「世界魔鬼城」</b>（雅丹）停留1—1.5小时。</li>
+        <li><span class="t">18:30</span>抵<b>克拉玛依</b>入住。</li>
+        <li><span class="t">20:00</span>市区晚餐（日落约 20:04，可在河边看晚霞）。</li>
+      </ul>
+      <div class="how"><b>今日要点：</b>从湖区回到戈壁。魔鬼城可放到傍晚光线（若想拍霞光则略放缓节奏），看体力和兴趣取舍。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：布尔津午餐＋克市晚餐</span>
+        <span class="tag tag-b">宿：克拉玛依市区</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day" id="d7">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 7</span>
+        <span class="day-title">克拉玛依 → 赛里木湖</span>
+        <div class="day-date">2026年10月1日</div>
+      </div>
+      <div class="day-route">≈480 km · 约6小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">当日光线 · 克拉玛依 天亮 7:48 · 日出 8:16；赛里木湖 日落 20:14 · 天黑 20:41</div>
+      <ul class="timeline">
+        <li><span class="t">07:40</span>出发（天亮 7:48），G30连霍高速向西北，经<b>奎屯</b>。</li>
+        <li><span class="t">12:30</span>精河服务区午餐、加油。</li>
+        <li><span class="t">14:30</span>抵<b>赛里木湖东门</b>购票，自驾环湖（点将台→亲水滩→西海草原→松树头，环线约90km）。</li>
+        <li><span class="t">18:30</span>湖畔等<b>日落＋雪山倒影</b>（日落约 20:14），光线绝佳。</li>
+        <li><span class="t">20:45</span>蓝调时刻 20:30–20:53 后，入宿<b>赛里木湖东门</b>附近（提前订）。</li>
+        <li><span class="t">深夜</span>若天气晴，湖边看银河星空。</li>
+      </ul>
+      <div class="how"><b>今日要点：</b>赛里木湖昼夜温差大，湖边风大，多带防风衣物；预留整个下午环湖，别急着赶路。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：精河午餐＋湖畔晚餐</span>
+        <span class="tag tag-b">宿：赛里木湖东门</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="day" id="d8">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 8</span>
+        <span class="day-title">赛里木湖 → 昭苏</span>
+        <div class="day-date">2026年10月2日</div>
+      </div>
+      <div class="day-route">≈300 km · 约5小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">当日光线 · 博乐/赛里木湖 天亮 8:01 · 日出 8:29 · 晨蓝调 7:50–8:12；伊宁 日落 20:14</div>
+      <ul class="timeline">
+        <li><span class="t">07:30</span>湖畔看<b>日出</b>（日出约 8:29，晨蓝调 7:50–8:12），随后出发。</li>
+        <li><span class="t">09:00</span>过<b>果子沟大桥</b>观景台——峡谷大桥＋雪山，拍照打卡。</li>
+        <li><span class="t">11:30</span>经<b>霍城、伊宁</b>方向（伊犁河谷，深秋田野金黄）。</li>
+        <li><span class="t">13:00</span>抵<b>伊宁</b>午餐（锡伯大饼、熏马肠可选）。</li>
+        <li><span class="t">14:30</span>向南往<b>昭苏</b>：优先走<b>伊昭公路 S237</b>翻白石峰；降雪管制则绕<b>G218经特克斯</b>。</li>
+        <li><span class="t">18:30</span>抵<b>昭苏县</b>（日落约 20:12），入住、晚餐。</li>
+      </ul>
+      <div class="how"><b>今日要点：</b>伊昭公路（白石峰段）10月易有冰雪管制，出发前用手机查实时路况，做好绕行预案。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：伊宁午餐＋昭苏晚餐</span>
+        <span class="tag tag-b">宿：昭苏县城</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="day" id="d9">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 9</span>
+        <span class="day-title">昭苏 → 巴音布鲁克镇</span>
+        <div class="day-date">2026年10月3日</div>
+      </div>
+      <div class="day-route">≈360 km · 约6小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">当日光线 · 伊宁 天亮 8:05 · 日出 8:33；巴音布鲁克草原 日落约 19:50 前后</div>
+      <ul class="timeline">
+        <li><span class="t">08:00</span>出发，经<b>特克斯县</b>（八卦城）：观景台俯瞰八条主街，逛<u>离街</u>。</li>
+        <li><span class="t">10:30</span>继续向东，经<b>新源</b>方向进入伊犁河谷，向<b>那拉提</b>方向。</li>
+        <li><span class="t">13:00</span>那拉提草原一带午餐（草原秋黄、雪山为背景）。</li>
+        <li><span class="t">14:30</span>翻<b>独库公路中段</b>（那拉提—巴音），高山垭口与草原牧群。</li>
+        <li><span class="t">16:50</span>抵<b>巴音布鲁克镇</b>，放行李，尽快购景区区间车入园。</li>
+        <li><span class="t">17:30</span>游<b>天鹅湖＋九曲十八弯</b>，务必于<b>19:00 前</b>在观景台就位（日落约 19:50）——日落倒影是巴音招牌。</li>
+        <li><span class="t">20:30</span>区间车出景区，镇里晚餐、住宿（条件较简，提前订）。</li>
+      </ul>
+      <div class="how"><b>今日要点：</b>巴音布鲁克海拔约2500m，10月的晚间温度已很低，多穿保暖层；若当天多云，九曲日落会打折扣，别失望，看天气随缘。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：那拉提午餐＋镇晚餐</span>
+        <span class="tag tag-b">宿：巴音布鲁克镇</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8 -->
+  <div class="day" id="d10">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 10</span>
+        <span class="day-title">巴音布鲁克 → 库车</span>
+        <div class="day-date">2026年10月4日</div>
+      </div>
+      <div class="day-route">≈260 km · 约5小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">当日光线 · 库车/阿克苏 天亮 8:10 · 日出 8:37 · 日落 20:17</div>
+      <ul class="timeline">
+        <li><span class="t">07:50</span>出发（山区天亮约 8:10），沿<b>独库公路南段 S217</b>翻<b>铁力买提达坂</b>（海拔3200m以上，注意高反与路面结冰）。</li>
+        <li><span class="t">09:30</span><b>大龙池、小龙池</b>高山湖泊，停车观景拍照。</li>
+        <li><span class="t">11:00</span><b>库车（天山神秘）大峡谷</b>红色层岩峡谷，徒步1—1.5小时，正午光影好。</li>
+        <li><span class="t">13:00</span>峡谷外午餐。</li>
+        <li><span class="t">15:00</span>抵<b>库车市</b>，逛<b>库车老城热斯坦路、库车王府</b>。</li>
+        <li><span class="t">19:30</span>入住、晚餐（库车大馕、烤包子），日落约 20:10。</li>
+      </ul>
+      <div class="how"><b>今日要点：</b>独库南段季节性强，10月为开放末段，出发前务必查积雪与封路公告；若封闭，则绕和静—库尔勒—库车（多加约4小时）。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：峡谷外午餐＋库车晚餐</span>
+        <span class="tag tag-b">宿：库车市</span>
+        <span class="tag tag-r">提示：独库南段路况</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 9 -->
+  <div class="day" id="d11">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 11</span>
+        <span class="day-title">库车 → 库尔勒</span>
+        <div class="day-date">2026年10月5日 · 环线收官</div>
+      </div>
+      <div class="day-route">≈300 km · 约4.5小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">当日光线 · 库尔勒 天亮 7:48 · 日出 8:14 · 日落 19:52 · 天黑 20:18</div>
+      <ul class="timeline">
+        <li><span class="t">08:00</span>出发，G314东行，经<b>轮台</b>。
+          <span class="stop">10月初塔里木胡杨刚泛金黄（最佳在10月中下旬），时间够可顺路进<b>轮台塔里木胡杨林公园</b>；否则略过。</span></li>
+        <li><span class="t">12:30</span>抵<b>库尔勒</b>，午餐。</li>
+        <li><span class="t">14:00</span>可选：<b>铁门关</b>（古人出塞要隘）或市区<b>孔雀河</b>沿线慢逛，休整收尾。</li>
+        <li><span class="t">18:00</span>收官晚餐（日落约 19:52）；库尔勒为南疆门户，机场/火车站离场很方便。</li>
+      </ul>
+      <div class="how"><b>今日要点：</b>收尾日，强度低，主要松弛。回想整段北疆环线：沙漠—雪峰—湖区—胡杨—峡谷，一网打尽。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：库尔勒午餐＋收官晚餐</span>
+        <span class="tag tag-b">宿：库尔勒（或离场）</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 返程第1天 -->
+  <div class="day" id="d12">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 12</span>
+        <span class="day-title">库尔勒 → 甘肃武威服务区</span>
+        <div class="day-date">2026年10月6日 · 高速赶路</div>
+      </div>
+      <div class="day-route">≈2100 km · 行车约22小时（库—乌约480km＋乌—武约1650km）</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">全程高速：库尔勒 → 乌鲁木齐 →（连霍高速 G30）→ 哈密 → 星星峡 → 河西走廊 → 甘肃武威服务区</div>
+      <ul class="timeline">
+        <li><span class="t">06:00</span>库尔勒出发，北上经<b>乌鲁木齐</b>转连霍高速（环线收官后的返程首日）。</li>
+        <li><span class="t">09:00</span>乌鲁木齐出城服务区休息、加满油。</li>
+        <li><span class="t">13:00</span><b>哈密/星星峡</b>午餐（出疆前证件备查）。</li>
+        <li><span class="t">18:00</span>张掖一带服务区休息。</li>
+        <li><span class="t">次日04:30</span>抵<b>甘肃武威服务区</b>，住<b>司机之家</b>（跨夜，务必按此拆分安排）。</li>
+      </ul>
+      <div class="how"><b>注意：</b>返程首日近 2100 km、约 22 小时行车，强度极大，每 2 小时必休；强烈建议在哈密或乌鲁木齐拆分加一夜。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：全程服务区</span>
+        <span class="tag tag-b">宿：武威·司机之家</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 返程第2天 -->
+  <div class="day" id="d13">
+    <div class="day-head">
+      <div>
+        <span class="day-no">DAY 13</span>
+        <span class="day-title">武威服务区 → 长沙</span>
+        <div class="day-date">2026年10月7日 · 高速赶路</div>
+      </div>
+      <div class="day-route">≈1887 km · 行车约20小时</div>
+    </div>
+    <div class="day-body">
+      <div class="kv">全程高速：武威服务区（连霍 G30「连云港方向」）→ 兰州 → 西安 →（二广/许广高速）→ 长沙</div>
+      <ul class="timeline">
+        <li><span class="t">05:00</span>武威服务区出发（连霍 G30「连云港方向」），经<b>兰州</b>南下。</li>
+        <li><span class="t">12:00</span>西安附近服务区午餐、加油。</li>
+        <li><span class="t">18:00</span>晚餐服务区休息。</li>
+        <li><span class="t">次日00:30</span>抵<b>长沙</b>回家（该程若实测超过 19 小时，可能落到 10/8 凌晨）。</li>
+      </ul>
+      <div class="how"><b>注意：</b>近 1887 km 理论上难以在单日内安全完成。<b>强烈建议至少加一夜</b>（西安或襄阳），把返程拆成两天。现按你最紧凑的方案排入，实际务必自行再加休息。</div>
+      <div class="tags-row">
+        <span class="tag tag-y">餐：全程服务区</span>
+        <span class="tag tag-b">宿：长沙（家里）</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec" id="practical">实用清单与注意事项</h2>
+  <div class="practical">
+    <h3>出发前</h3>
+    <ol>
+      <li><b>证件</b>：身份证随身带（多次安检）；驾照、行驶证齐备。</li>
+      <li><b>车辆</b>：全车检查（刹车/冷却液/电瓶），北上山区备<b>防滑链</b>，10月禾木、巴音、独库都可能见雪。</li>
+      <li><b>油量</b>：新疆县城加油站密，但<b>禾木/喀纳斯景区内不加油</b>，进山区前一定加满。推荐下“中石油/中石化”App看沿途站点。</li>
+      <li><b>预订</b>：深秋是金秋旺季，<b>禾木、喀纳斯、赛里木湖、巴音布鲁克</b>住宿提前1—2周订。</li>
+    </ol>
+    <h3>驾驶建议（单人单车）</h3>
+    <ol>
+      <li>严格<b>每2小时休息15分钟</b>，避免疲劳；备功能饮料、葡萄糖。</li>
+      <li>区内区间测速多，别超速；山区路窄，过弯提前鸣笛，遇到牧群畜群耐心尾随。</li>
+      <li>每日行程已偏满，若某日状态不佳，可在当地县城<b>弹性压缩景点</b>，安全优先。</li>
+    </ol>
+    <h3>季节与天气</h3>
+    <ol>
+      <li>北疆山区（禾木/喀纳斯/巴音）10月初<b>夜间约-5℃~3℃</b>，带厚羽绒、防风外套、保暖鞋。</li>
+      <li>赛里木湖、独库南段<b>封路受天气影响大</b>，出发前一晚务必用地图+新闻查实时路况。</li>
+      <li>新疆日照强、干燥，注意防晒补水，早晚温差大。</li>
+    </ol>
+  </div>
+
+  <footer>
+    行程里程与时间为自驾参考估算，请以实时路况为准 · 北疆金秋环线 · 单人单车安全第一
+  </footer>
+
+</div>
+
+  
+</div><!-- /.body3 -->
+</div><!-- /.page -->
+
+<script>
+(function(){
+  var nav=document.getElementById('toc'), btn=document.getElementById('tocToggle'),
+      ov=document.getElementById('tocOverlay'), close=document.getElementById('tocClose');
+  function setOpen(open){nav.classList.toggle('open',open);ov.classList.toggle('show',open);}
+  btn.addEventListener('click',function(){setOpen(!nav.classList.contains('open'));});
+  close.addEventListener('click',function(){setOpen(false);});
+  ov.addEventListener('click',function(){setOpen(false);});
+  nav.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'))setOpen(false);});
+
+  var map=[].slice.call(nav.querySelectorAll('a[href^="#"]')).map(function(a){return {id:a.getAttribute('href').slice(1),a:a};});
+  function spy(){
+    var cur=null;
+    map.forEach(function(m){var el=document.getElementById(m.id); if(!el)return;
+      if(el.getBoundingClientRect().top<=130)cur=m.id;});
+    map.forEach(function(m){m.a.classList.toggle('on',m.id===cur);});
+  }
+  document.addEventListener('scroll',spy,{passive:true}); spy();
+  [].slice.call(document.querySelectorAll('tr[data-href]')).forEach(function(tr){tr.addEventListener('click',function(){location.hash=tr.getAttribute('data-href');});});
+})();
+</script>
+<script>
+(function(){
+  var KEY='4a46ac91ba57be90781b293f5d10c17f';
+  window._AMapSecurityConfig={securityJsCode:'757667fb48c8be04ed068eaa1c9350a4'};
+  var am=document.getElementById('amap'), fb=document.getElementById('mapFallback');
+  // 默认显示静态路线图，仅在高德真实渲染成功后切换为地图
+  function fallback(){
+    if(am){am.style.display='none';}
+    if(fb){fb.style.display='block';}
+    var sub=document.getElementById('amapInfo');
+    if(sub){ sub.innerHTML='DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· 路线概览（真实驾车线路需联网并经高德授权域名访问）'; }
+  }
+  window.__amapBoot=function(){ if(window.AMap&&AMap.Driving){ try{ amapInit(); }catch(e){ fallback(); } } else { fallback(); } };
+  var s=document.createElement('script');
+  s.src='https://webapi.amap.com/maps?v=2.0&key='+KEY+'&plugin=AMap.Driving,AMap.Scale,AMap.ToolBar&callback=__amapBoot';
+  s.onerror=function(){ fallback(); };
+  document.head.appendChild(s);
+  setTimeout(function(){ if(!(window.AMap&&AMap.Driving)){ fallback(); } },10000);
+
+  function amapInit(){
+    var map=new AMap.Map('amap',{zoom:6, center:[86,44], lang:'zh_cn'});
+    map.addControl(new AMap.ToolBar({position:'left-bottom', lite:true}));
+    map.addControl(new AMap.Scale({position:'left-bottom', offset:[8,8]}));
+    var stops=[
+      {d:'D3',n:'乌鲁木齐',p:[87.6200,43.8256]},
+      {d:'D4',n:'阿勒泰',p:[88.1383,47.8488]},
+      {d:'D5',n:'禾木',p:[87.1610,48.5686]},
+      {d:'D6',n:'喀纳斯',p:[87.0359,48.7994]},
+      {d:'D7',n:'克拉玛依',p:[84.8892,45.5790]},
+      {d:'D8',n:'赛里木湖',p:[81.1167,44.5940]},
+      {d:'D9',n:'昭苏',p:[81.1300,43.1570]},
+      {d:'D10',n:'巴音布鲁克',p:[84.1670,43.0300]},
+      {d:'D11',n:'库车',p:[82.9620,41.7170]},
+      {d:'终',n:'库尔勒',p:[86.1600,41.7700]}
+    ];
+    var cols=['#B8860B','#C2410C','#B45309','#A16207','#854D0E','#9A3412','#B91C1C','#a1584a','#7a5c3e','#15803d'];
+    var markObjs=[], lineObjs=[], idx=0, okLines=0, totalKm=0, totalMin=0;
+    var tilesReady=false, allDrawn=false, hasShown=false;
+    function showMap(){
+      if(hasShown) return; hasShown=true;
+      if(am){am.style.display='block';}
+      if(fb){fb.style.display='none';}
+      var el=document.getElementById('amapInfo'), t;
+      t='DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· 全程驾车约 '+Math.round(totalKm)+' km · 约 '+Math.round(totalMin)+' 分钟';
+      if(okLines<9){ t+=' · 部分路段未返回'; }
+      if(el){ el.innerHTML=t; el.style.color='#15803d'; }
+      map.setFitView([].concat(markObjs,lineObjs),false,[50,50,50,50]);
+    }
+    function maybeShow(){ if(tilesReady && allDrawn){ showMap(); } }
+    map.on('complete',function(){ tilesReady=true; maybeShow(); });
+    setTimeout(function(){ if(hasShown && !tilesReady && !allDrawn){ fallback(); } },15000);
+    function addStops(){
+      for(var i=0;i<stops.length;i++){
+        var cls=(i===0)?'am-mk start':(i===stops.length-1?'am-mk end':'am-mk');
+        var mk=new AMap.Marker({position:stops[i].p, anchor:'bottom-center', zIndex:20,
+          content:'<div class="'+cls+'">'+stops[i].d+'<i>'+stops[i].n+'</i></div>'});
+        markObjs.push(mk); map.add(mk);
+      }
+    }
+    function next(){
+      if(idx>=stops.length-1){ allDrawn=true; maybeShow(); return; }
+      var a=stops[idx], b=stops[idx+1];
+      var dd=new AMap.Driving({policy:AMap.DrivingPolicy.LEAST_TIME, showTraffic:false});
+      dd.search(a.p,b.p,function(st,res){
+        if(st==='complete'&&res.routes&&res.routes.length){
+          var rt=res.routes[0];
+          var pl=new AMap.Polyline({path:rt.path, strokeColor:cols[idx%cols.length], strokeWeight:5, lineJoin:'round', lineCap:'round', showDir:true, zIndex:10});
+          lineObjs.push(pl); map.add(pl);
+          okLines++; totalKm+=rt.distance/1000; totalMin+=rt.time/60;
+        }
+        idx++; next();
+      });
+    }
+    addStops(); next();
+  }
+  window.__amapInit=amapInit;
+})();
+</script>
+</body>
+</html>

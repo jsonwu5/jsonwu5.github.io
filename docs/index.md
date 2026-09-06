@@ -21,6 +21,8 @@ features:
   - title: Vue 相关
   - title: UniApp 相关
   - title: Css 相关
+  - title: 北疆金秋环线自驾行程
+    link: /beijiang-trip
 ---
 
 <style>
