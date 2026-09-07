@@ -3,202 +3,327 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>北疆金秋环线 · 单人单车逐日行程</title>
+<title>北疆金秋环线 · 单人单骑摩旅路书</title>
+<meta name="description" content="长沙往返北疆金秋环线，13天10600公里单人单骑摩旅逐日路书：禾木、喀纳斯、赛里木湖、独库公路、巴音布鲁克。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1f2329; --sub:#6b7280; --line:#e5e7eb;
-    --gold:#B8860B; --gold-soft:#fdf6e3;
-    --blue:#1d4ed8; --red:#b91c1c; --green:#15803d;
-    --card:#ffffff; --bg:#f8f7f2;
+    --ink:#f2ead9; --ink-dim:#c9bfa8; --sub:#9a8f76;
+    --bg:#14100b; --bg2:#1c1610; --card:#211a12; --card2:#2a2115;
+    --line:#3a2f1f; --line-soft:#2e2517;
+    --gold:#e8a33d; --gold-hi:#ffc35c; --amber:#c97b2d; --rust:#b4502a;
+    --cream:#f6ecda;
+    --serif:"Noto Serif SC",serif; --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+    --num:"Oswald","PingFang SC",sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
   body{
-    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
-    color:var(--ink); background:var(--bg); line-height:1.7;
-    padding:0 0 60px;
+    font-family:var(--sans); color:var(--ink); background:var(--bg); line-height:1.75;
+    padding-bottom:70px; overflow-x:hidden;
   }
-  .wrap{max-width:920px; margin:0 auto; padding:0 20px;}
-  header{
-    background:linear-gradient(135deg,#3b2f1d 0%,#6b4f2a 45%,#B8860B 100%);
-    color:#fff; padding:54px 0 42px; text-align:center;
-    text-shadow:0 1px 3px rgba(0,0,0,.3);
+  ::selection{background:var(--gold); color:#1a130a;}
+
+  /* ============ 顶部转速条（阅读进度） ============ */
+  #rpm{position:fixed; top:0; left:0; right:0; height:4px; z-index:90; background:#241c11;}
+  #rpm .bar{height:100%; width:0; background:linear-gradient(90deg,var(--amber),var(--gold),var(--gold-hi)); box-shadow:0 0 10px rgba(232,163,61,.55); transition:width .12s linear;}
+
+  /* ============ HERO ============ */
+  header.hero{
+    position:relative; min-height:92vh; display:flex; align-items:flex-end;
+    background:
+      linear-gradient(180deg,rgba(16,12,7,.42) 0%,rgba(16,12,7,.18) 34%,rgba(20,16,11,.86) 74%,var(--bg) 100%),
+      url("https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=motorcycle%20touring%20adventure%2C%20lone%20rider%20on%20adventure%20motorcycle%20parked%20on%20empty%20asphalt%20highway%20through%20golden%20autumn%20birch%20forest%20in%20Xinjiang%20Altay%2C%20snow-capped%20mountains%20in%20distance%2C%20warm%20golden%20hour%20sunlight%2C%20amber%20and%20rust%20tones%2C%20cinematic%20wide%20shot%2C%20photorealistic%2C%20epic%20road%20trip%20mood&image_size=landscape_16_9") center/cover no-repeat #1a140c;
   }
-  header .kicker{letter-spacing:6px; font-size:13px; opacity:.9; margin-bottom:10px;}
-  header h1{font-size:34px; font-weight:700; margin-bottom:8px;}
-  header p{font-size:15px; opacity:.92;}
-  .meta-bar{
-    background:#fff; border-bottom:1px solid var(--line);
-    position:sticky; top:0; z-index:50;
+  .hero-inner{width:100%; max-width:1080px; margin:0 auto; padding:0 24px 58px;}
+  .hero-kicker{
+    font-family:var(--num); letter-spacing:7px; font-size:13px; font-weight:600;
+    color:var(--gold-hi); text-transform:uppercase; margin-bottom:16px;
+    display:flex; align-items:center; gap:14px;
   }
-  .meta-bar .wrap{display:flex; flex-wrap:wrap; gap:8px 26px; align-items:center; padding:12px 20px;}
-  .meta-bar span{font-size:14px; color:var(--sub);}
-  .meta-bar b{color:var(--ink); font-weight:600;}
-  .overview{margin:26px 0 6px;}
+  .hero-kicker::before{content:""; width:46px; height:2px; background:var(--gold);}
+  .hero h1{
+    font-family:var(--serif); font-weight:900; color:var(--cream);
+    font-size:clamp(40px,7vw,76px); line-height:1.14; letter-spacing:2px;
+    text-shadow:0 4px 30px rgba(0,0,0,.6);
+  }
+  .hero h1 em{font-style:normal; color:var(--gold-hi);}
+  .hero-sub{margin-top:16px; font-size:16px; color:var(--ink-dim); max-width:640px;}
+  .hero-sub b{color:var(--cream);}
+  .hero-chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
+  .chip{
+    font-size:12.5px; letter-spacing:1px; padding:6px 14px; border-radius:999px;
+    border:1px solid rgba(232,163,61,.45); color:var(--gold-hi);
+    background:rgba(26,19,10,.55); backdrop-filter:blur(4px);
+  }
+
+  /* 仪表数据带 */
+  .dash{
+    position:relative; z-index:5; max-width:1080px; margin:-38px auto 0; padding:0 24px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+  }
+  .gauge{
+    background:linear-gradient(160deg,var(--card2),var(--card));
+    border:1px solid var(--line); border-radius:16px; padding:18px 20px 16px;
+    position:relative; overflow:hidden;
+  }
+  .gauge::before{content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--amber),var(--gold));}
+  .gauge .gv{font-family:var(--num); font-size:34px; font-weight:700; color:var(--gold-hi); line-height:1.1;}
+  .gauge .gv small{font-size:15px; font-weight:600; color:var(--amber); margin-left:3px;}
+  .gauge .gl{font-size:12px; letter-spacing:2px; color:var(--sub); margin-top:4px;}
+
+  .wrap{max-width:920px; margin:0 auto; padding:0 22px;}
+
+  /* ============ 标题 & 通用 ============ */
   h2.sec{
-    font-size:22px; margin:34px 0 14px; padding-left:12px;
-    border-left:5px solid var(--gold); line-height:1.3;
+    font-family:var(--serif); font-size:26px; font-weight:700; color:var(--cream);
+    margin:58px 0 18px; display:flex; align-items:center; gap:14px; letter-spacing:2px;
   }
-  table{width:100%; border-collapse:collapse; background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.06);}
-  th,td{padding:10px 12px; font-size:14px; text-align:left; border-bottom:1px solid var(--line);}
-  th{background:#f3f0e6; color:#4a3c1e; font-weight:600; white-space:nowrap;}
+  h2.sec::before{content:""; flex:none; width:10px; height:26px; background:linear-gradient(180deg,var(--gold-hi),var(--rust)); border-radius:3px;}
+  h2.sec .en{font-family:var(--num); font-size:12px; letter-spacing:3px; color:var(--sub); font-weight:600; text-transform:uppercase;}
+
+  /* ============ 总览表 ============ */
+  .table-scroll{overflow-x:auto; border-radius:16px; border:1px solid var(--line); box-shadow:0 10px 34px rgba(0,0,0,.35);}
+  .table-hint{display:none; font-size:12px; color:var(--sub); letter-spacing:1px; margin-top:8px; text-align:right;}
+  @media(max-width:900px){.table-hint{display:block;}}
+  table{width:100%; border-collapse:collapse; background:var(--card); min-width:820px;}
+  th,td{padding:12px 13px; font-size:13.5px; text-align:left; border-bottom:1px solid var(--line-soft);}
+  th{background:#2c2214; color:var(--gold); font-weight:600; white-space:nowrap; letter-spacing:1px; font-size:12.5px;}
+  td{color:var(--ink-dim);}
+  td b{color:var(--ink); font-weight:600;}
   tr:last-child td{border-bottom:none;}
-  .tag{display:inline-block; font-size:12px; padding:2px 9px; border-radius:20px; white-space:nowrap;}
-  .tag-y{background:var(--gold-soft); color:var(--gold); border:1px solid #ecd7a0;}
-  .tag-g{background:#eaf7ee; color:var(--green); border:1px solid #bfe5cd;}
-  .tag-b{background:#eaf1ff; color:var(--blue); border:1px solid #c3d4fb;}
-  .tag-r{background:#fdecea; color:var(--red); border:1px solid #f6c9c4;}
+  table tbody tr{cursor:pointer; transition:background .18s;}
+  table tbody tr:hover{background:#2c2215;}
+  .tdot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px; vertical-align:1px;}
 
+  /* ============ 路线图卡 ============ */
+  .mapcard{background:var(--card); border:1px solid var(--line); border-radius:18px; margin:26px 0 4px; padding:20px 22px 18px; box-shadow:0 10px 34px rgba(0,0,0,.35);}
+  .mapcard-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:12px;}
+  .mapcard-title{font-family:var(--serif); font-size:18px; font-weight:700; color:var(--cream); border-left:4px solid var(--gold); padding-left:11px;}
+  .mapcard-sub{font-size:12.5px; color:var(--sub);}
+  .mapcard-svg{max-width:880px; margin:0 auto;}
+  .mapcard svg{width:100%; height:auto; display:block;}
+  .amap-box{height:460px; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#0e0b07;}
+  .mapfallback svg{width:100%; height:auto; display:block;}
+  .am-mk{background:#211a12; border:2px solid var(--gold); color:var(--gold-hi); border-radius:999px; padding:2px 9px; font-size:12px; font-weight:700; box-shadow:0 1px 6px rgba(0,0,0,.5); white-space:nowrap; line-height:1.5;}
+  .am-mk.start{background:#1d4ed8; border-color:#1d4ed8; color:#fff;}
+  .am-mk.end{background:#15803d; border-color:#15803d; color:#fff;}
+  .am-mk i{font-style:normal; font-weight:600; margin-left:4px;}
+  .mapcard .mc-dot{fill:#211a12; stroke:var(--gold); stroke-width:2.5;}
+  .mapcard .mc-day{font-size:9.5px; fill:var(--gold-hi); font-weight:700; text-anchor:middle;}
+  .mapcard .mc-city{font-size:13px; fill:#e6dcc4; font-weight:600; text-anchor:middle; paint-order:stroke; stroke:#14100b; stroke-width:4; stroke-linejoin:round;}
+  .mapcard .mc-start .mc-city{fill:#7db4ff;} .mapcard .mc-end .mc-city{fill:#6fdc9a;}
+
+  /* ============ 逐日卡片 ============ */
   .day{
-    background:var(--card); border:1px solid var(--line); border-radius:14px;
-    margin:18px 0; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.05);
+    --acc:var(--gold);
+    background:linear-gradient(165deg,var(--card2) 0%,var(--card) 40%);
+    border:1px solid var(--line); border-radius:18px;
+    margin:22px 0; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.32);
+    position:relative;
   }
+  .day::before{content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--acc);}
   .day-head{
-    display:flex; flex-wrap:wrap; align-items:center; gap:12px; justify-content:space-between;
-    padding:16px 20px; background:linear-gradient(90deg,#faf7ec,#fff); border-bottom:1px solid var(--line);
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; justify-content:space-between;
+    padding:20px 22px 14px 26px;
   }
-  .day-no{font-size:13px; font-weight:700; color:#fff; background:var(--gold); border-radius:6px; padding:3px 10px; letter-spacing:1px;}
-  .day-title{font-size:19px; font-weight:700;}
-  .day-date{font-size:14px; color:var(--sub);}
-  .day-route{font-size:14px; color:#4a3c1e; font-weight:600; background:var(--gold-soft); border-radius:20px; padding:4px 12px;}
-  .day-body{padding:8px 20px 20px;}
-  .kv{font-size:14px; color:var(--sub); margin:12px 0 4px;}
-  .kv b{color:var(--ink); font-weight:600;}
-  ul.timeline{list-style:none; margin-top:6px;}
-  ul.timeline>li{position:relative; padding:0 0 14px 26px; font-size:14.5px;}
-  ul.timeline>li::before{content:""; position:absolute; left:6px; top:8px; width:9px; height:9px; border-radius:50%; background:var(--gold);}
-  ul.timeline>li:not(:last-child)::after{content:""; position:absolute; left:10px; top:17px; bottom:2px; width:1px; background:var(--line);}
-  ul.timeline .t{display:inline-block; font-weight:700; color:var(--gold); min-width:74px;}
-  ul.timeline .stop{color:var(--sub);}
-  .note{
-    font-size:13.5px; color:#4b3a17; background:var(--gold-soft); border:1px dashed #e3c980;
-    border-radius:8px; padding:8px 12px; margin-top:8px;
+  .day-no{
+    font-family:var(--num); font-size:15px; font-weight:700; letter-spacing:2px;
+    color:#1a130a; background:var(--acc); border-radius:8px; padding:4px 12px;
+    box-shadow:0 3px 12px color-mix(in srgb, var(--acc) 45%, transparent);
   }
-  .how{
-    font-size:13.5px; color:#6b7280; background:#f6f6f3; border-radius:8px; padding:12px 14px; margin-top:10px;
+  .day-title{font-family:var(--serif); font-size:21px; font-weight:700; color:var(--cream); letter-spacing:1px;}
+  .day-date{font-size:13px; color:var(--sub); margin-top:2px;}
+  .day-scene{
+    font-size:12px; letter-spacing:1.5px; color:var(--acc);
+    border:1px dashed color-mix(in srgb, var(--acc) 55%, transparent);
+    border-radius:999px; padding:3px 12px; white-space:nowrap;
   }
-  .how b{color:var(--ink);}
-  .block-title{font-weight:700; color:#4a3c1e; margin-top:14px; border-bottom:1px solid var(--line); padding-bottom:4px; font-size:14px; letter-spacing:1px;}
-  .tags-row{margin-top:10px; display:flex; flex-wrap:wrap; gap:6px;}
-  .practical{background:#fff; border:1px solid var(--line); border-radius:14px; padding:6px 22px 20px; box-shadow:0 2px 8px rgba(0,0,0,.05);}
-  .practical h3{font-size:16px; margin:18px 0 6px; color:#4a3c1e;}
-  .practical ol{margin-left:20px;}
-  .practical li{font-size:14.5px; margin:5px 0;}
-  footer{text-align:center; color:var(--sub); font-size:13px; margin-top:34px; padding-top:20px; border-top:1px solid var(--line);}
-  @media(max-width:600px){
-    header h1{font-size:25px;}
-    .day-title{font-size:17px;}
-    .table-scroll{overflow-x:auto;}
+  .day-route{
+    font-family:var(--num); font-size:14px; font-weight:600; color:var(--acc);
+    background:color-mix(in srgb, var(--acc) 12%, transparent);
+    border:1px solid color-mix(in srgb, var(--acc) 30%, transparent);
+    border-radius:12px; padding:6px 14px; white-space:nowrap;
   }
+  .day-body{padding:4px 24px 22px 26px;}
 
-  /* ===== 左侧目录（侧边栏式导航）===== */
-  #tocToggle{
-    display:block; position:fixed; left:0; top:140px; z-index:60;
-    background:var(--gold); color:#fff; border:none; cursor:pointer;
-    border-radius:0 10px 10px 0; padding:10px 12px;
-    font-size:13px; font-weight:700; letter-spacing:1px;
-    box-shadow:0 2px 8px rgba(0,0,0,.25);
+  /* 油量条：当日里程占比 */
+  .fuel{margin:6px 0 4px;}
+  .fuel .fl{display:flex; justify-content:space-between; font-size:11px; letter-spacing:1.5px; color:var(--sub); margin-bottom:5px;}
+  .fuel .ft{height:6px; border-radius:4px; background:#171208; border:1px solid var(--line-soft); overflow:hidden;}
+  .fuel .ff{height:100%; border-radius:4px; background:linear-gradient(90deg,var(--acc),color-mix(in srgb,var(--acc) 55%,#fff)); box-shadow:0 0 8px color-mix(in srgb,var(--acc) 50%,transparent);}
+
+  .kv{font-size:13.5px; color:var(--sub); margin:12px 0 4px;}
+  .kv b{color:var(--ink); font-weight:600;}
+
+  ul.timeline{list-style:none; margin-top:8px;}
+  ul.timeline>li{position:relative; padding:0 0 15px 28px; font-size:14.5px; color:var(--ink-dim);}
+  ul.timeline>li b{color:var(--cream); font-weight:600;}
+  ul.timeline>li::before{
+    content:""; position:absolute; left:5px; top:8px; width:10px; height:10px; border-radius:50%;
+    border:2.5px solid var(--acc); background:var(--bg);
   }
-  #tocOverlay{position:fixed; inset:0; background:rgba(30,25,15,.35); z-index:64; opacity:0; visibility:hidden; transition:.25s;}
+  ul.timeline>li:not(:last-child)::after{
+    content:""; position:absolute; left:10px; top:20px; bottom:1px; width:2px;
+    background:repeating-linear-gradient(180deg,var(--line) 0 5px,transparent 5px 10px);
+  }
+  ul.timeline .t{font-family:var(--num); display:inline-block; font-weight:600; color:var(--acc); min-width:78px; letter-spacing:.5px;}
+  ul.timeline .stop{color:var(--sub); font-size:13px;}
+
+  .how{
+    font-size:13.5px; color:#e3cfa4; background:rgba(232,163,61,.08);
+    border:1px dashed rgba(232,163,61,.4); border-radius:10px; padding:10px 14px; margin-top:10px;
+  }
+  .how b{color:var(--gold-hi);}
+
+  .tags-row{margin-top:12px; display:flex; flex-wrap:wrap; gap:7px;}
+  .tag{display:inline-block; font-size:12px; padding:3px 11px; border-radius:999px; white-space:nowrap; letter-spacing:.5px;}
+  .tag-y{background:rgba(232,163,61,.1); color:var(--gold-hi); border:1px solid rgba(232,163,61,.35);}
+  .tag-b{background:rgba(96,140,220,.12); color:#9cc0f5; border:1px solid rgba(96,140,220,.35);}
+  .tag-r{background:rgba(220,90,60,.12); color:#f0957d; border:1px solid rgba(220,90,60,.4);}
+
+  /* 每日主题色 */
+  .acc-road{--acc:#8d94a3;} .acc-desert{--acc:#d9a04a;} .acc-birch{--acc:#f0b429;}
+  .acc-kanas{--acc:#3fae8a;} .acc-yardang{--acc:#c96b32;} .acc-lake{--acc:#4fa3d8;}
+  .acc-valley{--acc:#7fb069;} .acc-sunset{--acc:#e2713a;} .acc-canyon{--acc:#d0483e;}
+  .acc-poplar{--acc:#e6c229;}
+
+  /* ============ 实用清单 ============ */
+  .practical{
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:10px 26px 26px; box-shadow:0 10px 30px rgba(0,0,0,.32);
+  }
+  .practical h3{
+    font-family:var(--serif); font-size:17px; margin:22px 0 8px; color:var(--gold-hi);
+    display:flex; align-items:center; gap:10px; letter-spacing:1px;
+  }
+  .practical h3::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold);}
+  .practical ol{margin-left:20px;}
+  .practical li{font-size:14.5px; margin:6px 0; color:var(--ink-dim);}
+  .practical li b{color:var(--cream);}
+
+  footer{
+    text-align:center; color:var(--sub); font-size:13px; margin-top:44px;
+    padding-top:24px; border-top:1px solid var(--line-soft); letter-spacing:1px;
+  }
+  footer .moto{font-family:var(--num); letter-spacing:4px; color:var(--amber); font-size:11px; display:block; margin-bottom:6px;}
+
+  /* ============ 目录 ============ */
+  #tocToggle{
+    display:block; position:fixed; left:0; bottom:26px; z-index:60;
+    background:var(--gold); color:#1a130a; border:none; cursor:pointer;
+    border-radius:0 12px 12px 0; padding:11px 13px;
+    font-size:13px; font-weight:700; letter-spacing:1px;
+    box-shadow:0 3px 14px rgba(0,0,0,.5);
+    opacity:.55; transition:opacity .2s;
+  }
+  #tocToggle:hover, #tocToggle:focus-visible{opacity:1;}
+  #tocOverlay{position:fixed; inset:0; background:rgba(8,6,3,.6); z-index:64; opacity:0; visibility:hidden; transition:.25s;}
   #tocOverlay.show{opacity:1; visibility:visible;}
   #toc{
-    position:fixed; top:0; bottom:0; left:0; width:252px; z-index:70;
-    background:#fbf9f3; border-right:1px solid #ece6d8;
-    box-shadow:4px 0 20px rgba(0,0,0,.08);
+    position:fixed; top:0; bottom:0; left:0; width:264px; z-index:70;
+    background:#1b150d; border-right:1px solid var(--line);
+    box-shadow:6px 0 26px rgba(0,0,0,.5);
     display:flex; flex-direction:column; padding:0 0 22px; overflow-y:auto;
     transform:translateX(-104%); transition:transform .28s ease;
   }
   #toc.open{transform:translateX(0);}
   #toc::-webkit-scrollbar{width:6px;}
-  #toc::-webkit-scrollbar-thumb{background:#ddd6c6; border-radius:3px;}
-  .toc-brand{padding:20px 20px 16px; border-bottom:1px solid #ece6d8; margin-bottom:6px;}
-  .toc-brand .bk{font-size:11px; letter-spacing:3px; color:var(--gold); font-weight:700;}
-  .toc-brand .bt{font-size:16px; font-weight:700; color:#3d3318; margin-top:5px; line-height:1.3;}
-  .toc-brand .bs{font-size:11.5px; color:var(--sub); margin-top:3px;}
-  .toc-group{font-size:11px; letter-spacing:2px; color:#a99b72; font-weight:700; padding:15px 21px 5px;}
+  #toc::-webkit-scrollbar-thumb{background:#3d3222; border-radius:3px;}
+  .toc-brand{padding:22px 20px 16px; border-bottom:1px solid var(--line-soft); margin-bottom:6px;}
+  .toc-brand .bk{font-family:var(--num); font-size:11px; letter-spacing:3px; color:var(--gold); font-weight:600;}
+  .toc-brand .bt{font-family:var(--serif); font-size:18px; font-weight:700; color:var(--cream); margin-top:6px;}
+  .toc-brand .bs{font-size:11.5px; color:var(--sub); margin-top:4px;}
+  .toc-group{font-size:11px; letter-spacing:3px; color:#7a6c4d; font-weight:700; padding:16px 21px 5px;}
   #toc a{
     display:flex; align-items:center; gap:10px; margin:1px 8px;
-    padding:6px 12px; font-size:13px; color:#4a422c; text-decoration:none;
-    border-left:3px solid transparent; border-radius:6px; line-height:1.35;
+    padding:7px 12px; font-size:13px; color:var(--ink-dim); text-decoration:none;
+    border-left:3px solid transparent; border-radius:8px; line-height:1.35;
   }
   #toc a .toc-day{
-    flex:none; width:27px; font-size:11px; font-weight:700; color:var(--gold);
-    background:#f3ead0; border-radius:6px; text-align:center; padding:2px 0;
+    flex:none; width:30px; font-family:var(--num); font-size:11px; font-weight:700; color:var(--gold);
+    background:#2c2214; border-radius:6px; text-align:center; padding:3px 0;
   }
   #toc a .toc-route{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  #toc a:hover{color:var(--gold);}
-  #toc a:hover .toc-day{background:var(--gold); color:#fff;}
-  #toc a.on{background:#f6efda;}
-  #toc a.on .toc-day{background:var(--gold); color:#fff;}
-  #toc a.on .toc-route{color:#3d3318; font-weight:600;}
-  #toc a.sec-mode{display:flex; align-items:center; padding:6px 12px; color:#8a8061; font-weight:600;}
-  #toc a.sec-mode::before{content:""; flex:none; width:5px; height:5px; border-radius:50%; background:#cfc6a8; margin-left:11px; margin-right:11px;}
-  #toc a.sec-mode.on{color:var(--gold); background:#f6efda;}
+  #toc a:hover{color:var(--gold-hi);}
+  #toc a.on{background:#2c2214;}
+  #toc a.on .toc-day{background:var(--gold); color:#1a130a;}
+  #toc a.on .toc-route{color:var(--cream); font-weight:600;}
+  #toc a.sec-mode{color:#8a8061; font-weight:600;}
+  #toc a.sec-mode.on{color:var(--gold-hi); background:#2c2214;}
   .toc-close{
-    position:absolute; top:14px; right:12px; background:transparent; border:1px solid #ece6d8;
+    position:absolute; top:14px; right:12px; background:transparent; border:1px solid var(--line);
     border-radius:8px; font-size:13px; color:var(--sub); cursor:pointer; padding:4px 9px; z-index:2;
   }
-  #overview,#practical{scroll-margin-top:74px;}
-  .day[id]{scroll-margin-top:74px;}
-  table tbody tr{cursor:pointer;}
-  table tbody tr:hover{background:#faf7ec;}
-      @media(min-width:1200px){
-    #tocToggle,#tocOverlay,.toc-close{display:none !important;}
-    .page{max-width:1320px; margin:0 auto; padding:18px 20px 0;}
-    .body3{display:flex; align-items:flex-start; flex-wrap:nowrap;}
-    #toc{position:sticky; top:56px; height:calc(100vh - 68px); width:248px; flex:0 0 248px; transform:none !important; box-shadow:none; border-radius:12px; border:1px solid var(--line); background:#fff;}
-    #toc .toc-brand{background:#f9f6ec; border-radius:12px 12px 0 0; margin-bottom:0;}
-    .wrap{flex:1 1 auto; min-width:0; max-width:900px; margin:0 auto;}
-    .day[id],#overview,#practical{scroll-margin-top:70px;}
+  #overview,#practical{scroll-margin-top:30px;}
+  .day[id]{scroll-margin-top:30px;}
+
+  /* 滚动浮现 */
+  .rv{opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease;}
+  .rv.in{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .rv{opacity:1; transform:none; transition:none;}
   }
-  .mapcard{background:#fff; border:1px solid var(--line); border-radius:14px; margin:22px 0; padding:18px 20px 16px; box-shadow:0 2px 8px rgba(0,0,0,.05);}
-  .mapcard-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:8px;}
-  .mapcard-title{font-size:17px; font-weight:700; color:#4a3c1e; border-left:4px solid var(--gold); padding-left:10px;}
-  .mapcard-sub{font-size:12.5px; color:var(--sub);}
-  .mapcard-svg{max-width:880px; margin:0 auto;}
-  .mapcard svg{width:100%; height:auto; display:block;}
-  .amap-box{height:460px; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#eef2f5;}
-  .mapfallback svg{width:100%; height:auto; display:block;}
-  .am-mk{background:#fff; border:2px solid #B8860B; color:#4a3c1e; border-radius:999px; padding:2px 9px; font-size:12px; font-weight:700; box-shadow:0 1px 4px rgba(0,0,0,.25); white-space:nowrap; line-height:1.5;}
-  .am-mk.start{background:#1d4ed8; border-color:#1d4ed8; color:#fff;}
-  .am-mk.end{background:#15803d; border-color:#15803d; color:#fff;}
-  .am-mk i{font-style:normal; font-weight:600; margin-left:4px;}
-  .mapcard .mc-dot{fill:#fff; stroke:#B8860B; stroke-width:2.5;}
-  .mapcard .mc-day{font-size:9.5px; fill:#B8860B; font-weight:700; text-anchor:middle;}
-  .mapcard .mc-city{font-size:13px; fill:#3f3a2e; font-weight:600; text-anchor:middle; paint-order:stroke; stroke:#fbf9f3; stroke-width:4; stroke-linejoin:round;}
-  .mapcard .mc-start .mc-city{fill:#1d4ed8;} .mapcard .mc-end .mc-city{fill:#15803d;}
+
+  @media(max-width:760px){
+    .dash{grid-template-columns:repeat(2,1fr); margin-top:-26px;}
+    .gauge .gv{font-size:26px;}
+    .day-title{font-size:18px;}
+    .day-head{padding:16px 18px 12px 20px;}
+    .day-body{padding:4px 18px 18px 20px;}
+  }
+  @media(min-width:1200px){
+    #tocToggle,#tocOverlay,.toc-close{display:none !important;}
+    .page{max-width:1340px; margin:0 auto;}
+    .body3{display:flex; align-items:flex-start; flex-wrap:nowrap; padding:0 20px;}
+    #toc{position:sticky; top:24px; height:calc(100vh - 48px); width:256px; flex:0 0 256px; transform:none !important; box-shadow:none; border-radius:16px; border:1px solid var(--line); margin-top:26px;}
+    #toc .toc-brand{border-radius:16px 16px 0 0; margin-bottom:0;}
+    .wrap{flex:1 1 auto; min-width:0; max-width:920px; margin:0 auto;}
+  }
 </style>
 </head>
 <body>
 
-<button id="tocToggle" title="行程目录" aria-label="展开行程目录">☰ 目录</button>
+<div id="rpm"><div class="bar"></div></div>
+
+<button id="tocToggle" title="行程目录" aria-label="展开行程目录">☰ 路书</button>
 <div id="tocOverlay"></div>
 <div class="page">
-<header>
-  <div class="kicker">SINGLE · SOLO · SELF-DRIVE</div>
-  <h1>北疆金秋环线 · 长沙往返 · 逐日自驾行程</h1>
-  <p>单人单车 · 长沙出发 · 2026年9月25日 — 10月7日 · 共13天（含省际长途＋环线）</p>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">MOTO RAID · SOLO RIDE · 10,600 KM</div>
+    <h1>北疆金秋环线<br>单人单骑<em>逐日路书</em></h1>
+    <p class="hero-sub">长沙出发 · <b>2026.09.25 — 10.07</b> · 共 13 天。从湘江到阿尔泰，穿沙漠、翻达坂、环湖而居——把北疆的秋天骑个遍。</p>
+    <div class="hero-chips">
+      <span class="chip">禾木晨雾</span><span class="chip">喀纳斯湖</span><span class="chip">S21 沙漠公路</span>
+      <span class="chip">赛里木湖</span><span class="chip">独库公路南段</span><span class="chip">巴音布鲁克日落</span>
+    </div>
+  </div>
 </header>
 
-
-<div class="meta-bar">
-  <div class="wrap">
-    <span>全程约 <b>10,600 km</b></span>
-    <span>驾驶强度 <b>高（含长途赶路段）</b></span>
-    <span>季节 <b>深秋（山区需防雪）</b></span>
-    <span>证件 <b>身份证随行</b></span>
-  </div>
+<div class="dash">
+  <div class="gauge rv"><div class="gv" data-cnt="10600">0<small>km</small></div><div class="gl">TOTAL MILEAGE · 全程里程</div></div>
+  <div class="gauge rv"><div class="gv" data-cnt="13">0<small>days</small></div><div class="gl">DURATION · 行程天数</div></div>
+  <div class="gauge rv"><div class="gv" data-cnt="3200">0<small>m</small></div><div class="gl">HIGHEST PASS · 铁力买提达坂</div></div>
+  <div class="gauge rv"><div class="gv" data-cnt="1">0<small>rider</small></div><div class="gl">CREW · 单人单骑</div></div>
 </div>
+
 <div class="body3">
 <nav id="toc" aria-label="行程目录">
   <button class="toc-close" id="tocClose" aria-label="收起">✕ 收起</button>
   <div class="toc-brand">
-    <div class="bk">SELF-DRIVE · SOLO</div>
+    <div class="bk">MOTO ROADBOOK</div>
     <div class="bt">北疆金秋环线</div>
-    <div class="bs">长沙往返 · 13 天 · 单人单车</div>
+    <div class="bs">长沙往返 · 13 天 · 单人单骑</div>
   </div>
   <div class="toc-group">总览</div>
   <a href="#overview" class="sec-mode">总览与行程表</a>
-  <div class="toc-group">逐日行程</div>
+  <a href="#routemap" class="sec-mode">环线路线图</a>
+  <div class="toc-group">逐日路书</div>
   <a href="#d1"><span class="toc-day">D1</span><span class="toc-route">长沙 → 长城驿</span></a>
   <a href="#d2"><span class="toc-day">D2</span><span class="toc-route">长城驿 → 乌鲁木齐</span></a>
   <a href="#d3"><span class="toc-day">D3</span><span class="toc-route">乌鲁木齐 → 阿勒泰</span></a>
@@ -213,77 +338,88 @@
   <a href="#d12"><span class="toc-day">D12</span><span class="toc-route">库尔勒 → 武威服务区</span></a>
   <a href="#d13"><span class="toc-day">D13</span><span class="toc-route">武威服务区 → 长沙</span></a>
   <div class="toc-group">提示</div>
-  <a href="#practical" class="sec-mode">实用清单与注意</a>
+  <a href="#practical" class="sec-mode">装备清单与注意</a>
 </nav>
+
 <div class="wrap">
 
-  <div class="overview table-scroll">
-    <h2 class="sec" id="overview">总览</h2>
+  <h2 class="sec" id="overview">总览 <span class="en">Route Overview</span></h2>
+  <div class="table-scroll rv">
     <table>
       <thead><tr><th>日期</th><th>Day</th><th>起点 → 终点</th><th>参考里程</th><th>参考时长</th><th>主要看点</th><th>住宿安排</th></tr></thead>
       <tbody>
-        <tr data-href="#d1"><td>9/25</td><td>Day 1</td><td>长沙 → 甘肃长城驿服务区</td><td>≈2000 km</td><td>约21h</td><td>全程高速（二广/连霍）赶路</td><td>长城驿·司机之家</td></tr>
-        <tr data-href="#d2"><td>9/26</td><td>Day 2</td><td>甘肃长城驿 → 乌鲁木齐</td><td>≈1650 km</td><td>约18h</td><td>河西走廊、嘉峪关、G30连霍</td><td>乌鲁木齐市区</td></tr>
-        <tr data-href="#d3"><td>9/27</td><td>Day 3</td><td>乌鲁木齐 → 阿勒泰</td><td>≈440 km</td><td>约5h</td><td>S21沙漠公路、乌伦古湖</td><td>阿勒泰市区</td></tr>
-        <tr data-href="#d4"><td>9/28</td><td>Day 4</td><td>阿勒泰 → 禾木</td><td>≈210 km</td><td>约3.5h</td><td>阿禾公路、禾木村、白桦林、日落</td><td>禾木村小木屋</td></tr>
-        <tr data-href="#d5"><td>9/29</td><td>Day 5</td><td>禾木 → 喀纳斯</td><td>≈70 km</td><td>约2h</td><td>观鱼台、喀纳斯湖</td><td>喀纳斯村／贾登峪</td></tr>
-        <tr data-href="#d6"><td>9/30</td><td>Day 6</td><td>喀纳斯 → 克拉玛依</td><td>≈470 km</td><td>约7h</td><td>三湾晨雾、乌尔禾魔鬼城</td><td>克拉玛依市区</td></tr>
-        <tr data-href="#d7"><td>10/1</td><td>Day 7</td><td>克拉玛依 → 赛里木湖</td><td>≈480 km</td><td>约6h</td><td>赛里木湖环湖、日落</td><td>赛里木湖东门</td></tr>
-        <tr data-href="#d8"><td>10/2</td><td>Day 8</td><td>赛里木湖 → 昭苏</td><td>≈300 km</td><td>约5h</td><td>果子沟大桥、伊犁河谷</td><td>昭苏县城</td></tr>
-        <tr data-href="#d9"><td>10/3</td><td>Day 9</td><td>昭苏 → 巴音布鲁克镇</td><td>≈360 km</td><td>约6h</td><td>特克斯八卦城、九曲十八弯日落</td><td>巴音布鲁克镇</td></tr>
-        <tr data-href="#d10"><td>10/4</td><td>Day 10</td><td>巴音布鲁克 → 库车</td><td>≈260 km</td><td>约5h</td><td>独库南段、大小龙池、库车大峡谷</td><td>库车市</td></tr>
-        <tr data-href="#d11"><td>10/5</td><td>Day 11</td><td>库车 → 库尔勒</td><td>≈300 km</td><td>约4.5h</td><td>轮台胡杨、库尔勒收尾</td><td>库尔勒（或离场）</td></tr>
-        <tr data-href="#d12"><td>10/6</td><td>Day 12</td><td>库尔勒 → 甘肃武威服务区</td><td>≈2100 km</td><td>约22h</td><td>G30连霍穿哈密、星星峡、河西</td><td>武威·司机之家</td></tr>
-        <tr data-href="#d13"><td>10/7</td><td>Day 13</td><td>武威服务区 → 长沙</td><td>≈1887 km</td><td>约20h</td><td>兰州、西安、二广高速奔长沙</td><td>家里</td></tr>
+        <tr data-href="#d1"><td>9/25</td><td><b>Day 1</b></td><td><span class="tdot" style="background:#8d94a3"></span>长沙 → 甘肃长城驿服务区</td><td>≈2000 km</td><td>约21h</td><td>全程高速（二广/连霍）赶路</td><td>长城驿·司机之家</td></tr>
+        <tr data-href="#d2"><td>9/26</td><td><b>Day 2</b></td><td><span class="tdot" style="background:#8d94a3"></span>甘肃长城驿 → 乌鲁木齐</td><td>≈1650 km</td><td>约18h</td><td>河西走廊、嘉峪关、G30连霍</td><td>乌鲁木齐市区</td></tr>
+        <tr data-href="#d3"><td>9/27</td><td><b>Day 3</b></td><td><span class="tdot" style="background:#d9a04a"></span>乌鲁木齐 → 阿勒泰</td><td>≈440 km</td><td>约5h</td><td>S21沙漠公路、乌伦古湖</td><td>阿勒泰市区</td></tr>
+        <tr data-href="#d4"><td>9/28</td><td><b>Day 4</b></td><td><span class="tdot" style="background:#f0b429"></span>阿勒泰 → 禾木</td><td>≈210 km</td><td>约3.5h</td><td>阿禾公路、禾木村、白桦林、日落</td><td>禾木村小木屋</td></tr>
+        <tr data-href="#d5"><td>9/29</td><td><b>Day 5</b></td><td><span class="tdot" style="background:#3fae8a"></span>禾木 → 喀纳斯</td><td>≈70 km</td><td>约2h</td><td>观鱼台、喀纳斯湖</td><td>喀纳斯村／贾登峪</td></tr>
+        <tr data-href="#d6"><td>9/30</td><td><b>Day 6</b></td><td><span class="tdot" style="background:#c96b32"></span>喀纳斯 → 克拉玛依</td><td>≈470 km</td><td>约7h</td><td>三湾晨雾、乌尔禾魔鬼城</td><td>克拉玛依市区</td></tr>
+        <tr data-href="#d7"><td>10/1</td><td><b>Day 7</b></td><td><span class="tdot" style="background:#4fa3d8"></span>克拉玛依 → 赛里木湖</td><td>≈480 km</td><td>约6h</td><td>赛里木湖环湖、日落</td><td>赛里木湖东门</td></tr>
+        <tr data-href="#d8"><td>10/2</td><td><b>Day 8</b></td><td><span class="tdot" style="background:#7fb069"></span>赛里木湖 → 昭苏</td><td>≈300 km</td><td>约5h</td><td>果子沟大桥、伊犁河谷</td><td>昭苏县城</td></tr>
+        <tr data-href="#d9"><td>10/3</td><td><b>Day 9</b></td><td><span class="tdot" style="background:#e2713a"></span>昭苏 → 巴音布鲁克镇</td><td>≈360 km</td><td>约6h</td><td>特克斯八卦城、九曲十八弯日落</td><td>巴音布鲁克镇</td></tr>
+        <tr data-href="#d10"><td>10/4</td><td><b>Day 10</b></td><td><span class="tdot" style="background:#d0483e"></span>巴音布鲁克 → 库车</td><td>≈260 km</td><td>约5h</td><td>独库南段、大小龙池、库车大峡谷</td><td>库车市</td></tr>
+        <tr data-href="#d11"><td>10/5</td><td><b>Day 11</b></td><td><span class="tdot" style="background:#e6c229"></span>库车 → 库尔勒</td><td>≈300 km</td><td>约4.5h</td><td>轮台胡杨、库尔勒收尾</td><td>库尔勒（或离场）</td></tr>
+        <tr data-href="#d12"><td>10/6</td><td><b>Day 12</b></td><td><span class="tdot" style="background:#8d94a3"></span>库尔勒 → 甘肃武威服务区</td><td>≈2100 km</td><td>约22h</td><td>G30连霍穿哈密、星星峡、河西</td><td>武威·司机之家</td></tr>
+        <tr data-href="#d13"><td>10/7</td><td><b>Day 13</b></td><td><span class="tdot" style="background:#8d94a3"></span>武威服务区 → 长沙</td><td>≈1887 km</td><td>约20h</td><td>兰州、西安、二广高速奔长沙</td><td>家里</td></tr>
       </tbody>
     </table>
-  </div><div class="mapcard">
+  </div>
+  <div class="table-hint">← 左右滑动查看完整表格 →</div>
+
+  <h2 class="sec" id="routemap" style="margin-top:46px;">环线路线图 <span class="en">The Loop</span></h2>
+  <div class="mapcard rv">
     <div class="mapcard-head">
       <span class="mapcard-title">北疆金秋环线路线图</span>
       <span class="mapcard-sub" id="amapInfo">DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· 高德真实驾车路线（需联网）</span>
     </div>
     <div class="mapcard-svg">
-            <div id="amap" class="amap-box" style="display:none;"></div>
+      <div id="amap" class="amap-box" style="display:none;"></div>
       <div id="mapFallback" class="mapfallback">
 <svg viewBox="0 0 820 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="北疆金秋环线 DAY3 至 DAY11 路线图">
-        <defs>
-          <marker id="mc-arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 z" fill="#B8860B"/>
-          </marker>
-        </defs>
-        <rect x="1" y="1" width="818" height="518" fill="#fbf9f3" rx="12"/>
-        <text x="352" y="30" font-size="12" fill="#d3cbb3" letter-spacing="3">阿尔泰山</text>
-        <path d="M40,470 Q410,360 790,470" fill="none" stroke="#e0d9c6" stroke-width="20" stroke-linecap="round" opacity="0.5"/>
-        <text x="520" y="452" font-size="12" fill="#c6bda2" letter-spacing="6">天 山 山 脉</text>
-        <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>
-        <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#B8860B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mc-arw)"/>
-        <g class="mc-start" transform="translate(240,462)"><circle class="mc-dot" r="12" style="stroke:#1d4ed8;"/><text class="mc-day" dy="3.5" style="fill:#1d4ed8;">D3</text><text class="mc-city" y="26">乌鲁木齐</text></g>
-        <g transform="translate(250,92)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D4</text><text class="mc-city" y="-17">阿勒泰</text></g>
-        <g transform="translate(330,58)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D5</text><text class="mc-city" y="-17">禾木</text></g>
-        <g transform="translate(400,42)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D6</text><text class="mc-city" y="-17">喀纳斯</text></g>
-        <g transform="translate(112,242)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D7</text><text class="mc-city" y="-17">克拉玛依</text></g>
-        <g transform="translate(92,362)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D8</text><text class="mc-city" x="-16" y="5" style="text-anchor:end;">赛里木湖</text></g>
-        <g transform="translate(72,472)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D9</text><text class="mc-city" y="26">昭苏</text></g>
-        <g transform="translate(332,424)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D10</text><text class="mc-city" y="26">巴音布鲁克</text></g>
-        <g transform="translate(470,424)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D11</text><text class="mc-city" y="26">库车</text></g>
-        <g class="mc-end" transform="translate(600,382)"><circle class="mc-dot" r="12" style="stroke:#15803d;"/><text class="mc-day" dy="3.5" style="fill:#15803d;">终</text><text class="mc-city" y="26">库尔勒</text></g>
-        <g transform="translate(778,44)"><path d="M0,-14 L9,7 L0,3 L-9,7 Z" fill="#c6bda2"/><text x="0" y="-20" font-size="11" fill="#c6bda2" text-anchor="middle" font-weight="700">北</text></g>
-      </svg>
+  <defs>
+    <marker id="mc-arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#e8a33d"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="818" height="518" fill="#1b150d" rx="12"/>
+  <text x="352" y="30" font-size="12" fill="#5c5140" letter-spacing="3">阿尔泰山</text>
+  <path d="M40,470 Q410,360 790,470" fill="none" stroke="#2e2517" stroke-width="20" stroke-linecap="round" opacity="0.7"/>
+  <text x="520" y="452" font-size="12" fill="#4e4433" letter-spacing="6">天 山 山 脉</text>
+  <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#14100b" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>
+  <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#e8a33d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mc-arw)"/>
+  <g class="mc-start" transform="translate(240,462)"><circle class="mc-dot" r="12" style="stroke:#4fa3d8;"/><text class="mc-day" dy="3.5" style="fill:#4fa3d8;">D3</text><text class="mc-city" y="26">乌鲁木齐</text></g>
+  <g transform="translate(250,92)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D4</text><text class="mc-city" y="-17">阿勒泰</text></g>
+  <g transform="translate(330,58)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D5</text><text class="mc-city" y="-17">禾木</text></g>
+  <g transform="translate(400,42)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D6</text><text class="mc-city" y="-17">喀纳斯</text></g>
+  <g transform="translate(112,242)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D7</text><text class="mc-city" y="-17">克拉玛依</text></g>
+  <g transform="translate(92,362)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D8</text><text class="mc-city" x="-16" y="5" style="text-anchor:end;">赛里木湖</text></g>
+  <g transform="translate(72,472)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D9</text><text class="mc-city" y="26">昭苏</text></g>
+  <g transform="translate(332,424)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D10</text><text class="mc-city" y="26">巴音布鲁克</text></g>
+  <g transform="translate(470,424)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D11</text><text class="mc-city" y="26">库车</text></g>
+  <g class="mc-end" transform="translate(600,382)"><circle class="mc-dot" r="12" style="stroke:#3fae8a;"/><text class="mc-day" dy="3.5" style="fill:#3fae8a;">终</text><text class="mc-city" y="26">库尔勒</text></g>
+  <g transform="translate(778,44)"><path d="M0,-14 L9,7 L0,3 L-9,7 Z" fill="#5c5140"/><text x="0" y="-20" font-size="11" fill="#5c5140" text-anchor="middle" font-weight="700">北</text></g>
+</svg>
       </div>
     </div>
   </div>
 
+  <h2 class="sec" style="margin-top:52px;">逐日路书 <span class="en">Daily Roadbook</span></h2>
+
   <!-- 出疆第1天 -->
-  <div class="day" id="d1">
+  <div class="day acc-road rv" id="d1">
     <div class="day-head">
       <div>
-        <span class="day-no">DAY 1</span>
-        <span class="day-title">长沙 → 甘肃长城驿服务区</span>
+        <span class="day-no">DAY 01</span>
+        <div class="day-title">长沙 → 甘肃长城驿服务区</div>
         <div class="day-date">2026年9月25日 · 高速赶路</div>
       </div>
-      <div class="day-route">≈2000 km · 行车约21小时（建议中途拆分）</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">沥青长征 · 出湘入陇</span>
+        <span class="day-route">≈2000 km · 约21h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>2000 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:95%"></div></div></div>
       <div class="kv">全程高速：长沙 →（二广/许广高速）→ 西安 →（连霍高速 G30）→ 兰州 → 甘肃长城驿服务区</div>
       <ul class="timeline">
         <li><span class="t">05:00</span>长沙出发，出城上高速（早高峰前避开，注意出城段照明）。</li>
@@ -292,7 +428,7 @@
         <li><span class="t">17:00</span>兰州附近服务区休息（转入河西走廊前）。</li>
         <li><span class="t">次日00:30</span>抵<b>甘肃长城驿服务区</b>，入住<b>司机之家</b>过夜（超长约2000km，务必在西安或兰州补休）。</li>
       </ul>
-      <div class="how"><b>注意：</b>该段约 2000 km、单日行车近 21 小时，强度极大。<b>单人单车强烈建议中途加一夜</b>（例如西安或兰州），否则务必每 2 小时强制休息，避免疲劳驾驶。</div>
+      <div class="how"><b>注意：</b>该段约 2000 km、单日行车近 21 小时，强度极大。<b>单人单骑强烈建议中途加一夜</b>（例如西安或兰州），否则务必每 2 小时强制休息，避免疲劳驾驶。</div>
       <div class="tags-row">
         <span class="tag tag-y">餐：全程服务区</span>
         <span class="tag tag-b">宿：长城驿·司机之家</span>
@@ -301,16 +437,20 @@
   </div>
 
   <!-- 出疆第2天 -->
-  <div class="day" id="d2">
+  <div class="day acc-road rv" id="d2">
     <div class="day-head">
       <div>
-        <span class="day-no">DAY 2</span>
-        <span class="day-title">甘肃长城驿 → 乌鲁木齐</span>
+        <span class="day-no">DAY 02</span>
+        <div class="day-title">甘肃长城驿 → 乌鲁木齐</div>
         <div class="day-date">2026年9月26日 · 高速赶路</div>
       </div>
-      <div class="day-route">≈1650 km · 行车约18小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">河西走廊 · 戈壁入关</span>
+        <span class="day-route">≈1650 km · 约18h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>1650 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:79%"></div></div></div>
       <div class="kv">全程高速：长城驿 →（连霍高速 G30）→ 张掖/酒泉/嘉峪关 → 星星峡 → 哈密 → 吐鲁番 → 乌鲁木齐</div>
       <ul class="timeline">
         <li><span class="t">06:00</span>司机之家早饭后出发，沿<b>连霍高速 G30</b> 西行，穿河西走廊。证件随身备查。</li>
@@ -327,17 +467,21 @@
     </div>
   </div>
 
-  <!-- Day 1 -->
-  <div class="day" id="d3">
+  <!-- Day 3 -->
+  <div class="day acc-desert rv" id="d3">
     <div class="day-head">
       <div>
-        <span class="day-no">DAY 3</span>
-        <span class="day-title">乌鲁木齐 → 阿勒泰</span>
+        <span class="day-no">DAY 03</span>
+        <div class="day-title">乌鲁木齐 → 阿勒泰</div>
         <div class="day-date">2026年9月27日 · 北疆环线首日</div>
       </div>
-      <div class="day-route">≈440 km · 约5小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">S21 沙漠公路 · 乌伦古湖</span>
+        <span class="day-route">≈440 km · 约5h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>440 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:21%"></div></div></div>
       <div class="kv">当日光线 · 乌鲁木齐 天亮 7:33 · 日出 8:00 · 日落 19:59（阿勒泰相近）</div>
       <ul class="timeline">
         <li><span class="t">07:15</span>乌鲁木齐出发（天亮 7:33，天色已可辨路面）——单人首日长途，前一晚切记睡足。经<b>阜康</b>上 S21〈阿乌高速〉穿越古尔班通古特沙漠。</li>
@@ -356,22 +500,26 @@
     </div>
   </div>
 
-  <!-- Day 2 -->
-  <div class="day" id="d4">
+  <!-- Day 4 -->
+  <div class="day acc-birch rv" id="d4">
     <div class="day-head">
       <div>
-        <span class="day-no">DAY 4</span>
-        <span class="day-title">阿勒泰 → 禾木</span>
+        <span class="day-no">DAY 04</span>
+        <div class="day-title">阿勒泰 → 禾木</div>
         <div class="day-date">2026年9月28日</div>
       </div>
-      <div class="day-route">≈210 km · 约3.5小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">阿禾公路 · 金黄白桦</span>
+        <span class="day-route">≈210 km · 约3.5h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>210 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:10%"></div></div></div>
       <div class="kv">当日光线 · 阿勒泰/布尔津 天亮 7:36 · 日出 8:05 · 日落 19:59 · 天黑 20:29</div>
       <ul class="timeline">
         <li><span class="t">09:00</span>到<b>阿禾公路（G681）</b>入口排队，7座以下一般每日 09:30—15:00 放行穿行阿尔泰山区，高山草甸、金黄针叶林与雪山相伴。</li>
         <li><span class="t">11:00</span>途中垭口/观景台停车拍照，山区天气多变。</li>
-        <li><span class="t">13:00</span>抵<b>禾木门票站</b>寄存车辆、购票；村内<b>私家车禁行</b>，换乘区间车进村（约1小时山路）。</li>
+        <li><span class="t">13:00</span>抵<b>禾木门票站</b>寄存车辆、购票；村内<b>外来车辆禁行</b>，换乘区间车进村（约1小时山路）。</li>
         <li><span class="t">14:00</span>到<b>禾木村</b>，入住小木屋（提前订）。</li>
         <li><span class="t">15:00</span><b>禾木河＋白桦林</b>木栈道慢走，金桦倒映河中，午后光影正佳。</li>
         <li><span class="t">18:00</span>登<b>禾木观景台</b>等日落（约 19:59），俯瞰全村木屋炊烟与金黄林海；蓝调时刻 20:17–20:41。</li>
@@ -386,22 +534,26 @@
     </div>
   </div>
 
-  <!-- Day 3 -->
-  <div class="day" id="d5">
+  <!-- Day 5 -->
+  <div class="day acc-kanas rv" id="d5">
     <div class="day-head">
       <div>
-        <span class="day-no">DAY 5</span>
-        <span class="day-title">禾木 → 喀纳斯</span>
+        <span class="day-no">DAY 05</span>
+        <div class="day-title">禾木 → 喀纳斯</div>
         <div class="day-date">2026年9月29日</div>
       </div>
-      <div class="day-route">≈70 km · 约2小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">晨雾村庄 · 翡翠湖湾</span>
+        <span class="day-route">≈70 km · 约2h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>70 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:4%"></div></div></div>
       <div class="kv">当日光线 · 布尔津/禾木 天亮 7:37 · 日出 8:06 · 天黑 20:27 · 晨蓝调 7:25–7:49</div>
       <ul class="timeline">
         <li><span class="t">07:10</span>登<b>禾木观景台看晨雾＋日出</b>（日出约 8:06，晨蓝调 7:25–7:49）——晨雾村庄是禾木招牌画面。</li>
         <li><span class="t">08:30</span>回民宿早餐、退房，区间车出村，门站取车。</li>
-        <li><span class="t">10:00</span>自驾经<b>贾登峪</b>抵<b>喀纳斯门票站</b>，购票换乘景区车进景区。</li>
+        <li><span class="t">10:00</span>骑行经<b>贾登峪</b>抵<b>喀纳斯门票站</b>，购票换乘景区车进景区。</li>
         <li><span class="t">11:30</span>喀纳斯游客中心午餐。</li>
         <li><span class="t">13:00</span><b>观鱼台</b>登顶俯瞰喀纳斯湖全景（约2小时来回）。</li>
         <li><span class="t">15:30</span>湖畔<b>喀纳斯湖码头/木栈道</b>慢走，深秋碧水如翡翠。</li>
@@ -416,17 +568,21 @@
     </div>
   </div>
 
-  <!-- Day 4 -->
-  <div class="day" id="d6">
+  <!-- Day 6 -->
+  <div class="day acc-yardang rv" id="d6">
     <div class="day-head">
       <div>
-        <span class="day-no">DAY 6</span>
-        <span class="day-title">喀纳斯 → 克拉玛依</span>
+        <span class="day-no">DAY 06</span>
+        <div class="day-title">喀纳斯 → 克拉玛依</div>
         <div class="day-date">2026年9月30日</div>
       </div>
-      <div class="day-route">≈470 km · 约7小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">三湾晨雾 · 雅丹魔鬼城</span>
+        <span class="day-route">≈470 km · 约7h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>470 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:22%"></div></div></div>
       <div class="kv">当日光线 · 布尔津/喀纳斯 天亮 7:38 · 日出 8:08 · 天黑 20:25 · 晨蓝调 7:27–7:50；克拉玛依 日落 20:04</div>
       <ul class="timeline">
         <li><span class="t">07:00</span><b>月亮湾、神仙湾晨雾</b>——三湾（神仙湾-月亮湾-卧龙湾）木栈道晨曦（日出约 8:08），顺光晨拍最美。</li>
@@ -444,22 +600,26 @@
     </div>
   </div>
 
-  <!-- Day 5 -->
-  <div class="day" id="d7">
+  <!-- Day 7 -->
+  <div class="day acc-lake rv" id="d7">
     <div class="day-head">
       <div>
-        <span class="day-no">DAY 7</span>
-        <span class="day-title">克拉玛依 → 赛里木湖</span>
+        <span class="day-no">DAY 07</span>
+        <div class="day-title">克拉玛依 → 赛里木湖</div>
         <div class="day-date">2026年10月1日</div>
       </div>
-      <div class="day-route">≈480 km · 约6小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">大西洋最后一滴眼泪</span>
+        <span class="day-route">≈480 km · 约6h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>480 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:23%"></div></div></div>
       <div class="kv">当日光线 · 克拉玛依 天亮 7:48 · 日出 8:16；赛里木湖 日落 20:14 · 天黑 20:41</div>
       <ul class="timeline">
         <li><span class="t">07:40</span>出发（天亮 7:48），G30连霍高速向西北，经<b>奎屯</b>。</li>
         <li><span class="t">12:30</span>精河服务区午餐、加油。</li>
-        <li><span class="t">14:30</span>抵<b>赛里木湖东门</b>购票，自驾环湖（点将台→亲水滩→西海草原→松树头，环线约90km）。</li>
+        <li><span class="t">14:30</span>抵<b>赛里木湖东门</b>购票，骑行环湖（点将台→亲水滩→西海草原→松树头，环线约90km）。</li>
         <li><span class="t">18:30</span>湖畔等<b>日落＋雪山倒影</b>（日落约 20:14），光线绝佳。</li>
         <li><span class="t">20:45</span>蓝调时刻 20:30–20:53 后，入宿<b>赛里木湖东门</b>附近（提前订）。</li>
         <li><span class="t">深夜</span>若天气晴，湖边看银河星空。</li>
@@ -472,17 +632,21 @@
     </div>
   </div>
 
-  <!-- Day 6 -->
-  <div class="day" id="d8">
+  <!-- Day 8 -->
+  <div class="day acc-valley rv" id="d8">
     <div class="day-head">
       <div>
-        <span class="day-no">DAY 8</span>
-        <span class="day-title">赛里木湖 → 昭苏</span>
+        <span class="day-no">DAY 08</span>
+        <div class="day-title">赛里木湖 → 昭苏</div>
         <div class="day-date">2026年10月2日</div>
       </div>
-      <div class="day-route">≈300 km · 约5小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">果子沟大桥 · 伊犁河谷</span>
+        <span class="day-route">≈300 km · 约5h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>300 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:14%"></div></div></div>
       <div class="kv">当日光线 · 博乐/赛里木湖 天亮 8:01 · 日出 8:29 · 晨蓝调 7:50–8:12；伊宁 日落 20:14</div>
       <ul class="timeline">
         <li><span class="t">07:30</span>湖畔看<b>日出</b>（日出约 8:29，晨蓝调 7:50–8:12），随后出发。</li>
@@ -500,17 +664,21 @@
     </div>
   </div>
 
-  <!-- Day 7 -->
-  <div class="day" id="d9">
+  <!-- Day 9 -->
+  <div class="day acc-sunset rv" id="d9">
     <div class="day-head">
       <div>
-        <span class="day-no">DAY 9</span>
-        <span class="day-title">昭苏 → 巴音布鲁克镇</span>
+        <span class="day-no">DAY 09</span>
+        <div class="day-title">昭苏 → 巴音布鲁克镇</div>
         <div class="day-date">2026年10月3日</div>
       </div>
-      <div class="day-route">≈360 km · 约6小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">九曲十八弯日落</span>
+        <span class="day-route">≈360 km · 约6h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>360 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:17%"></div></div></div>
       <div class="kv">当日光线 · 伊宁 天亮 8:05 · 日出 8:33；巴音布鲁克草原 日落约 19:50 前后</div>
       <ul class="timeline">
         <li><span class="t">08:00</span>出发，经<b>特克斯县</b>（八卦城）：观景台俯瞰八条主街，逛<u>离街</u>。</li>
@@ -529,17 +697,21 @@
     </div>
   </div>
 
-  <!-- Day 8 -->
-  <div class="day" id="d10">
+  <!-- Day 10 -->
+  <div class="day acc-canyon rv" id="d10">
     <div class="day-head">
       <div>
         <span class="day-no">DAY 10</span>
-        <span class="day-title">巴音布鲁克 → 库车</span>
+        <div class="day-title">巴音布鲁克 → 库车</div>
         <div class="day-date">2026年10月4日</div>
       </div>
-      <div class="day-route">≈260 km · 约5小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">独库南段 · 红色峡谷</span>
+        <span class="day-route">≈260 km · 约5h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>260 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:12%"></div></div></div>
       <div class="kv">当日光线 · 库车/阿克苏 天亮 8:10 · 日出 8:37 · 日落 20:17</div>
       <ul class="timeline">
         <li><span class="t">07:50</span>出发（山区天亮约 8:10），沿<b>独库公路南段 S217</b>翻<b>铁力买提达坂</b>（海拔3200m以上，注意高反与路面结冰）。</li>
@@ -558,17 +730,21 @@
     </div>
   </div>
 
-  <!-- Day 9 -->
-  <div class="day" id="d11">
+  <!-- Day 11 -->
+  <div class="day acc-poplar rv" id="d11">
     <div class="day-head">
       <div>
         <span class="day-no">DAY 11</span>
-        <span class="day-title">库车 → 库尔勒</span>
+        <div class="day-title">库车 → 库尔勒</div>
         <div class="day-date">2026年10月5日 · 环线收官</div>
       </div>
-      <div class="day-route">≈300 km · 约4.5小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">塔里木胡杨 · 环线收官</span>
+        <span class="day-route">≈300 km · 约4.5h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>300 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:14%"></div></div></div>
       <div class="kv">当日光线 · 库尔勒 天亮 7:48 · 日出 8:14 · 日落 19:52 · 天黑 20:18</div>
       <ul class="timeline">
         <li><span class="t">08:00</span>出发，G314东行，经<b>轮台</b>。
@@ -586,17 +762,21 @@
   </div>
 
   <!-- 返程第1天 -->
-  <div class="day" id="d12">
+  <div class="day acc-road rv" id="d12">
     <div class="day-head">
       <div>
         <span class="day-no">DAY 12</span>
-        <span class="day-title">库尔勒 → 甘肃武威服务区</span>
+        <div class="day-title">库尔勒 → 甘肃武威服务区</div>
         <div class="day-date">2026年10月6日 · 高速赶路</div>
       </div>
-      <div class="day-route">≈2100 km · 行车约22小时（库—乌约480km＋乌—武约1650km）</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">出疆东归 · 星夜兼程</span>
+        <span class="day-route">≈2100 km · 约22h</span>
+      </div>
     </div>
     <div class="day-body">
-      <div class="kv">全程高速：库尔勒 → 乌鲁木齐 →（连霍高速 G30）→ 哈密 → 星星峡 → 河西走廊 → 甘肃武威服务区</div>
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>2100 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:100%"></div></div></div>
+      <div class="kv">全程高速：库尔勒 → 乌鲁木齐 →（连霍高速 G30）→ 哈密 → 星星峡 → 河西走廊 → 甘肃武威服务区（库—乌约480km＋乌—武约1650km）</div>
       <ul class="timeline">
         <li><span class="t">06:00</span>库尔勒出发，北上经<b>乌鲁木齐</b>转连霍高速（环线收官后的返程首日）。</li>
         <li><span class="t">09:00</span>乌鲁木齐出城服务区休息、加满油。</li>
@@ -613,16 +793,20 @@
   </div>
 
   <!-- 返程第2天 -->
-  <div class="day" id="d13">
+  <div class="day acc-road rv" id="d13">
     <div class="day-head">
       <div>
         <span class="day-no">DAY 13</span>
-        <span class="day-title">武威服务区 → 长沙</span>
+        <div class="day-title">武威服务区 → 长沙</div>
         <div class="day-date">2026年10月7日 · 高速赶路</div>
       </div>
-      <div class="day-route">≈1887 km · 行车约20小时</div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <span class="day-scene">归程 · 抵湘到家</span>
+        <span class="day-route">≈1887 km · 约20h</span>
+      </div>
     </div>
     <div class="day-body">
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>1887 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:90%"></div></div></div>
       <div class="kv">全程高速：武威服务区（连霍 G30「连云港方向」）→ 兰州 → 西安 →（二广/许广高速）→ 长沙</div>
       <ul class="timeline">
         <li><span class="t">05:00</span>武威服务区出发（连霍 G30「连云港方向」），经<b>兰州</b>南下。</li>
@@ -638,16 +822,16 @@
     </div>
   </div>
 
-  <h2 class="sec" id="practical">实用清单与注意事项</h2>
-  <div class="practical">
+  <h2 class="sec" id="practical">装备清单与注意事项 <span class="en">Gear &amp; Safety</span></h2>
+  <div class="practical rv">
     <h3>出发前</h3>
     <ol>
       <li><b>证件</b>：身份证随身带（多次安检）；驾照、行驶证齐备。</li>
-      <li><b>车辆</b>：全车检查（刹车/冷却液/电瓶），北上山区备<b>防滑链</b>，10月禾木、巴音、独库都可能见雪。</li>
+      <li><b>车辆</b>：全车检查（刹车/链条/胎压/电瓶），北上山区备<b>防滑与保温</b>方案，10月禾木、巴音、独库都可能见雪。</li>
       <li><b>油量</b>：新疆县城加油站密，但<b>禾木/喀纳斯景区内不加油</b>，进山区前一定加满。推荐下“中石油/中石化”App看沿途站点。</li>
       <li><b>预订</b>：深秋是金秋旺季，<b>禾木、喀纳斯、赛里木湖、巴音布鲁克</b>住宿提前1—2周订。</li>
     </ol>
-    <h3>驾驶建议（单人单车）</h3>
+    <h3>骑行建议（单人单骑）</h3>
     <ol>
       <li>严格<b>每2小时休息15分钟</b>，避免疲劳；备功能饮料、葡萄糖。</li>
       <li>区内区间测速多，别超速；山区路窄，过弯提前鸣笛，遇到牧群畜群耐心尾随。</li>
@@ -655,24 +839,24 @@
     </ol>
     <h3>季节与天气</h3>
     <ol>
-      <li>北疆山区（禾木/喀纳斯/巴音）10月初<b>夜间约-5℃~3℃</b>，带厚羽绒、防风外套、保暖鞋。</li>
+      <li>北疆山区（禾木/喀纳斯/巴音）10月初<b>夜间约-5℃~3℃</b>，带厚羽绒、防风外套、电加热手套/保暖层。</li>
       <li>赛里木湖、独库南段<b>封路受天气影响大</b>，出发前一晚务必用地图+新闻查实时路况。</li>
       <li>新疆日照强、干燥，注意防晒补水，早晚温差大。</li>
     </ol>
   </div>
 
   <footer>
-    行程里程与时间为自驾参考估算，请以实时路况为准 · 北疆金秋环线 · 单人单车安全第一
+    <span class="moto">RIDE SAFE · RIDE FAR</span>
+    行程里程与时间为骑行参考估算，请以实时路况为准 · 北疆金秋环线 · 单人单骑安全第一
   </footer>
 
 </div>
-
-  
 </div><!-- /.body3 -->
 </div><!-- /.page -->
 
 <script>
 (function(){
+  /* ===== 目录开合 ===== */
   var nav=document.getElementById('toc'), btn=document.getElementById('tocToggle'),
       ov=document.getElementById('tocOverlay'), close=document.getElementById('tocClose');
   function setOpen(open){nav.classList.toggle('open',open);ov.classList.toggle('show',open);}
@@ -681,15 +865,70 @@
   ov.addEventListener('click',function(){setOpen(false);});
   nav.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'))setOpen(false);});
 
+  /* ===== 目录高亮 ===== */
   var map=[].slice.call(nav.querySelectorAll('a[href^="#"]')).map(function(a){return {id:a.getAttribute('href').slice(1),a:a};});
   function spy(){
     var cur=null;
     map.forEach(function(m){var el=document.getElementById(m.id); if(!el)return;
-      if(el.getBoundingClientRect().top<=130)cur=m.id;});
+      if(el.getBoundingClientRect().top<=140)cur=m.id;});
     map.forEach(function(m){m.a.classList.toggle('on',m.id===cur);});
   }
-  document.addEventListener('scroll',spy,{passive:true}); spy();
-  [].slice.call(document.querySelectorAll('tr[data-href]')).forEach(function(tr){tr.addEventListener('click',function(){location.hash=tr.getAttribute('data-href');});});
+
+  /* ===== 阅读进度（转速条） ===== */
+  var rpm=document.querySelector('#rpm .bar');
+  function prog(){
+    var h=document.documentElement,
+        max=h.scrollHeight-h.clientHeight,
+        p=max>0?(h.scrollTop/max)*100:0;
+    rpm.style.width=p+'%';
+  }
+  document.addEventListener('scroll',function(){spy();prog();},{passive:true});
+  spy(); prog();
+
+  /* ===== 表格行点击跳转 ===== */
+  [].slice.call(document.querySelectorAll('tr[data-href]')).forEach(function(tr){
+    tr.addEventListener('click',function(){location.hash=tr.getAttribute('data-href');});
+  });
+
+  /* ===== 滚动浮现 ===== */
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rvEls=[].slice.call(document.querySelectorAll('.rv'));
+  if(reduced||!('IntersectionObserver' in window)){
+    rvEls.forEach(function(el){el.classList.add('in');});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in'); io.unobserve(en.target);}
+      });
+    },{threshold:.08});
+    rvEls.forEach(function(el){io.observe(el);});
+  }
+
+  /* ===== 仪表盘数字滚动 ===== */
+  function count(el){
+    var target=+el.getAttribute('data-cnt'), suffix=el.querySelector('small'),
+        suf=suffix?suffix.outerHTML:'', t0=null, dur=1400;
+    function step(ts){
+      if(!t0)t0=ts;
+      var k=Math.min((ts-t0)/dur,1), e=1-Math.pow(1-k,3),
+          v=Math.round(target*e);
+      el.innerHTML=v.toLocaleString()+suf;
+      if(k<1)requestAnimationFrame(step);
+    }
+    if(reduced){el.innerHTML=target.toLocaleString()+suf;return;}
+    requestAnimationFrame(step);
+  }
+  var gauges=[].slice.call(document.querySelectorAll('.gauge .gv'));
+  if('IntersectionObserver' in window && !reduced){
+    var io2=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){count(en.target); io2.unobserve(en.target);}
+      });
+    },{threshold:.4});
+    gauges.forEach(function(el){io2.observe(el);});
+  }else{
+    gauges.forEach(count);
+  }
 })();
 </script>
 <script>
@@ -727,7 +966,7 @@
       {d:'D11',n:'库车',p:[82.9620,41.7170]},
       {d:'终',n:'库尔勒',p:[86.1600,41.7700]}
     ];
-    var cols=['#B8860B','#C2410C','#B45309','#A16207','#854D0E','#9A3412','#B91C1C','#a1584a','#7a5c3e','#15803d'];
+    var cols=['#e8a33d','#f0b429','#3fae8a','#c96b32','#4fa3d8','#7fb069','#e2713a','#d0483e','#e6c229','#3fae8a'];
     var markObjs=[], lineObjs=[], idx=0, okLines=0, totalKm=0, totalMin=0;
     var tilesReady=false, allDrawn=false, hasShown=false;
     function showMap(){
@@ -737,8 +976,12 @@
       var el=document.getElementById('amapInfo'), t;
       t='DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· 全程驾车约 '+Math.round(totalKm)+' km · 约 '+Math.round(totalMin)+' 分钟';
       if(okLines<9){ t+=' · 部分路段未返回'; }
-      if(el){ el.innerHTML=t; el.style.color='#15803d'; }
-      map.setFitView([].concat(markObjs,lineObjs),false,[50,50,50,50]);
+      if(el){ el.innerHTML=t; el.style.color='#3fae8a'; }
+      // 容器刚从 display:none 恢复，需等布局完成并通知高德 resize 后再 fit
+      setTimeout(function(){
+        try{ if(map.resize) map.resize(); }catch(e){}
+        map.setFitView([].concat(markObjs,lineObjs),false,[50,50,50,50]);
+      },80);
     }
     function maybeShow(){ if(tilesReady && allDrawn){ showMap(); } }
     map.on('complete',function(){ tilesReady=true; maybeShow(); });
