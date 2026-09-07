@@ -10,32 +10,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#f2ead9; --ink-dim:#c9bfa8; --sub:#9a8f76;
-    --bg:#14100b; --bg2:#1c1610; --card:#211a12; --card2:#2a2115;
-    --line:#3a2f1f; --line-soft:#2e2517;
-    --gold:#e8a33d; --gold-hi:#ffc35c; --amber:#c97b2d; --rust:#b4502a;
-    --cream:#f6ecda;
+    --ink:#f8f0e0; --ink-dim:#e2d7bf; --sub:#b9ac8b;
+    --bg:#1a130a; --bg2:#231a0f; --card:#2a2013; --card2:#342816;
+    --line:#4b3b23; --line-soft:#3b2e1b;
+    --gold:#f2a93b; --gold-hi:#ffd06f; --amber:#dd8130; --rust:#c85a2c;
+    --cream:#fcf2df;
     --serif:"Noto Serif SC",serif; --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
     --num:"Oswald","PingFang SC",sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    font-family:var(--sans); color:var(--ink); background:var(--bg); line-height:1.75;
+    font-family:var(--sans); color:var(--ink); line-height:1.75;
     padding-bottom:70px; overflow-x:hidden;
+    background:
+      radial-gradient(1200px 560px at 50% -6%, rgba(242,169,59,.10), rgba(242,169,59,0) 60%),
+      radial-gradient(900px 480px at 88% 12%, rgba(200,90,44,.06), rgba(200,90,44,0) 65%),
+      var(--bg);
   }
-  ::selection{background:var(--gold); color:#1a130a;}
+  ::selection{background:var(--gold); color:#2a1c08;}
 
   /* ============ 顶部转速条（阅读进度） ============ */
-  #rpm{position:fixed; top:0; left:0; right:0; height:4px; z-index:90; background:#241c11;}
-  #rpm .bar{height:100%; width:0; background:linear-gradient(90deg,var(--amber),var(--gold),var(--gold-hi)); box-shadow:0 0 10px rgba(232,163,61,.55); transition:width .12s linear;}
+  #rpm{position:fixed; top:0; left:0; right:0; height:4px; z-index:90; background:#332713;}
+  #rpm .bar{height:100%; width:0; background:linear-gradient(90deg,var(--amber),var(--gold),var(--gold-hi)); box-shadow:0 0 10px rgba(242,169,59,.6); transition:width .12s linear;}
 
   /* ============ HERO ============ */
   header.hero{
-    position:relative; min-height:92vh; display:flex; align-items:flex-end;
+    position:relative; min-height:clamp(520px, 68vh, 800px); display:flex; align-items:flex-end;
     background:
-      linear-gradient(180deg,rgba(16,12,7,.42) 0%,rgba(16,12,7,.18) 34%,rgba(20,16,11,.86) 74%,var(--bg) 100%),
-      url("./beijiang-hero.jpg") center/cover no-repeat #1a140c;
+      linear-gradient(180deg,rgba(64,36,8,.34) 0%,rgba(40,24,8,.16) 34%,rgba(26,19,10,.86) 74%,var(--bg) 100%),
+      url("./beijiang-hero.jpg") center/cover no-repeat #241a0e;
   }
   .hero-inner{width:100%; max-width:1080px; margin:0 auto; padding:0 24px 58px;}
   .hero-kicker{
@@ -55,8 +59,8 @@
   .hero-chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
   .chip{
     font-size:12.5px; letter-spacing:1px; padding:6px 14px; border-radius:999px;
-    border:1px solid rgba(232,163,61,.45); color:var(--gold-hi);
-    background:rgba(26,19,10,.55); backdrop-filter:blur(4px);
+    border:1px solid rgba(242,169,59,.55); color:var(--gold-hi);
+    background:rgba(46,30,10,.6); backdrop-filter:blur(4px);
   }
 
   /* 仪表数据带 */
@@ -90,12 +94,12 @@
   @media(max-width:900px){.table-hint{display:block;}}
   table{width:100%; border-collapse:collapse; background:var(--card); min-width:820px;}
   th,td{padding:12px 13px; font-size:13.5px; text-align:left; border-bottom:1px solid var(--line-soft);}
-  th{background:#2c2214; color:var(--gold); font-weight:600; white-space:nowrap; letter-spacing:1px; font-size:12.5px;}
+  th{background:#3a2b18; color:var(--gold); font-weight:600; white-space:nowrap; letter-spacing:1px; font-size:12.5px;}
   td{color:var(--ink-dim);}
   td b{color:var(--ink); font-weight:600;}
   tr:last-child td{border-bottom:none;}
   table tbody tr{cursor:pointer; transition:background .18s;}
-  table tbody tr:hover{background:#2c2215;}
+  table tbody tr:hover{background:#37291a;}
   .tdot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px; vertical-align:1px;}
 
   /* ============ 路线图卡 ============ */
@@ -105,15 +109,15 @@
   .mapcard-sub{font-size:12.5px; color:var(--sub);}
   .mapcard-svg{max-width:880px; margin:0 auto;}
   .mapcard svg{width:100%; height:auto; display:block;}
-  .amap-box{height:460px; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#0e0b07;}
+  .amap-box{height:460px; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#171006;}
   .mapfallback svg{width:100%; height:auto; display:block;}
-  .am-mk{background:#211a12; border:2px solid var(--gold); color:var(--gold-hi); border-radius:999px; padding:2px 9px; font-size:12px; font-weight:700; box-shadow:0 1px 6px rgba(0,0,0,.5); white-space:nowrap; line-height:1.5;}
+  .am-mk{background:#2a2013; border:2px solid var(--gold); color:var(--gold-hi); border-radius:999px; padding:2px 9px; font-size:12px; font-weight:700; box-shadow:0 1px 6px rgba(0,0,0,.5); white-space:nowrap; line-height:1.5;}
   .am-mk.start{background:#1d4ed8; border-color:#1d4ed8; color:#fff;}
   .am-mk.end{background:#15803d; border-color:#15803d; color:#fff;}
   .am-mk i{font-style:normal; font-weight:600; margin-left:4px;}
-  .mapcard .mc-dot{fill:#211a12; stroke:var(--gold); stroke-width:2.5;}
+  .mapcard .mc-dot{fill:#2a2013; stroke:var(--gold); stroke-width:2.5;}
   .mapcard .mc-day{font-size:9.5px; fill:var(--gold-hi); font-weight:700; text-anchor:middle;}
-  .mapcard .mc-city{font-size:13px; fill:#e6dcc4; font-weight:600; text-anchor:middle; paint-order:stroke; stroke:#14100b; stroke-width:4; stroke-linejoin:round;}
+  .mapcard .mc-city{font-size:13px; fill:#f2e8cd; font-weight:600; text-anchor:middle; paint-order:stroke; stroke:#1a130a; stroke-width:4; stroke-linejoin:round;}
   .mapcard .mc-start .mc-city{fill:#7db4ff;} .mapcard .mc-end .mc-city{fill:#6fdc9a;}
 
   /* ============ 逐日卡片 ============ */
@@ -131,7 +135,7 @@
   }
   .day-no{
     font-family:var(--num); font-size:15px; font-weight:700; letter-spacing:2px;
-    color:#1a130a; background:var(--acc); border-radius:8px; padding:4px 12px;
+    color:#2a1c08; background:var(--acc); border-radius:8px; padding:4px 12px;
     box-shadow:0 3px 12px color-mix(in srgb, var(--acc) 45%, transparent);
   }
   .day-title{font-family:var(--serif); font-size:21px; font-weight:700; color:var(--cream); letter-spacing:1px;}
@@ -152,7 +156,7 @@
   /* 油量条：当日里程占比 */
   .fuel{margin:6px 0 4px;}
   .fuel .fl{display:flex; justify-content:space-between; font-size:11px; letter-spacing:1.5px; color:var(--sub); margin-bottom:5px;}
-  .fuel .ft{height:6px; border-radius:4px; background:#171208; border:1px solid var(--line-soft); overflow:hidden;}
+  .fuel .ft{height:6px; border-radius:4px; background:#221a0d; border:1px solid var(--line-soft); overflow:hidden;}
   .fuel .ff{height:100%; border-radius:4px; background:linear-gradient(90deg,var(--acc),color-mix(in srgb,var(--acc) 55%,#fff)); box-shadow:0 0 8px color-mix(in srgb,var(--acc) 50%,transparent);}
 
   .kv{font-size:13.5px; color:var(--sub); margin:12px 0 4px;}
@@ -173,22 +177,22 @@
   ul.timeline .stop{color:var(--sub); font-size:13px;}
 
   .how{
-    font-size:13.5px; color:#e3cfa4; background:rgba(232,163,61,.08);
-    border:1px dashed rgba(232,163,61,.4); border-radius:10px; padding:10px 14px; margin-top:10px;
+    font-size:13.5px; color:#f2ddb0; background:rgba(242,169,59,.11);
+    border:1px dashed rgba(242,169,59,.48); border-radius:10px; padding:10px 14px; margin-top:10px;
   }
   .how b{color:var(--gold-hi);}
 
   .tags-row{margin-top:12px; display:flex; flex-wrap:wrap; gap:7px;}
   .tag{display:inline-block; font-size:12px; padding:3px 11px; border-radius:999px; white-space:nowrap; letter-spacing:.5px;}
-  .tag-y{background:rgba(232,163,61,.1); color:var(--gold-hi); border:1px solid rgba(232,163,61,.35);}
-  .tag-b{background:rgba(96,140,220,.12); color:#9cc0f5; border:1px solid rgba(96,140,220,.35);}
-  .tag-r{background:rgba(220,90,60,.12); color:#f0957d; border:1px solid rgba(220,90,60,.4);}
+  .tag-y{background:rgba(242,169,59,.12); color:var(--gold-hi); border:1px solid rgba(242,169,59,.4);}
+  .tag-b{background:rgba(110,155,235,.14); color:#a9c9f8; border:1px solid rgba(110,155,235,.4);}
+  .tag-r{background:rgba(230,100,62,.14); color:#f7a288; border:1px solid rgba(230,100,62,.45);}
 
   /* 每日主题色 */
-  .acc-road{--acc:#8d94a3;} .acc-desert{--acc:#d9a04a;} .acc-birch{--acc:#f0b429;}
-  .acc-kanas{--acc:#3fae8a;} .acc-yardang{--acc:#c96b32;} .acc-lake{--acc:#4fa3d8;}
-  .acc-valley{--acc:#7fb069;} .acc-sunset{--acc:#e2713a;} .acc-canyon{--acc:#d0483e;}
-  .acc-poplar{--acc:#e6c229;}
+  .acc-road{--acc:#9aa1b0;} .acc-desert{--acc:#e5ac52;} .acc-birch{--acc:#f5bb2e;}
+  .acc-kanas{--acc:#47bd95;} .acc-yardang{--acc:#d9763a;} .acc-lake{--acc:#5ab0e5;}
+  .acc-valley{--acc:#8cc176;} .acc-sunset{--acc:#ec7c40;} .acc-canyon{--acc:#da5347;}
+  .acc-poplar{--acc:#eecd30;}
 
   /* ============ 实用清单 ============ */
   .practical{
@@ -213,7 +217,7 @@
   /* ============ 目录 ============ */
   #tocToggle{
     display:block; position:fixed; left:0; bottom:26px; z-index:60;
-    background:var(--gold); color:#1a130a; border:none; cursor:pointer;
+    background:var(--gold); color:#2a1c08; border:none; cursor:pointer;
     border-radius:0 12px 12px 0; padding:11px 13px;
     font-size:13px; font-weight:700; letter-spacing:1px;
     box-shadow:0 3px 14px rgba(0,0,0,.5);
@@ -224,19 +228,19 @@
   #tocOverlay.show{opacity:1; visibility:visible;}
   #toc{
     position:fixed; top:0; bottom:0; left:0; width:264px; z-index:70;
-    background:#1b150d; border-right:1px solid var(--line);
+    background:#251c10; border-right:1px solid var(--line);
     box-shadow:6px 0 26px rgba(0,0,0,.5);
     display:flex; flex-direction:column; padding:0 0 22px; overflow-y:auto;
     transform:translateX(-104%); transition:transform .28s ease;
   }
   #toc.open{transform:translateX(0);}
   #toc::-webkit-scrollbar{width:6px;}
-  #toc::-webkit-scrollbar-thumb{background:#3d3222; border-radius:3px;}
+  #toc::-webkit-scrollbar-thumb{background:#4b3b26; border-radius:3px;}
   .toc-brand{padding:22px 20px 16px; border-bottom:1px solid var(--line-soft); margin-bottom:6px;}
   .toc-brand .bk{font-family:var(--num); font-size:11px; letter-spacing:3px; color:var(--gold); font-weight:600;}
   .toc-brand .bt{font-family:var(--serif); font-size:18px; font-weight:700; color:var(--cream); margin-top:6px;}
   .toc-brand .bs{font-size:11.5px; color:var(--sub); margin-top:4px;}
-  .toc-group{font-size:11px; letter-spacing:3px; color:#7a6c4d; font-weight:700; padding:16px 21px 5px;}
+  .toc-group{font-size:11px; letter-spacing:3px; color:#a8946a; font-weight:700; padding:16px 21px 5px;}
   #toc a{
     display:flex; align-items:center; gap:10px; margin:1px 8px;
     padding:7px 12px; font-size:13px; color:var(--ink-dim); text-decoration:none;
@@ -244,15 +248,15 @@
   }
   #toc a .toc-day{
     flex:none; width:30px; font-family:var(--num); font-size:11px; font-weight:700; color:var(--gold);
-    background:#2c2214; border-radius:6px; text-align:center; padding:3px 0;
+    background:#3a2b18; border-radius:6px; text-align:center; padding:3px 0;
   }
   #toc a .toc-route{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   #toc a:hover{color:var(--gold-hi);}
-  #toc a.on{background:#2c2214;}
-  #toc a.on .toc-day{background:var(--gold); color:#1a130a;}
+  #toc a.on{background:#3a2b18;}
+  #toc a.on .toc-day{background:var(--gold); color:#2a1c08;}
   #toc a.on .toc-route{color:var(--cream); font-weight:600;}
-  #toc a.sec-mode{color:#8a8061; font-weight:600;}
-  #toc a.sec-mode.on{color:var(--gold-hi); background:#2c2214;}
+  #toc a.sec-mode{color:#a89a72; font-weight:600;}
+  #toc a.sec-mode.on{color:var(--gold-hi); background:#3a2b18;}
   .toc-close{
     position:absolute; top:14px; right:12px; background:transparent; border:1px solid var(--line);
     border-radius:8px; font-size:13px; color:var(--sub); cursor:pointer; padding:4px 9px; z-index:2;
@@ -378,15 +382,15 @@
 <svg viewBox="0 0 820 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="北疆金秋环线 DAY3 至 DAY11 路线图">
   <defs>
     <marker id="mc-arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#e8a33d"/>
+      <path d="M0,0 L10,5 L0,10 z" fill="#f2a93b"/>
     </marker>
   </defs>
-  <rect x="1" y="1" width="818" height="518" fill="#1b150d" rx="12"/>
-  <text x="352" y="30" font-size="12" fill="#5c5140" letter-spacing="3">阿尔泰山</text>
-  <path d="M40,470 Q410,360 790,470" fill="none" stroke="#2e2517" stroke-width="20" stroke-linecap="round" opacity="0.7"/>
-  <text x="520" y="452" font-size="12" fill="#4e4433" letter-spacing="6">天 山 山 脉</text>
-  <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#14100b" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>
-  <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#e8a33d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mc-arw)"/>
+  <rect x="1" y="1" width="818" height="518" fill="#251c10" rx="12"/>
+  <text x="352" y="30" font-size="12" fill="#9a865e" letter-spacing="3">阿尔泰山</text>
+  <path d="M40,470 Q410,360 790,470" fill="none" stroke="#41321d" stroke-width="20" stroke-linecap="round" opacity="0.7"/>
+  <text x="520" y="452" font-size="12" fill="#8f7d58" letter-spacing="6">天 山 山 脉</text>
+  <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#1a130a" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>
+  <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#f2a93b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mc-arw)"/>
   <g class="mc-start" transform="translate(240,462)"><circle class="mc-dot" r="12" style="stroke:#4fa3d8;"/><text class="mc-day" dy="3.5" style="fill:#4fa3d8;">D3</text><text class="mc-city" y="26">乌鲁木齐</text></g>
   <g transform="translate(250,92)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D4</text><text class="mc-city" y="-17">阿勒泰</text></g>
   <g transform="translate(330,58)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D5</text><text class="mc-city" y="-17">禾木</text></g>
@@ -397,7 +401,7 @@
   <g transform="translate(332,424)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D10</text><text class="mc-city" y="26">巴音布鲁克</text></g>
   <g transform="translate(470,424)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D11</text><text class="mc-city" y="26">库车</text></g>
   <g class="mc-end" transform="translate(600,382)"><circle class="mc-dot" r="12" style="stroke:#3fae8a;"/><text class="mc-day" dy="3.5" style="fill:#3fae8a;">终</text><text class="mc-city" y="26">库尔勒</text></g>
-  <g transform="translate(778,44)"><path d="M0,-14 L9,7 L0,3 L-9,7 Z" fill="#5c5140"/><text x="0" y="-20" font-size="11" fill="#5c5140" text-anchor="middle" font-weight="700">北</text></g>
+  <g transform="translate(778,44)"><path d="M0,-14 L9,7 L0,3 L-9,7 Z" fill="#9a865e"/><text x="0" y="-20" font-size="11" fill="#9a865e" text-anchor="middle" font-weight="700">北</text></g>
 </svg>
       </div>
     </div>
@@ -978,7 +982,7 @@
       {d:'D11',n:'库车',p:[82.9620,41.7170]},
       {d:'终',n:'库尔勒',p:[86.1600,41.7700]}
     ];
-    var cols=['#e8a33d','#f0b429','#3fae8a','#c96b32','#4fa3d8','#7fb069','#e2713a','#d0483e','#e6c229','#3fae8a'];
+    var cols=['#f2a93b','#f5bb2e','#47bd95','#d9763a','#5ab0e5','#8cc176','#ec7c40','#da5347','#eecd30','#47bd95'];
     var markObjs=[], lineObjs=[], idx=0, okLines=0, totalKm=0, totalMin=0;
     var tilesReady=false, allDrawn=false, hasShown=false;
     function showMap(){
