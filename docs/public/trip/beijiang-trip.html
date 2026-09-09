@@ -153,11 +153,29 @@
   }
   .day-body{padding:4px 24px 22px 26px;}
 
-  /* 油量条：当日里程占比 */
-  .fuel{margin:6px 0 4px;}
-  .fuel .fl{display:flex; justify-content:space-between; font-size:11px; letter-spacing:1.5px; color:var(--sub); margin-bottom:5px;}
-  .fuel .ft{height:6px; border-radius:4px; background:#221a0d; border:1px solid var(--line-soft); overflow:hidden;}
-  .fuel .ff{height:100%; border-radius:4px; background:linear-gradient(90deg,var(--acc),color-mix(in srgb,var(--acc) 55%,#fff)); box-shadow:0 0 8px color-mix(in srgb,var(--acc) 50%,transparent);}
+  /* 当日强度：路况分解 + 等效疲劳等级 */
+  .stress{margin:8px 0 4px;}
+  .stress-top{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px;}
+  .stress-lab{font-size:11px; letter-spacing:2px; color:var(--sub);}
+  .stress-lv{font-size:12px; font-weight:700; letter-spacing:1px; color:#2a1c08; border-radius:999px; padding:3px 12px;}
+  .stress-meter{position:relative; height:8px; border-radius:5px; background:#221a0d; border:1px solid var(--line-soft); overflow:hidden;}
+  .stress-fill{height:100%; border-radius:5px;}
+  .stress-meta{display:flex; flex-wrap:wrap; gap:5px 14px; margin-top:7px; font-size:12px; color:var(--sub);}
+  .stress-meta b{color:var(--ink); font-weight:600;}
+  .stress-meta .em{color:var(--gold);}
+  .stress-note{font-size:12px; color:var(--sub); line-height:1.8; margin:12px 0 4px; padding:10px 14px; background:rgba(42,32,19,.5); border:1px dashed var(--line); border-radius:10px;}
+  .stress-note b{color:var(--cream);}
+  /* 等级配色 */
+  .lv-1 .stress-lv{background:#7db4ff;}
+  .lv-1 .stress-fill{background:linear-gradient(90deg,#4fa3d8,#7db4ff);}
+  .lv-2 .stress-lv{background:#6fdc9a;}
+  .lv-2 .stress-fill{background:linear-gradient(90deg,#3fae8a,#6fdc9a);}
+  .lv-3 .stress-lv{background:var(--gold);}
+  .lv-3 .stress-fill{background:linear-gradient(90deg,var(--amber),var(--gold));}
+  .lv-4 .stress-lv{background:#ec7c40;}
+  .lv-4 .stress-fill{background:linear-gradient(90deg,var(--rust),#ec7c40);}
+  .lv-5 .stress-lv{background:#da5347; color:#fdf3e7;}
+  .lv-5 .stress-fill{background:linear-gradient(90deg,#b23a2e,#da5347);}
 
   .kv{font-size:13.5px; color:var(--sub); margin:12px 0 4px;}
   .kv b{color:var(--ink); font-weight:600;}
@@ -398,8 +416,8 @@
     <table>
       <thead><tr><th>日期</th><th>Day</th><th>起点 → 终点</th><th>参考里程</th><th>参考时长</th><th>主要看点</th><th>住宿安排</th></tr></thead>
       <tbody>
-        <tr data-href="#d1"><td>9/25</td><td><b>Day 1</b></td><td><span class="tdot" style="background:#8d94a3"></span>长沙 → 甘肃长城驿服务区</td><td>≈2145 km</td><td>约16.5h</td><td>全程高速（二广/连霍）赶路</td><td>长城驿·司机之家</td></tr>
-        <tr data-href="#d2"><td>9/26</td><td><b>Day 2</b></td><td><span class="tdot" style="background:#8d94a3"></span>甘肃长城驿 → 乌鲁木齐</td><td>≈1489 km</td><td>约11.5h</td><td>河西走廊、嘉峪关、G30连霍</td><td>乌鲁木齐市区</td></tr>
+        <tr data-href="#d1"><td>9/25</td><td><b>Day 1</b></td><td><span class="tdot" style="background:#8d94a3"></span>长沙 → 甘肃长城驿服务区</td><td>≈2136 km</td><td>约16h25分</td><td>全程高速（二广/连霍）赶路</td><td>长城驿·司机之家</td></tr>
+        <tr data-href="#d2"><td>9/26</td><td><b>Day 2</b></td><td><span class="tdot" style="background:#8d94a3"></span>甘肃长城驿 → 乌鲁木齐</td><td>≈1489 km</td><td>约11h27分</td><td>河西走廊、嘉峪关、G30连霍</td><td>乌鲁木齐市区</td></tr>
         <tr data-href="#d3"><td>9/27</td><td><b>Day 3</b></td><td><span class="tdot" style="background:#d9a04a"></span>乌鲁木齐 → 阿勒泰</td><td>≈540 km</td><td>约6h</td><td>S21沙漠公路、乌伦古湖</td><td>阿勒泰市区</td></tr>
         <tr data-href="#d4"><td>9/28</td><td><b>Day 4</b></td><td><span class="tdot" style="background:#f0b429"></span>阿勒泰 → 贾登峪</td><td>≈286 km</td><td>约4.5h</td><td>阿禾公路、贾登峪、喀纳斯口</td><td>贾登峪</td></tr>
         <tr data-href="#d5"><td>9/29</td><td><b>Day 5</b></td><td><span class="tdot" style="background:#3fae8a"></span>喀纳斯一日游</td><td>≈0 km</td><td>—</td><td>观鱼台、喀纳斯湖、三湾</td><td>贾登峪</td></tr>
@@ -455,6 +473,11 @@
 
   <h2 class="sec" style="margin-top:52px;">逐日路书 <span class="en">Daily Roadbook</span></h2>
 
+  <div class="stress-note rv">
+    <b>强度算法</b>：等效疲劳＝高速×1.0 ＋ 国道×1.2 ＋ 山路×1.5，再按山路弯道密集度与技术难度加成（＋15%～＋100%）；连续驾驶超 5 小时后，每多 1 小时加 35 km 等效里程。<br>
+    等级 <b style="color:#7db4ff">G1 轻松</b>（≤260）· <b style="color:#6fdc9a">G2 适中</b>（≤600）· <b style="color:#f2a93b">G3 较难</b>（≤1150）· <b style="color:#ec7c40">G4 困难</b>（≤1750）· <b style="color:#da5347">G5 极难</b>（&gt;1750）。高速与国道分列，弯道、垭口单独标注。
+  </div>
+
   <!-- 出疆第1天 -->
   <div class="day acc-road rv" id="d1">
     <div class="day-head">
@@ -465,21 +488,31 @@
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
         <span class="day-scene">沥青长征 · 出湘入陇</span>
-        <span class="day-route">≈2145 km · 约16.5h</span>
+        <span class="day-route">≈2136 km · 约16h25分</span>
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>2145 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:100%"></div></div></div>
+      <div class="stress lv-5">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G5 · 极难</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:91%"></div></div>
+        <div class="stress-meta"><span>高速 <b>2136 km</b></span><span>国道 <b>0</b></span><span>山路 <b>0</b></span><span>等效疲劳 <b class="em">≈2536 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 长沙（9/25）天亮 05:54 · 日出 06:18</div>
-      <div class="kv">全程高速：长沙 →（二广/许广高速）→ 西安 →（连霍高速 G30）→ 兰州 → 甘肃长城驿服务区</div>
+      <div class="kv">全程高速：白箬铺（长沙）→ 监利 → 均川 → 镇平 → 丹凤 → 武功 → 安口 → 同心 → 景泰 → 永昌 → 甘肃长城驿服务区</div>
+      <div class="kv">油品与续航：沿途均中石油/中石化、全供 95#（镇平为 E95 乙醇汽油兼容可用）；最长两站约 255km（起点→监利）＜极限 280km，永昌已补满，末段 87km 轻装直达。</div>
       <ul class="timeline">
-        <li><span class="t">06:00</span>长沙出发，出城上高速（早高峰前避开，注意出城段照明）。</li>
-        <li><span class="t">11:25</span>途经湖北（荆门/十堰一带）服务区休息、加油。</li>
-        <li><span class="t">14:15</span>西安附近服务区午餐。</li>
-        <li><span class="t">18:25</span>兰州附近服务区休息（转入河西走廊前）。</li>
-        <li><span class="t">22:30</span>抵<b>甘肃长城驿服务区</b>，入住<b>司机之家</b>过夜（超长约2145km，行程按均速130km/h，已在西安或兰州补休）。</li>
+        <li><span class="t">06:00</span>白箬铺镇<b>乡村食府</b>出发、加满油（Day 1 起点，全程高速赶路）。</li>
+        <li><span class="t">07:57</span><b>监利服务区</b>加油。</li>
+        <li><span class="t">09:38</span><b>均川服务区</b>。</li>
+        <li><span class="t">11:29</span><b>镇平服务区</b>打链条油 15 分。</li>
+        <li><span class="t">13:20</span><b>丹凤服务区</b>。</li>
+        <li><span class="t">15:13</span><b>武功服务区</b>。</li>
+        <li><span class="t">16:57</span><b>安口服务区</b>打链条油 15 分。</li>
+        <li><span class="t">18:56</span><b>同心服务区</b>。</li>
+        <li><span class="t">20:49</span><b>景泰服务区</b>。</li>
+        <li><span class="t">22:33</span><b>永昌服务区</b>加满油。</li>
+        <li><span class="t">23:16</span>抵<b>甘肃长城驿服务区</b>，住<b>司机之家</b>（Day 1 终点）。</li>
       </ul>
-      <div class="how"><b>注意：</b>该段约 2145 km、按均速 130km/h 单日行车约 16 小时 30 分钟，强度仍大。<b>单人单骑强烈建议中途加一夜</b>（例如西安或兰州），否则务必每 2 小时强制休息，避免疲劳驾驶。</div>
       <div class="tags-row">
         <span class="tag tag-y">餐：全程服务区</span>
         <span class="tag tag-b">宿：长城驿·司机之家</span>
@@ -497,21 +530,27 @@
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
         <span class="day-scene">河西走廊 · 戈壁入关</span>
-        <span class="day-route">≈1489 km · 约11.5h</span>
+        <span class="day-route">≈1489 km · 约11h27分</span>
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>1489 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:71%"></div></div></div>
+      <div class="stress lv-4">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G4 · 困难</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:61%"></div></div>
+        <div class="stress-meta"><span>高速 <b>1488.5 km</b></span><span>国道 <b>0</b></span><span>山路 <b>0</b></span><span>等效疲劳 <b class="em">≈1714 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 长城驿服务区（9/26）天亮（民用晨光始）06:40:26 · 日出 07:06:52</div>
-      <div class="kv">全程高速：长城驿 →（连霍高速 G30）→ 张掖/酒泉/嘉峪关 → 星星峡 → 哈密 → 吐鲁番 → 乌鲁木齐</div>
+      <div class="kv">全程高速：长城驿 →（连霍高速 G30）→ 肃州 → 玉门 → 柳园 → 加油加气站 → 一碗泉 → 吐鲁番 → 乌鲁木齐（CFMOTO 春风动力店）</div>
       <ul class="timeline">
-        <li><span class="t">07:00</span>司机之家早饭后出发，沿<b>连霍高速 G30</b> 西行，穿河西走廊。证件随身备查。</li>
-        <li><span class="t">09:30</span>嘉峪关一带服务区休息、远眺长城雄关。</li>
-        <li><span class="t">13:20</span><b>哈密</b>服务区午餐、加油。</li>
-        <li><span class="t">16:35</span>吐鲁番方向服务区休息。</li>
-        <li><span class="t">18:30</span>抵<b>乌鲁木齐</b>市区入住，为次日环线首日蓄力。</li>
+        <li><span class="t">07:00</span>司机之家早饭后出发，沿<b>连霍高速 G30</b> 西行，穿河西走廊，证件随身备查。</li>
+        <li><span class="t">08:47</span><b>肃州服务区</b>。</li>
+        <li><span class="t">10:20</span><b>玉门服务区</b>。</li>
+        <li><span class="t">11:51</span><b>柳园服务区</b>打链条油 15 分。</li>
+        <li><span class="t">13:34</span><b>加油加气站</b>。</li>
+        <li><span class="t">15:21</span><b>一碗泉服务区</b>。</li>
+        <li><span class="t">17:26</span><b>吐鲁番服务区</b>。</li>
+        <li><span class="t">18:57</span>抵<b>乌鲁木齐 CFMOTO 春风动力店</b>（沙依巴克店）——Day 2 终点，为次日环线首日蓄力。</li>
       </ul>
-      <div class="how"><b>注意：</b>长城驿服务区位于<b>张掖市山丹县</b>（G30 连霍高速 K2107+800），在武威以西，与返程经停的<b>武威服务区不是同一地点</b>；本表里程为估算，实际请以实时导航为准。该段 1489 km、按均速 130km/h 约 11 小时 30 分钟，务必每 2 小时休息；若前一程已过劳，建议在哈密或吐鲁番补一夜缓冲。</div>
       <div class="tags-row">
         <span class="tag tag-y">餐：全程服务区</span>
         <span class="tag tag-b">宿：乌鲁木齐市区</span>
@@ -533,7 +572,11 @@
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>540 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:26%"></div></div></div>
+      <div class="stress lv-2">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G2 · 适中</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:21%"></div></div>
+        <div class="stress-meta"><span>高速 <b>540 km</b></span><span>国道 <b>0</b></span><span>山路 <b>0</b></span><span>等效疲劳 <b class="em">≈575 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 乌鲁木齐 天亮 7:33 · 日出 8:00 · 日落 19:59（阿勒泰相近）</div>
       <ul class="timeline">
         <li><span class="t">08:15</span>乌鲁木齐出发（日出 8:00 后启程，天已明朗）——单人首日长途，前一晚切记睡足。经<b>阜康</b>上 S21〈阿乌高速〉穿越古尔班通古特沙漠。</li>
@@ -566,7 +609,11 @@
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>286 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:14%"></div></div></div>
+      <div class="stress lv-3">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G3 · 较难</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:22%"></div></div>
+        <div class="stress-meta"><span>高速 <b>0</b></span><span>国道 <b>0</b></span><span>山路 <b>286 km</b></span><span>弯道 <b>多</b></span><span>等效疲劳 <b class="em">≈629 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 阿勒泰/布尔津 天亮 7:36 · 日出 8:05 · 日落 19:59 · 天黑 20:29</div>
       <ul class="timeline">
         <li><span class="t">09:00</span>阿勒泰出发，沿<b>阿禾公路（G681）</b>一路向喀纳斯门户<b>贾登峪</b>进山（9米及以下客车已全时段通行，具体以当日公告为准），高山草甸、金黄针叶林与雪山相伴。</li>
@@ -597,7 +644,11 @@
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>0 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:0%"></div></div></div>
+      <div class="stress lv-1">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G1 · 轻松</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:0%"></div></div>
+        <div class="stress-meta"><span>游玩日 · 景区区间车</span><span>等效疲劳 <b class="em">≈0 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 布尔津/贾登峪 天亮 7:37 · 日出 8:06 · 天黑 20:27 · 晨蓝调 7:25–7:49</div>
       <ul class="timeline">
         <li><span class="t">07:40</span>贾登峪票务中心购票，乘景区区间车进<b>喀纳斯</b>（约 30–40 分钟山路）。</li>
@@ -630,7 +681,11 @@
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>440 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:21%"></div></div></div>
+      <div class="stress lv-3">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G3 · 较难</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:24%"></div></div>
+        <div class="stress-meta"><span>高速 <b>0</b></span><span>国道 <b>340 km</b></span><span>山路 <b>100 km</b></span><span>弯道 <b>中</b></span><span>等效疲劳 <b class="em">≈668 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 布尔津/喀纳斯 天亮 7:38 · 日出 8:08 · 天黑 20:25 · 晨蓝调 7:27–7:50；克拉玛依 日落 20:04</div>
       <ul class="timeline">
         <li><span class="t">07:00</span>可选：晨再进喀纳斯看<b>三湾晨雾</b>（月亮湾、神仙湾，日出约 8:08）；或直接返程。</li>
@@ -662,7 +717,11 @@
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>480 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:23%"></div></div></div>
+      <div class="stress lv-2">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G2 · 适中</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:21%"></div></div>
+        <div class="stress-meta"><span>高速 <b>390 km</b></span><span>环湖 <b>90 km</b></span><span>弯道 <b>中</b></span><span>等效疲劳 <b class="em">≈596 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 克拉玛依 天亮 7:48 · 日出 8:16；赛里木湖 日落 20:14 · 天黑 20:41</div>
       <ul class="timeline">
         <li><span class="t">08:31</span>出发（日出 8:16 后启程），G30连霍高速向西北，经<b>奎屯</b>。</li>
@@ -694,7 +753,11 @@
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>300 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:14%"></div></div></div>
+      <div class="stress lv-2">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G2 · 适中</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:15%"></div></div>
+        <div class="stress-meta"><span>高速 <b>220 km</b></span><span>山路 <b>80 km</b></span><span>弯道 <b>密</b></span><span>垭口 <b>白石峰</b></span><span>等效疲劳 <b class="em">≈420 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 博乐/赛里木湖 天亮 8:01 · 日出 8:29 · 晨蓝调 7:50–8:12；伊宁 日落 20:14</div>
       <ul class="timeline">
         <li><span class="t">07:30</span>湖畔看<b>日出</b>（日出约 8:29，晨蓝调 7:50–8:12），随后出发。</li>
@@ -726,7 +789,11 @@
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>360 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:17%"></div></div></div>
+      <div class="stress lv-3">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G3 · 较难</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:22%"></div></div>
+        <div class="stress-meta"><span>高速 <b>0</b></span><span>国道 <b>250 km</b></span><span>山路 <b>110 km</b></span><span>弯道 <b>密</b></span><span>垭口 <b>独库中段</b></span><span>等效疲劳 <b class="em">≈610 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 伊宁 天亮 8:05 · 日出 8:33；巴音布鲁克草原 日落约 19:50 前后</div>
       <ul class="timeline">
         <li><span class="t">08:48</span>出发（日出 8:33 后启程），经<b>特克斯县</b>（八卦城）：观景台俯瞰八条主街，逛<u>离街</u>。</li>
@@ -759,7 +826,11 @@
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>260 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:12%"></div></div></div>
+      <div class="stress lv-3">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G3 · 较难</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:22%"></div></div>
+        <div class="stress-meta"><span>高速 <b>0</b></span><span>国道 <b>20 km</b></span><span>山路 <b>240 km</b></span><span>弯道 <b>密</b></span><span>垭口 <b>铁力买提 3220m</b></span><span>等效疲劳 <b class="em">≈624 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 库车/阿克苏 天亮 8:10 · 日出 8:37 · 日落 20:17</div>
       <ul class="timeline">
         <li><span class="t">08:52</span>出发（山区日出约 8:37 后启程），沿<b>独库公路南段（G217）</b>翻<b>铁力买提达坂</b>（海拔约3220m，注意高反与路面结冰）。</li>
@@ -792,7 +863,11 @@
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>300 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:14%"></div></div></div>
+      <div class="stress lv-2">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G2 · 适中</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:13%"></div></div>
+        <div class="stress-meta"><span>高速 <b>0</b></span><span>国道 <b>300 km</b></span><span>弯道 <b>少</b></span><span>等效疲劳 <b class="em">≈360 km</b></span></div>
+      </div>
       <div class="kv">当日光线 · 库尔勒 天亮 7:48 · 日出 8:14 · 日落 19:52 · 天黑 20:18</div>
       <ul class="timeline">
         <li><span class="t">08:00</span>出发，G314东行，经<b>轮台</b>。
@@ -819,20 +894,24 @@
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
         <span class="day-scene">出疆东归 · 星夜兼程</span>
-        <span class="day-route">≈2100 km · 约22h</span>
+        <span class="day-route">≈2100 km · 约18h</span>
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>2100 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:100%"></div></div></div>
+      <div class="stress lv-5">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G5 · 极难</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:96%"></div></div>
+        <div class="stress-meta"><span>高速 <b>2100 km</b></span><span>国道 <b>0</b></span><span>山路 <b>0</b></span><span>等效疲劳 <b class="em">≈2695 km</b></span></div>
+      </div>
+      <div class="kv">当日光线 · 库尔勒（10/6）天亮 7:49 · 日出 8:15 · 日落 19:51 · 天黑 20:17</div>
       <div class="kv">全程高速：库尔勒 → 乌鲁木齐 →（连霍高速 G30）→ 哈密 → 星星峡 → 河西走廊 → 甘肃武威服务区（库—乌约480km＋乌—武约1650km）</div>
       <ul class="timeline">
-        <li><span class="t">06:00</span>库尔勒出发，北上经<b>乌鲁木齐</b>转连霍高速（环线收官后的返程首日）。</li>
-        <li><span class="t">09:00</span>乌鲁木齐出城服务区休息、加满油。</li>
-        <li><span class="t">13:00</span><b>哈密/星星峡</b>午餐（出疆前证件备查）。</li>
-        <li><span class="t">18:00</span>张掖一带服务区休息。</li>
-        <li><span class="t">次日04:30</span>抵<b>甘肃武威服务区</b>，住<b>司机之家</b>（跨夜，务必按此拆分安排）。</li>
+        <li><span class="t">08:30</span>库尔勒出发，北上经<b>乌鲁木齐</b>转连霍高速（返程首日，夜行占比大）。</li>
+        <li><span class="t">12:10</span>乌鲁木齐出城服务区休整、加满油（库—乌约480km，130km/h）。</li>
+        <li><span class="t">17:20</span><b>哈密/星星峡</b>午餐（出疆前证件备查）。</li>
+        <li><span class="t">次日00:10</span>张掖一带服务区夜间强制休息。</li>
+        <li><span class="t">次日02:30</span>抵<b>甘肃武威服务区</b>，住<b>司机之家</b>（跨夜，务必按此拆分安排）。</li>
       </ul>
-      <div class="how"><b>注意：</b>返程首日近 2100 km、约 22 小时行车，强度极大，每 2 小时必休；强烈建议在哈密或乌鲁木齐拆分加一夜。</div>
       <div class="tags-row">
         <span class="tag tag-y">餐：全程服务区</span>
         <span class="tag tag-b">宿：武威·司机之家</span>
@@ -850,19 +929,24 @@
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
         <span class="day-scene">归程 · 抵湘到家</span>
-        <span class="day-route">≈1887 km · 约20h</span>
+        <span class="day-route">≈1887 km · 约16h</span>
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>1887 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:90%"></div></div></div>
+      <div class="stress lv-5">
+        <div class="stress-top"><span class="stress-lab">当日强度</span><span class="stress-lv">G5 · 极难</span></div>
+        <div class="stress-meter"><div class="stress-fill" style="width:86%"></div></div>
+        <div class="stress-meta"><span>高速 <b>1887 km</b></span><span>国道 <b>0</b></span><span>山路 <b>0</b></span><span>等效疲劳 <b class="em">≈2412 km</b></span></div>
+      </div>
+      <div class="kv">当日光线 · 武威（10/7）天亮 6:57 · 日出 7:26 · 日落 18:52 · 天黑 19:20</div>
       <div class="kv">全程高速：武威服务区（连霍 G30「连云港方向」）→ 兰州 → 西安 →（二广/许广高速）→ 长沙</div>
       <ul class="timeline">
-        <li><span class="t">05:00</span>武威服务区出发（连霍 G30「连云港方向」），经<b>兰州</b>南下。</li>
-        <li><span class="t">12:00</span>西安附近服务区午餐、加油。</li>
-        <li><span class="t">18:00</span>晚餐服务区休息。</li>
-        <li><span class="t">次日00:30</span>抵<b>长沙</b>回家（该程若实测超过 19 小时，可能落到 10/8 凌晨）。</li>
+        <li><span class="t">07:40</span>武威服务区出发（连霍 G30「连云港方向」），经<b>兰州</b>南下。</li>
+        <li><span class="t">09:50</span>兰州方向服务区早饭、加油（武威—兰州约270km）。</li>
+        <li><span class="t">15:10</span>西安附近服务区午餐、加油。</li>
+        <li><span class="t">19:30</span>服务区晚餐、强制休息。</li>
+        <li><span class="t">23:55</span>抵<b>长沙</b>回家（约10/7深夜抵湘）。</li>
       </ul>
-      <div class="how"><b>注意：</b>近 1887 km 理论上难以在单日内安全完成。<b>强烈建议至少加一夜</b>（西安或襄阳），把返程拆成两天。现按你最紧凑的方案排入，实际务必自行再加休息。</div>
       <div class="tags-row">
         <span class="tag tag-y">餐：全程服务区</span>
         <span class="tag tag-b">宿：长沙（家里）</span>
