@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>北疆金秋环线 · 单人单骑摩旅路书</title>
-<meta name="description" content="长沙往返北疆金秋环线，13天约10527公里单人单骑摩旅逐日路书：禾木、喀纳斯、赛里木湖、独库公路、巴音布鲁克。">
+<meta name="description" content="长沙往返北疆金秋环线，13天约10587公里单人单骑摩旅逐日路书：喀纳斯、赛里木湖、独库公路、巴音布鲁克。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
@@ -208,6 +208,51 @@
   .practical li{font-size:14.5px; margin:6px 0; color:var(--ink-dim);}
   .practical li b{color:var(--cream);}
 
+  /* ============ 行程预算 ============ */
+  .budget{
+    background:linear-gradient(165deg,var(--card2) 0%,var(--card) 45%);
+    border:1px solid var(--line); border-radius:18px;
+    padding:0 26px 26px; box-shadow:0 10px 30px rgba(0,0,0,.32);
+  }
+  .budget-head{
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    padding:20px 0 6px; border-bottom:1px dashed var(--line-soft);
+  }
+  .budget-total{display:flex; align-items:baseline; gap:10px;}
+  .budget-total .bt-num{font-family:var(--num); font-size:44px; font-weight:700; color:var(--gold-hi); line-height:1.1;}
+  .budget-total .bt-num small{font-size:15px; font-weight:600; color:var(--amber); margin-left:4px;}
+  .budget-total .bt-lab{font-size:12px; letter-spacing:2px; color:var(--sub); margin-top:3px;}
+  .budget-chips{display:flex; gap:8px; flex-wrap:wrap;}
+  .budget-chips .bc{
+    font-size:12px; color:var(--gold-hi); border:1px solid rgba(242,169,59,.4);
+    background:rgba(242,169,59,.08); border-radius:999px; padding:5px 12px; white-space:nowrap;
+  }
+  .budget-rows{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px;}
+  @media(max-width:760px){.budget-rows{grid-template-columns:1fr;}}
+  .brow{
+    background:rgba(42,32,19,.6); border:1px solid var(--line-soft); border-radius:14px;
+    padding:14px 16px; position:relative; overflow:hidden;
+  }
+  .brow::before{content:""; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--gold),transparent);}
+  .brow .bn{font-size:13.5px; font-weight:600; color:var(--cream); letter-spacing:1px; display:flex; align-items:center; gap:8px;}
+  .brow .bn::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold); flex:none;}
+  .brow .bd{font-size:12.5px; color:var(--sub); margin-top:6px; line-height:1.7;}
+  .brow .bd b{color:var(--ink);}
+  .brow .bv{font-family:var(--num); font-size:24px; font-weight:700; color:var(--gold-hi); margin-top:10px; line-height:1.1;}
+  .brow .bv small{font-size:13px; font-weight:600; color:var(--amber); margin-left:3px;}
+  .budget-sum{
+    margin-top:18px; background:linear-gradient(160deg,var(--card2),var(--card));
+    border:1px solid var(--gold); border-radius:14px; padding:14px 18px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    box-shadow:0 0 20px rgba(242,169,59,.12);
+  }
+  .budget-sum .bs-lab{font-size:15px; font-weight:700; color:var(--gold-hi); letter-spacing:2px; display:flex; align-items:center; gap:10px;}
+  .budget-sum .bs-lab::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold);}
+  .budget-sum .bs-val{font-family:var(--num); font-size:34px; font-weight:700; color:var(--gold); line-height:1;}
+  .budget-sum .bs-val small{font-size:14px; color:var(--amber); margin-left:4px;}
+  .budget-note{font-size:12px; color:var(--sub); margin-top:12px; letter-spacing:.5px;}
+  .budget-note b{color:var(--gold);}
+
   footer{
     text-align:center; color:var(--sub); font-size:13px; margin-top:44px;
     padding-top:24px; border-top:1px solid var(--line-soft); letter-spacing:1px;
@@ -261,7 +306,7 @@
     position:absolute; top:14px; right:12px; background:transparent; border:1px solid var(--line);
     border-radius:8px; font-size:13px; color:var(--sub); cursor:pointer; padding:4px 9px; z-index:2;
   }
-  #overview,#practical{scroll-margin-top:30px;}
+  #overview,#practical,#budget{scroll-margin-top:30px;}
   .day[id]{scroll-margin-top:30px;}
 
   /* 滚动浮现 */
@@ -299,18 +344,18 @@
 
 <header class="hero">
   <div class="hero-inner">
-    <div class="hero-kicker">MOTO RAID · SOLO RIDE · 10,527 KM</div>
+    <div class="hero-kicker">MOTO RAID · SOLO RIDE · 10,587 KM</div>
     <h1>北疆金秋环线<br>单人单骑<em>逐日路书</em></h1>
     <p class="hero-sub">长沙出发 · <b>2026.09.25 — 10.07</b> · 共 13 天。从湘江到阿尔泰，穿沙漠、翻达坂、环湖而居——把北疆的秋天骑个遍。</p>
     <div class="hero-chips">
-      <span class="chip">禾木晨雾</span><span class="chip">喀纳斯湖</span><span class="chip">S21 沙漠公路</span>
+      <span class="chip">喀纳斯晨雾</span><span class="chip">喀纳斯湖</span><span class="chip">S21 沙漠公路</span>
       <span class="chip">赛里木湖</span><span class="chip">独库公路南段</span><span class="chip">巴音布鲁克日落</span>
     </div>
   </div>
 </header>
 
 <div class="dash">
-  <div class="gauge rv"><div class="gv" data-cnt="10527">0<small>km</small></div><div class="gl">TOTAL MILEAGE · 全程里程</div></div>
+  <div class="gauge rv"><div class="gv" data-cnt="10587">0<small>km</small></div><div class="gl">TOTAL MILEAGE · 全程里程</div></div>
   <div class="gauge rv"><div class="gv" data-cnt="13">0<small>days</small></div><div class="gl">DURATION · 行程天数</div></div>
   <div class="gauge rv"><div class="gv" data-cnt="3220">0<small>m</small></div><div class="gl">本段最高垭口 · 铁力买提达坂</div></div>
   <div class="gauge rv"><div class="gv" data-cnt="1">0<small>rider</small></div><div class="gl">CREW · 单人单骑</div></div>
@@ -331,9 +376,9 @@
   <a href="#d1"><span class="toc-day">D1</span><span class="toc-route">长沙 → 长城驿</span></a>
   <a href="#d2"><span class="toc-day">D2</span><span class="toc-route">长城驿 → 乌鲁木齐</span></a>
   <a href="#d3"><span class="toc-day">D3</span><span class="toc-route">乌鲁木齐 → 阿勒泰</span></a>
-  <a href="#d4"><span class="toc-day">D4</span><span class="toc-route">阿勒泰 → 禾木</span></a>
-  <a href="#d5"><span class="toc-day">D5</span><span class="toc-route">禾木 → 喀纳斯</span></a>
-  <a href="#d6"><span class="toc-day">D6</span><span class="toc-route">喀纳斯 → 克拉玛依</span></a>
+  <a href="#d4"><span class="toc-day">D4</span><span class="toc-route">阿勒泰 → 贾登峪</span></a>
+  <a href="#d5"><span class="toc-day">D5</span><span class="toc-route">喀纳斯一日游</span></a>
+  <a href="#d6"><span class="toc-day">D6</span><span class="toc-route">贾登峪 → 克拉玛依</span></a>
   <a href="#d7"><span class="toc-day">D7</span><span class="toc-route">克拉玛依 → 赛里木湖</span></a>
   <a href="#d8"><span class="toc-day">D8</span><span class="toc-route">赛里木湖 → 昭苏</span></a>
   <a href="#d9"><span class="toc-day">D9</span><span class="toc-route">昭苏 → 巴音布鲁克</span></a>
@@ -341,7 +386,8 @@
   <a href="#d11"><span class="toc-day">D11</span><span class="toc-route">库车 → 库尔勒</span></a>
   <a href="#d12"><span class="toc-day">D12</span><span class="toc-route">库尔勒 → 武威服务区</span></a>
   <a href="#d13"><span class="toc-day">D13</span><span class="toc-route">武威服务区 → 长沙</span></a>
-  <div class="toc-group">提示</div>
+  <div class="toc-group">预算与提示</div>
+  <a href="#budget" class="sec-mode">行程预算</a>
   <a href="#practical" class="sec-mode">装备清单与注意</a>
 </nav>
 
@@ -352,12 +398,12 @@
     <table>
       <thead><tr><th>日期</th><th>Day</th><th>起点 → 终点</th><th>参考里程</th><th>参考时长</th><th>主要看点</th><th>住宿安排</th></tr></thead>
       <tbody>
-        <tr data-href="#d1"><td>9/25</td><td><b>Day 1</b></td><td><span class="tdot" style="background:#8d94a3"></span>长沙 → 甘肃长城驿服务区</td><td>≈2000 km</td><td>约21h</td><td>全程高速（二广/连霍）赶路</td><td>长城驿·司机之家</td></tr>
-        <tr data-href="#d2"><td>9/26</td><td><b>Day 2</b></td><td><span class="tdot" style="background:#8d94a3"></span>甘肃长城驿 → 乌鲁木齐</td><td>≈1650 km</td><td>约18h</td><td>河西走廊、嘉峪关、G30连霍</td><td>乌鲁木齐市区</td></tr>
-        <tr data-href="#d3"><td>9/27</td><td><b>Day 3</b></td><td><span class="tdot" style="background:#d9a04a"></span>乌鲁木齐 → 阿勒泰</td><td>≈440 km</td><td>约5h</td><td>S21沙漠公路、乌伦古湖</td><td>阿勒泰市区</td></tr>
-        <tr data-href="#d4"><td>9/28</td><td><b>Day 4</b></td><td><span class="tdot" style="background:#f0b429"></span>阿勒泰 → 禾木</td><td>≈210 km</td><td>约3.5h</td><td>阿禾公路、禾木村、白桦林、日落</td><td>禾木村小木屋</td></tr>
-        <tr data-href="#d5"><td>9/29</td><td><b>Day 5</b></td><td><span class="tdot" style="background:#3fae8a"></span>禾木 → 喀纳斯</td><td>≈70 km</td><td>约2h</td><td>观鱼台、喀纳斯湖</td><td>喀纳斯村／贾登峪</td></tr>
-        <tr data-href="#d6"><td>9/30</td><td><b>Day 6</b></td><td><span class="tdot" style="background:#c96b32"></span>喀纳斯 → 克拉玛依</td><td>≈470 km</td><td>约7h</td><td>三湾晨雾、乌尔禾魔鬼城</td><td>克拉玛依市区</td></tr>
+        <tr data-href="#d1"><td>9/25</td><td><b>Day 1</b></td><td><span class="tdot" style="background:#8d94a3"></span>长沙 → 甘肃长城驿服务区</td><td>≈2145 km</td><td>约16.5h</td><td>全程高速（二广/连霍）赶路</td><td>长城驿·司机之家</td></tr>
+        <tr data-href="#d2"><td>9/26</td><td><b>Day 2</b></td><td><span class="tdot" style="background:#8d94a3"></span>甘肃长城驿 → 乌鲁木齐</td><td>≈1489 km</td><td>约11.5h</td><td>河西走廊、嘉峪关、G30连霍</td><td>乌鲁木齐市区</td></tr>
+        <tr data-href="#d3"><td>9/27</td><td><b>Day 3</b></td><td><span class="tdot" style="background:#d9a04a"></span>乌鲁木齐 → 阿勒泰</td><td>≈540 km</td><td>约6h</td><td>S21沙漠公路、乌伦古湖</td><td>阿勒泰市区</td></tr>
+        <tr data-href="#d4"><td>9/28</td><td><b>Day 4</b></td><td><span class="tdot" style="background:#f0b429"></span>阿勒泰 → 贾登峪</td><td>≈286 km</td><td>约4.5h</td><td>阿禾公路、贾登峪、喀纳斯口</td><td>贾登峪</td></tr>
+        <tr data-href="#d5"><td>9/29</td><td><b>Day 5</b></td><td><span class="tdot" style="background:#3fae8a"></span>喀纳斯一日游</td><td>≈0 km</td><td>—</td><td>观鱼台、喀纳斯湖、三湾</td><td>贾登峪</td></tr>
+        <tr data-href="#d6"><td>9/30</td><td><b>Day 6</b></td><td><span class="tdot" style="background:#c96b32"></span>贾登峪 → 克拉玛依</td><td>≈440 km</td><td>约7h</td><td>三湾晨雾、乌尔禾魔鬼城</td><td>克拉玛依市区</td></tr>
         <tr data-href="#d7"><td>10/1</td><td><b>Day 7</b></td><td><span class="tdot" style="background:#4fa3d8"></span>克拉玛依 → 赛里木湖</td><td>≈480 km</td><td>约6h</td><td>赛里木湖环湖、日落</td><td>赛里木湖东门</td></tr>
         <tr data-href="#d8"><td>10/2</td><td><b>Day 8</b></td><td><span class="tdot" style="background:#7fb069"></span>赛里木湖 → 昭苏</td><td>≈300 km</td><td>约5h</td><td>果子沟大桥、伊犁河谷</td><td>昭苏县城</td></tr>
         <tr data-href="#d9"><td>10/3</td><td><b>Day 9</b></td><td><span class="tdot" style="background:#e2713a"></span>昭苏 → 巴音布鲁克镇</td><td>≈360 km</td><td>约6h</td><td>特克斯八卦城、九曲十八弯日落</td><td>巴音布鲁克镇</td></tr>
@@ -393,7 +439,7 @@
   <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#f2a93b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mc-arw)"/>
   <g class="mc-start" transform="translate(240,462)"><circle class="mc-dot" r="12" style="stroke:#4fa3d8;"/><text class="mc-day" dy="3.5" style="fill:#4fa3d8;">D3</text><text class="mc-city" y="26">乌鲁木齐</text></g>
   <g transform="translate(250,92)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D4</text><text class="mc-city" y="-17">阿勒泰</text></g>
-  <g transform="translate(330,58)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D5</text><text class="mc-city" y="-17">禾木</text></g>
+  <g transform="translate(330,58)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D5</text><text class="mc-city" y="-17">贾登峪</text></g>
   <g transform="translate(400,42)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D6</text><text class="mc-city" y="-17">喀纳斯</text></g>
   <g transform="translate(112,242)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D7</text><text class="mc-city" y="-17">克拉玛依</text></g>
   <g transform="translate(92,362)"><circle class="mc-dot" r="11"/><text class="mc-day" dy="3.5">D8</text><text class="mc-city" x="-16" y="5" style="text-anchor:end;">赛里木湖</text></g>
@@ -419,20 +465,21 @@
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
         <span class="day-scene">沥青长征 · 出湘入陇</span>
-        <span class="day-route">≈2000 km · 约21h</span>
+        <span class="day-route">≈2145 km · 约16.5h</span>
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>2000 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:95%"></div></div></div>
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>2145 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:100%"></div></div></div>
+      <div class="kv">当日光线 · 长沙（9/25）天亮 05:54 · 日出 06:18</div>
       <div class="kv">全程高速：长沙 →（二广/许广高速）→ 西安 →（连霍高速 G30）→ 兰州 → 甘肃长城驿服务区</div>
       <ul class="timeline">
-        <li><span class="t">05:00</span>长沙出发，出城上高速（早高峰前避开，注意出城段照明）。</li>
-        <li><span class="t">07:00</span>途经湖北（荆门/十堰一带）服务区休息、加油。</li>
-        <li><span class="t">12:00</span>西安附近服务区午餐。</li>
-        <li><span class="t">17:00</span>兰州附近服务区休息（转入河西走廊前）。</li>
-        <li><span class="t">次日00:30</span>抵<b>甘肃长城驿服务区</b>，入住<b>司机之家</b>过夜（超长约2000km，务必在西安或兰州补休）。</li>
+        <li><span class="t">06:00</span>长沙出发，出城上高速（早高峰前避开，注意出城段照明）。</li>
+        <li><span class="t">11:25</span>途经湖北（荆门/十堰一带）服务区休息、加油。</li>
+        <li><span class="t">14:15</span>西安附近服务区午餐。</li>
+        <li><span class="t">18:25</span>兰州附近服务区休息（转入河西走廊前）。</li>
+        <li><span class="t">22:30</span>抵<b>甘肃长城驿服务区</b>，入住<b>司机之家</b>过夜（超长约2145km，行程按均速130km/h，已在西安或兰州补休）。</li>
       </ul>
-      <div class="how"><b>注意：</b>该段约 2000 km、单日行车近 21 小时，强度极大。<b>单人单骑强烈建议中途加一夜</b>（例如西安或兰州），否则务必每 2 小时强制休息，避免疲劳驾驶。</div>
+      <div class="how"><b>注意：</b>该段约 2145 km、按均速 130km/h 单日行车约 16 小时 30 分钟，强度仍大。<b>单人单骑强烈建议中途加一夜</b>（例如西安或兰州），否则务必每 2 小时强制休息，避免疲劳驾驶。</div>
       <div class="tags-row">
         <span class="tag tag-y">餐：全程服务区</span>
         <span class="tag tag-b">宿：长城驿·司机之家</span>
@@ -450,20 +497,21 @@
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
         <span class="day-scene">河西走廊 · 戈壁入关</span>
-        <span class="day-route">≈1650 km · 约18h</span>
+        <span class="day-route">≈1489 km · 约11.5h</span>
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>1650 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:79%"></div></div></div>
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>1489 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:71%"></div></div></div>
+      <div class="kv">当日光线 · 长城驿服务区（9/26）天亮（民用晨光始）06:40:26 · 日出 07:06:52</div>
       <div class="kv">全程高速：长城驿 →（连霍高速 G30）→ 张掖/酒泉/嘉峪关 → 星星峡 → 哈密 → 吐鲁番 → 乌鲁木齐</div>
       <ul class="timeline">
-        <li><span class="t">06:00</span>司机之家早饭后出发，沿<b>连霍高速 G30</b> 西行，穿河西走廊。证件随身备查。</li>
-        <li><span class="t">09:00</span>嘉峪关一带服务区休息、远眺长城雄关。</li>
-        <li><span class="t">12:30</span><b>哈密</b>服务区午餐、加油。</li>
-        <li><span class="t">17:00</span>吐鲁番方向服务区休息。</li>
-        <li><span class="t">22:00</span>抵<b>乌鲁木齐</b>市区入住，为次日环线首日蓄力。</li>
+        <li><span class="t">07:00</span>司机之家早饭后出发，沿<b>连霍高速 G30</b> 西行，穿河西走廊。证件随身备查。</li>
+        <li><span class="t">09:30</span>嘉峪关一带服务区休息、远眺长城雄关。</li>
+        <li><span class="t">13:20</span><b>哈密</b>服务区午餐、加油。</li>
+        <li><span class="t">16:35</span>吐鲁番方向服务区休息。</li>
+        <li><span class="t">18:30</span>抵<b>乌鲁木齐</b>市区入住，为次日环线首日蓄力。</li>
       </ul>
-      <div class="how"><b>注意：</b>长城驿服务区位于<b>张掖市山丹县</b>（G30 连霍高速 K2107+800），在武威以西，与返程经停的<b>武威服务区不是同一地点</b>；本表里程为估算，实际请以实时导航为准。该段近 1650 km、单日行车约 18 小时，强度极大，务必每 2 小时休息；若前一程已过劳，建议在哈密或吐鲁番补一夜缓冲。</div>
+      <div class="how"><b>注意：</b>长城驿服务区位于<b>张掖市山丹县</b>（G30 连霍高速 K2107+800），在武威以西，与返程经停的<b>武威服务区不是同一地点</b>；本表里程为估算，实际请以实时导航为准。该段 1489 km、按均速 130km/h 约 11 小时 30 分钟，务必每 2 小时休息；若前一程已过劳，建议在哈密或吐鲁番补一夜缓冲。</div>
       <div class="tags-row">
         <span class="tag tag-y">餐：全程服务区</span>
         <span class="tag tag-b">宿：乌鲁木齐市区</span>
@@ -481,22 +529,22 @@
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
         <span class="day-scene">S21 沙漠公路 · 乌伦古湖</span>
-        <span class="day-route">≈440 km · 约5h</span>
+        <span class="day-route">≈540 km · 约6h</span>
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>440 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:21%"></div></div></div>
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>540 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:26%"></div></div></div>
       <div class="kv">当日光线 · 乌鲁木齐 天亮 7:33 · 日出 8:00 · 日落 19:59（阿勒泰相近）</div>
       <ul class="timeline">
-        <li><span class="t">07:15</span>乌鲁木齐出发（天亮 7:33，天色已可辨路面）——单人首日长途，前一晚切记睡足。经<b>阜康</b>上 S21〈阿乌高速〉穿越古尔班通古特沙漠。</li>
-        <li><span class="t">09:30</span>沙漠公路服务区停车休息、拍公路照。</li>
-        <li><span class="t">12:00</span>途经<b>福海县</b>·<b>乌伦古湖</b>观景台停留（深秋湖水湛蓝）。
+        <li><span class="t">08:15</span>乌鲁木齐出发（日出 8:00 后启程，天已明朗）——单人首日长途，前一晚切记睡足。经<b>阜康</b>上 S21〈阿乌高速〉穿越古尔班通古特沙漠。</li>
+        <li><span class="t">10:30</span>沙漠公路服务区停车休息、拍公路照。</li>
+        <li><span class="t">13:00</span>途经<b>福海县</b>·<b>乌伦古湖</b>观景台停留（深秋湖水湛蓝）。
           <span class="stop">（赶路可跳过，直接进阿勒泰午餐。）</span></li>
-        <li><span class="t">14:00</span>抵达<b>阿勒泰市</b>，午餐。</li>
-        <li><span class="t">15:30</span><b>桦林公园</b>或市区慢逛，检查车况、加满油（明日进山，山区加油点少）。</li>
-        <li><span class="t">18:30</span><b>额尔齐斯河畔等晚霞</b>（当地日落约 19:56），随后晚餐、就寝。</li>
+        <li><span class="t">15:00</span>抵达<b>阿勒泰市</b>，午餐。</li>
+        <li><span class="t">16:30</span><b>桦林公园</b>或市区慢逛，检查车况、加满油（明日进山，山区加油点少）。</li>
+        <li><span class="t">19:30</span><b>额尔齐斯河畔等晚霞</b>（当地日落约 19:56），随后晚餐、就寝。</li>
       </ul>
-      <div class="how"><b>今日要点：</b>过渡日，从乌鲁木齐绿洲过渡到阿尔泰山区。建议提前预订禾木村住宿（深秋一房难求）。</div>
+      <div class="how"><b>今日要点：</b>过渡日，从乌鲁木齐绿洲过渡到阿尔泰山区。建议提前预订贾登峪住宿（深秋一房难求）。</div>
       <div class="tags-row">
         <span class="tag tag-y">餐：福海／阿勒泰</span>
         <span class="tag tag-b">宿：阿勒泰市区</span>
@@ -509,31 +557,28 @@
     <div class="day-head">
       <div>
         <span class="day-no">DAY 04</span>
-        <div class="day-title">阿勒泰 → 禾木</div>
+        <div class="day-title">阿勒泰 → 贾登峪</div>
         <div class="day-date">2026年9月28日</div>
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
-        <span class="day-scene">阿禾公路 · 金黄白桦</span>
-        <span class="day-route">≈210 km · 约3.5h</span>
+        <span class="day-scene">阿禾公路 · 喀纳斯门户</span>
+        <span class="day-route">≈286 km · 约4.5h</span>
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>210 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:10%"></div></div></div>
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>286 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:14%"></div></div></div>
       <div class="kv">当日光线 · 阿勒泰/布尔津 天亮 7:36 · 日出 8:05 · 日落 19:59 · 天黑 20:29</div>
       <ul class="timeline">
-        <li><span class="t">09:00</span>到<b>阿禾公路（G681）</b>入口排队，9米及以下客车已全时段通行（具体以当日公告为准），穿行阿尔泰山区，高山草甸、金黄针叶林与雪山相伴。</li>
+        <li><span class="t">09:00</span>阿勒泰出发，沿<b>阿禾公路（G681）</b>一路向喀纳斯门户<b>贾登峪</b>进山（9米及以下客车已全时段通行，具体以当日公告为准），高山草甸、金黄针叶林与雪山相伴。</li>
         <li><span class="t">11:00</span>途中垭口/观景台停车拍照，山区天气多变。</li>
-        <li><span class="t">13:00</span>抵<b>禾木门票站</b>寄存车辆、购票；村内<b>外来车辆禁行</b>，换乘区间车进村（约1小时山路）。</li>
-        <li><span class="t">14:00</span>到<b>禾木村</b>，入住小木屋（提前订）。</li>
-        <li><span class="t">15:00</span><b>禾木河＋白桦林</b>木栈道慢走，金桦倒映河中，午后光影正佳。</li>
-        <li><span class="t">18:00</span>登<b>禾木观景台</b>等日落（约 19:59），俯瞰全村木屋炊烟与金黄林海；蓝调时刻 20:17–20:41。</li>
-        <li><span class="t">21:00</span>天黑后下山，村里晚餐，夜里看星空。</li>
+        <li><span class="t">13:00</span>途中服务区/禾木岔口一带午餐、加油（山区加油点少）。</li>
+        <li><span class="t">15:30</span>抵<b>贾登峪</b>（喀纳斯景区入口），车辆停外围、熟悉明日换乘点。</li>
+        <li><span class="t">17:00</span>入住<b>贾登峪</b>，早休息，为明日喀纳斯全天游玩蓄力。</li>
       </ul>
-      <div class="how"><b>今日要点：</b>阿禾公路为山区旅游公路，近期9米及以下客车已全时段通行、但山区施工易临时管制，前晚务必查公告与路况；若遇封闭，则改走<b>布尔津—冲乎尔</b>老路绕行（约260 km）。禾木是金秋核心，住村里才看得见清晨，山里夜间约 0℃上下，备厚羽绒、暖宝宝。</div>
+      <div class="how"><b>今日要点：</b>全程走阿禾公路直达贾登峪，弯急路窄、景美路长，进山前加满油、提前查公告与路况；若遇封闭管制，则改走<b>布尔津—冲乎尔</b>老路绕行（约260 km）。贾登峪是喀纳斯景区门户，山里夜间约 0℃上下，备厚羽绒、暖宝宝。</div>
       <div class="tags-row">
-        <span class="tag tag-y">餐：村里的家常木屋宴</span>
-        <span class="tag tag-b">宿：禾木村小木屋</span>
-        <span class="tag tag-r">提示：区间车进出</span>
+        <span class="tag tag-y">餐：布尔津午餐＋贾登峪晚餐</span>
+        <span class="tag tag-b">宿：贾登峪</span>
       </div>
     </div>
   </div>
@@ -543,30 +588,29 @@
     <div class="day-head">
       <div>
         <span class="day-no">DAY 05</span>
-        <div class="day-title">禾木 → 喀纳斯</div>
+        <div class="day-title">喀纳斯一日游</div>
         <div class="day-date">2026年9月29日</div>
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
-        <span class="day-scene">晨雾村庄 · 翡翠湖湾</span>
-        <span class="day-route">≈70 km · 约2h</span>
+        <span class="day-scene">观鱼台 · 翡翠湖湾</span>
+        <span class="day-route">≈0 km · 全天游玩</span>
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>70 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:4%"></div></div></div>
-      <div class="kv">当日光线 · 布尔津/禾木 天亮 7:37 · 日出 8:06 · 天黑 20:27 · 晨蓝调 7:25–7:49</div>
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>0 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:0%"></div></div></div>
+      <div class="kv">当日光线 · 布尔津/贾登峪 天亮 7:37 · 日出 8:06 · 天黑 20:27 · 晨蓝调 7:25–7:49</div>
       <ul class="timeline">
-        <li><span class="t">07:10</span>登<b>禾木观景台看晨雾＋日出</b>（日出约 8:06，晨蓝调 7:25–7:49）——晨雾村庄是禾木招牌画面。</li>
-        <li><span class="t">08:30</span>回民宿早餐、退房，区间车出村，门站取车。</li>
-        <li><span class="t">10:00</span>骑行经<b>贾登峪</b>抵<b>喀纳斯门票站</b>，购票换乘景区车进景区。</li>
-        <li><span class="t">11:30</span>喀纳斯游客中心午餐。</li>
-        <li><span class="t">13:00</span><b>观鱼台</b>登顶俯瞰喀纳斯湖全景（约2小时来回）。</li>
-        <li><span class="t">15:30</span>湖畔<b>喀纳斯湖码头/木栈道</b>慢走，深秋碧水如翡翠。</li>
-        <li><span class="t">18:00</span>宿喀纳斯村或贾登峪，早休息，明晨看三湾日出。</li>
+        <li><span class="t">07:40</span>贾登峪票务中心购票，乘景区区间车进<b>喀纳斯</b>（约 30–40 分钟山路）。</li>
+        <li><span class="t">08:30</span><b>观鱼台</b>登顶，俯瞰喀纳斯湖全景（晨光最佳；区间车往返约 2 小时）。</li>
+        <li><span class="t">11:30</span>观鱼台返回，喀纳斯游客中心午餐。</li>
+        <li><span class="t">13:00</span>湖畔<b>喀纳斯湖码头/木栈道</b>慢走，深秋碧水如翡翠。</li>
+        <li><span class="t">14:30</span><b>三湾木栈道</b>（神仙湾—月亮湾—卧龙湾）精华段徒步、拍照。</li>
+        <li><span class="t">17:00</span>区间车返回<b>贾登峪</b>，入住休息（次日晨可再进喀纳斯看三湾晨雾再出发）。</li>
       </ul>
-      <div class="how"><b>今日要点：</b>喀纳斯景区较大，区间车＋摆渡，建议提前查观鱼台当日开放情况；票可网上提前购。</div>
+      <div class="how"><b>今日要点：</b>喀纳斯安排一整天，景区较大，区间车＋摆渡；<b>观鱼台</b>区间车约 20 元另计。票可网上提前购，并提前查观鱼台当日开放情况。</div>
       <div class="tags-row">
         <span class="tag tag-y">餐：景区简餐</span>
-        <span class="tag tag-b">宿：喀纳斯村／贾登峪</span>
+        <span class="tag tag-b">宿：贾登峪</span>
         <span class="tag tag-r">提示：景区车进出</span>
       </div>
     </div>
@@ -577,26 +621,26 @@
     <div class="day-head">
       <div>
         <span class="day-no">DAY 06</span>
-        <div class="day-title">喀纳斯 → 克拉玛依</div>
+        <div class="day-title">贾登峪 → 克拉玛依</div>
         <div class="day-date">2026年9月30日</div>
       </div>
       <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
         <span class="day-scene">三湾晨雾 · 雅丹魔鬼城</span>
-        <span class="day-route">≈470 km · 约7h</span>
+        <span class="day-route">≈440 km · 约7h</span>
       </div>
     </div>
     <div class="day-body">
-      <div class="fuel"><div class="fl"><span>当日强度</span><span>470 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:22%"></div></div></div>
+      <div class="fuel"><div class="fl"><span>当日强度</span><span>440 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:21%"></div></div></div>
       <div class="kv">当日光线 · 布尔津/喀纳斯 天亮 7:38 · 日出 8:08 · 天黑 20:25 · 晨蓝调 7:27–7:50；克拉玛依 日落 20:04</div>
       <ul class="timeline">
-        <li><span class="t">07:00</span><b>月亮湾、神仙湾晨雾</b>——三湾（神仙湾-月亮湾-卧龙湾）木栈道晨曦（日出约 8:08），顺光晨拍最美。</li>
-        <li><span class="t">09:30</span>返回游客中心，景区车出，贾登峪取车。</li>
-        <li><span class="t">11:30</span>返程经<b>布尔津</b>午餐。</li>
+        <li><span class="t">07:00</span>可选：晨再进喀纳斯看<b>三湾晨雾</b>（月亮湾、神仙湾，日出约 8:08）；或直接返程。</li>
+        <li><span class="t">09:30</span>贾登峪取车出发，返程经<b>布尔津</b>。</li>
+        <li><span class="t">11:30</span>布尔津午餐。</li>
         <li><span class="t">15:00</span>途中<b>乌尔禾「世界魔鬼城」</b>（雅丹）停留1—1.5小时。</li>
         <li><span class="t">18:30</span>抵<b>克拉玛依</b>入住。</li>
         <li><span class="t">20:00</span>市区晚餐（日落约 20:04，可在河边看晚霞）。</li>
       </ul>
-      <div class="how"><b>今日要点：</b>从湖区回到戈壁。魔鬼城可放到傍晚光线（若想拍霞光则略放缓节奏），看体力和兴趣取舍。</div>
+      <div class="how"><b>今日要点：</b>从湖区回到戈壁。若时间紧张可压缩三湾晨雾；魔鬼城可放到傍晚光线（若想拍霞光则略放缓节奏），看体力和兴趣取舍。</div>
       <div class="tags-row">
         <span class="tag tag-y">餐：布尔津午餐＋克市晚餐</span>
         <span class="tag tag-b">宿：克拉玛依市区</span>
@@ -621,11 +665,11 @@
       <div class="fuel"><div class="fl"><span>当日强度</span><span>480 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:23%"></div></div></div>
       <div class="kv">当日光线 · 克拉玛依 天亮 7:48 · 日出 8:16；赛里木湖 日落 20:14 · 天黑 20:41</div>
       <ul class="timeline">
-        <li><span class="t">07:40</span>出发（天亮 7:48），G30连霍高速向西北，经<b>奎屯</b>。</li>
-        <li><span class="t">12:30</span>精河服务区午餐、加油。</li>
-        <li><span class="t">14:30</span>抵<b>赛里木湖东门</b>购票，骑行环湖（点将台→亲水滩→西海草原→松树头，环线约90km）。</li>
-        <li><span class="t">18:30</span>湖畔等<b>日落＋雪山倒影</b>（日落约 20:14），光线绝佳。</li>
-        <li><span class="t">20:45</span>蓝调时刻 20:30–20:53 后，入宿<b>赛里木湖东门</b>附近（提前订）。</li>
+        <li><span class="t">08:31</span>出发（日出 8:16 后启程），G30连霍高速向西北，经<b>奎屯</b>。</li>
+        <li><span class="t">13:21</span>精河服务区午餐、加油。</li>
+        <li><span class="t">15:21</span>抵<b>赛里木湖东门</b>购票，骑行环湖（点将台→亲水滩→西海草原→松树头，环线约90km）。</li>
+        <li><span class="t">19:21</span>湖畔等<b>日落＋雪山倒影</b>（日落约 20:14），光线绝佳。</li>
+        <li><span class="t">21:36</span>蓝调时刻 20:30–20:53 后，入宿<b>赛里木湖东门</b>附近（提前订）。</li>
         <li><span class="t">深夜</span>若天气晴，湖边看银河星空。</li>
       </ul>
       <div class="how"><b>今日要点：</b>赛里木湖昼夜温差大，湖边风大，多带防风衣物；预留整个下午环湖，别急着赶路。</div>
@@ -685,13 +729,13 @@
       <div class="fuel"><div class="fl"><span>当日强度</span><span>360 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:17%"></div></div></div>
       <div class="kv">当日光线 · 伊宁 天亮 8:05 · 日出 8:33；巴音布鲁克草原 日落约 19:50 前后</div>
       <ul class="timeline">
-        <li><span class="t">08:00</span>出发，经<b>特克斯县</b>（八卦城）：观景台俯瞰八条主街，逛<u>离街</u>。</li>
-        <li><span class="t">10:30</span>继续向东，经<b>新源</b>方向进入伊犁河谷，向<b>那拉提</b>方向。</li>
-        <li><span class="t">13:00</span>那拉提草原一带午餐（草原秋黄、雪山为背景）。</li>
-        <li><span class="t">14:30</span>翻<b>独库公路中段</b>（那拉提—巴音），高山垭口与草原牧群。</li>
-        <li><span class="t">16:50</span>抵<b>巴音布鲁克镇</b>，放行李，尽快购景区区间车入园。</li>
-        <li><span class="t">17:30</span>游<b>天鹅湖＋九曲十八弯</b>，务必于<b>19:00 前</b>在观景台就位（日落约 19:50）——日落倒影是巴音招牌。</li>
-        <li><span class="t">20:30</span>区间车出景区，镇里晚餐、住宿（条件较简，提前订）。</li>
+        <li><span class="t">08:48</span>出发（日出 8:33 后启程），经<b>特克斯县</b>（八卦城）：观景台俯瞰八条主街，逛<u>离街</u>。</li>
+        <li><span class="t">11:18</span>继续向东，经<b>新源</b>方向进入伊犁河谷，向<b>那拉提</b>方向。</li>
+        <li><span class="t">13:48</span>那拉提草原一带午餐（草原秋黄、雪山为背景）。</li>
+        <li><span class="t">15:18</span>翻<b>独库公路中段</b>（那拉提—巴音），高山垭口与草原牧群。</li>
+        <li><span class="t">17:38</span>抵<b>巴音布鲁克镇</b>，放行李，尽快购景区区间车入园。</li>
+        <li><span class="t">18:18</span>游<b>天鹅湖＋九曲十八弯</b>，务必于<b>19:30 前</b>在观景台就位（日落约 19:50）——日落倒影是巴音招牌。</li>
+        <li><span class="t">21:18</span>区间车出景区，镇里晚餐、住宿（条件较简，提前订）。</li>
       </ul>
       <div class="how"><b>今日要点：</b>巴音布鲁克海拔约2500m，10月的晚间温度已很低，多穿保暖层；若当天多云，九曲日落会打折扣，别失望，看天气随缘。</div>
       <div class="tags-row">
@@ -718,12 +762,12 @@
       <div class="fuel"><div class="fl"><span>当日强度</span><span>260 / 2100 KM</span></div><div class="ft"><div class="ff" style="width:12%"></div></div></div>
       <div class="kv">当日光线 · 库车/阿克苏 天亮 8:10 · 日出 8:37 · 日落 20:17</div>
       <ul class="timeline">
-        <li><span class="t">07:50</span>出发（山区天亮约 8:10），沿<b>独库公路南段（G217）</b>翻<b>铁力买提达坂</b>（海拔约3220m，注意高反与路面结冰）。</li>
-        <li><span class="t">09:30</span><b>大龙池、小龙池</b>高山湖泊，停车观景拍照。</li>
-        <li><span class="t">11:00</span><b>库车（天山神秘）大峡谷</b>红色层岩峡谷，徒步1—1.5小时，正午光影好。</li>
-        <li><span class="t">13:00</span>峡谷外午餐。</li>
-        <li><span class="t">15:00</span>抵<b>库车市</b>，逛<b>库车老城热斯坦路、库车王府</b>。</li>
-        <li><span class="t">19:30</span>入住、晚餐（库车大馕、烤包子），日落约 20:10。</li>
+        <li><span class="t">08:52</span>出发（山区日出约 8:37 后启程），沿<b>独库公路南段（G217）</b>翻<b>铁力买提达坂</b>（海拔约3220m，注意高反与路面结冰）。</li>
+        <li><span class="t">10:32</span><b>大龙池、小龙池</b>高山湖泊，停车观景拍照。</li>
+        <li><span class="t">12:02</span><b>库车（天山神秘）大峡谷</b>红色层岩峡谷，徒步1—1.5小时，正午光影好。</li>
+        <li><span class="t">14:02</span>峡谷外午餐。</li>
+        <li><span class="t">16:02</span>抵<b>库车市</b>，逛<b>库车老城热斯坦路、库车王府</b>。</li>
+        <li><span class="t">20:32</span>入住、晚餐（库车大馕、烤包子），日落约 20:10。</li>
       </ul>
       <div class="how"><b>今日要点：</b>独库南段季节性强，10月为开放末段，出发前务必查积雪与封路公告；若封闭，则绕和静—库尔勒—库车（多加约4小时）。</div>
       <div class="tags-row">
@@ -826,6 +870,52 @@
     </div>
   </div>
 
+  <!-- 行程预算 -->
+  <h2 class="sec" id="budget" style="margin-top:52px;">行程预算 <span class="en">Trip Budget</span></h2>
+  <div class="budget rv">
+    <div class="budget-head">
+      <div class="budget-total"><div class="bt-num">8,208<small>元</small></div><div class="bt-lab">13 天总预算（约）</div></div>
+      <div class="budget-chips">
+        <span class="bc">10587 km</span>
+        <span class="bc">95 号汽油</span>
+        <span class="bc">油耗均值 5L/100km</span>
+        <span class="bc">2 次机油保养</span>
+      </div>
+    </div>
+    <div class="budget-rows">
+      <div class="brow">
+        <div class="bn">油费</div>
+        <div class="bd">10587 km ÷ 100 × 5L × <b>8.32 元/L</b>（长沙 8.54 与新疆 8.10 均价）≈ 529 L</div>
+        <div class="bv">4,404<small>元</small></div>
+      </div>
+      <div class="brow">
+        <div class="bn">吃喝</div>
+        <div class="bd">按 <b>100 元/天</b> 计 × 13 天（沿途服务区/城镇简餐为主）</div>
+        <div class="bv">1,300<small>元</small></div>
+      </div>
+      <div class="brow">
+        <div class="bn">住宿</div>
+        <div class="bd">按 <b>100 元/天</b> 计 × 13 天（司机之家/县城旅馆/景区门口）</div>
+        <div class="bv">1,300<small>元</small></div>
+      </div>
+      <div class="brow">
+        <div class="bn">景区门票</div>
+        <div class="bd">喀纳斯 250（门票 160＋区间车 70＋观鱼台 20）<br>赛里木湖 190（门票 70＋自驾服务费 120）</div>
+        <div class="bv">440<small>元</small></div>
+      </div>
+      <div class="brow">
+        <div class="bn">保养（机油）</div>
+        <div class="bd">10587 km 长途更换 2 次 × <b>382 元/次</b>（约 5000 km 一换，含机滤工时）</div>
+        <div class="bv">764<small>元</small></div>
+      </div>
+    </div>
+    <div class="budget-sum">
+      <div class="bs-lab">预算合计</div>
+      <div class="bs-val">8,208<small>元</small></div>
+    </div>
+    <div class="budget-note"><b>说明：</b>景区门票暂只计入<b>喀纳斯</b>与<b>赛里木湖</b>（含自驾服务费）；魔鬼城、巴音布鲁克、库车大峡谷等门票及区间车未计入；若全部景区都去，建议再加约 250–350 元。机油保养按<b>2 次 × 382 元</b>计入，另建议预留轮胎、链条等易损件备用金。</div>
+  </div>
+
   <h2 class="sec" id="practical">装备清单与注意事项 <span class="en">Gear &amp; Safety</span></h2>
   <div class="practical rv">
     <h3>出发前</h3>
@@ -849,7 +939,6 @@
     </ol>
     <h3>门票与费用参考（2026 旺季，均以官方当日为准）</h3>
     <ol>
-      <li><b>禾木村</b>：门票 50 元＋区间车约 25 元（外来车辆禁入，需换乘区间车）。</li>
       <li><b>喀纳斯</b>：门票 160 元＋区间车一进 70 元／二进 110 元；<b>观鱼台</b>区间车 20 元另计。</li>
       <li><b>乌尔禾魔鬼城</b>：门票约 42 元＋区间车 20 元。</li>
       <li><b>赛里木湖</b>：门票 70 元（旺季）＋自驾服务费按车约 120 元／车（5 座及以下，需预约）／区间车 60 元。</li>
@@ -858,7 +947,7 @@
       <li><b>库车王府</b>：约 55 元。</li>
       <li><b>可选</b>：轮台塔里木胡杨林公园门票 45 元＋区间车 23 元；铁门关约 8 元。</li>
     </ol>
-    <div class="how"><b>备注：</b>65 岁以上／学生／现役军人等多有减免；赛里木湖 2026 年 8 月起自驾服务费改为按车收费，摩托车进出政策请行前单独确认；禾木／喀纳斯旺季须提前线上预约、刷身份证入园。</div>
+    <div class="how"><b>备注：</b>65 岁以上／学生／现役军人等多有减免；赛里木湖 2026 年 8 月起自驾服务费改为按车收费，摩托车进出政策请行前单独确认；喀纳斯旺季须提前线上预约、刷身份证入园。</div>
   </div>
 
   <footer>
@@ -967,13 +1056,16 @@
   setTimeout(function(){ if(!(window.AMap&&AMap.Driving)){ fallback(); } },10000);
 
   function amapInit(){
+    // 关键：高德地图必须在可见容器中初始化，否则瓦片不加载、complete 事件不触发，地图永远不显示
+    if(am){ am.style.display='block'; }
+    if(fb){ fb.style.display='none'; }
     var map=new AMap.Map('amap',{zoom:6, center:[86,44], lang:'zh_cn'});
     map.addControl(new AMap.ToolBar({position:'left-bottom', lite:true}));
     map.addControl(new AMap.Scale({position:'left-bottom', offset:[8,8]}));
     var stops=[
       {d:'D3',n:'乌鲁木齐',p:[87.6200,43.8256]},
       {d:'D4',n:'阿勒泰',p:[88.1383,47.8488]},
-      {d:'D5',n:'禾木',p:[87.1610,48.5686]},
+      {d:'D5',n:'贾登峪',p:[87.03,48.55]},
       {d:'D6',n:'喀纳斯',p:[87.0359,48.7994]},
       {d:'D7',n:'克拉玛依',p:[84.8892,45.5790]},
       {d:'D8',n:'赛里木湖',p:[81.1167,44.5940]},
@@ -1001,7 +1093,7 @@
     }
     function maybeShow(){ if(tilesReady && allDrawn){ showMap(); } }
     map.on('complete',function(){ tilesReady=true; maybeShow(); });
-    setTimeout(function(){ if(hasShown && !tilesReady && !allDrawn){ fallback(); } },15000);
+    setTimeout(function(){ if(!hasShown){ fallback(); } },15000);
     function addStops(){
       for(var i=0;i<stops.length;i++){
         var cls=(i===0)?'am-mk start':(i===stops.length-1?'am-mk end':'am-mk');
@@ -1017,9 +1109,20 @@
       dd.search(a.p,b.p,function(st,res){
         if(st==='complete'&&res.routes&&res.routes.length){
           var rt=res.routes[0];
-          var pl=new AMap.Polyline({path:rt.path, strokeColor:cols[idx%cols.length], strokeWeight:5, lineJoin:'round', lineCap:'round', showDir:true, zIndex:10});
-          lineObjs.push(pl); map.add(pl);
-          okLines++; totalKm+=rt.distance/1000; totalMin+=rt.time/60;
+          // v2.0：路线坐标在 steps[].path（兼容 v1.x 的 route.path）
+          var pts = (rt.path && rt.path.length) ? rt.path.slice() : [];
+          if(!pts.length && rt.steps){
+            for(var s=0;s<rt.steps.length;s++){
+              if(rt.steps[s].path && rt.steps[s].path.length){
+                pts = pts.concat(rt.steps[s].path);
+              }
+            }
+          }
+          if(pts.length){
+            var pl=new AMap.Polyline({path:pts, strokeColor:cols[idx%cols.length], strokeWeight:5, lineJoin:'round', lineCap:'round', showDir:true, zIndex:10});
+            lineObjs.push(pl); map.add(pl);
+            okLines++; totalKm+=rt.distance/1000; totalMin+=rt.time/60;
+          }
         }
         idx++; next();
       });
