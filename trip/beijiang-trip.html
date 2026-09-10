@@ -115,6 +115,7 @@
   .am-mk.start{background:#1d4ed8; border-color:#1d4ed8; color:#fff;}
   .am-mk.end{background:#15803d; border-color:#15803d; color:#fff;}
   .am-mk i{font-style:normal; font-weight:600; margin-left:4px;}
+  .am-mk + .am-tip{background:rgba(26,19,10,.92); border:1px solid var(--line); color:var(--sub); font-size:11px; letter-spacing:.5px; border-radius:6px; padding:2px 7px; white-space:nowrap; margin-top:5px; text-align:center; box-shadow:0 1px 5px rgba(0,0,0,.45);}
   .mapcard .mc-dot{fill:#2a2013; stroke:var(--gold); stroke-width:2.5;}
   .mapcard .mc-day{font-size:9.5px; fill:var(--gold-hi); font-weight:700; text-anchor:middle;}
   .mapcard .mc-city{font-size:13px; fill:#f2e8cd; font-weight:600; text-anchor:middle; paint-order:stroke; stroke:#1a130a; stroke-width:4; stroke-linejoin:round;}
@@ -438,7 +439,7 @@
   <div class="mapcard rv">
     <div class="mapcard-head">
       <span class="mapcard-title">北疆金秋环线路线图</span>
-      <span class="mapcard-sub" id="amapInfo">DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· 高德真实驾车路线（需联网）</span>
+      <span class="mapcard-sub" id="amapInfo">DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· 12 个途经点驾车规划（含阿禾、伊昭公路）· 需联网加载</span>
     </div>
     <div class="mapcard-svg">
       <div id="amap" class="amap-box" style="display:none;"></div>
@@ -1130,7 +1131,7 @@
     if(am){am.style.display='none';}
     if(fb){fb.style.display='block';}
     var sub=document.getElementById('amapInfo');
-    if(sub){ sub.innerHTML='DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· 路线概览（真实驾车线路需联网并经高德授权域名访问）'; }
+    if(sub){ sub.innerHTML='DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· 路线概览（驾车规划需联网，加载失败时显示此图）'; }
   }
   window.__amapBoot=function(){ if(window.AMap&&AMap.Driving){ try{ amapInit(); }catch(e){ fallback(); } } else { fallback(); } };
   var s=document.createElement('script');
@@ -1143,75 +1144,105 @@
     // 关键：高德地图必须在可见容器中初始化，否则瓦片不加载、complete 事件不触发，地图永远不显示
     if(am){ am.style.display='block'; }
     if(fb){ fb.style.display='none'; }
-    var map=new AMap.Map('amap',{zoom:6, center:[86,44], lang:'zh_cn'});
+    // 参照官方示例：暗色地图样式，与页面整体风格统一
+    var map=new AMap.Map('amap',{zoom:6, center:[86,44], lang:'zh_cn', mapStyle:'amap://styles/dark'});
     map.addControl(new AMap.ToolBar({position:'left-bottom', lite:true}));
     map.addControl(new AMap.Scale({position:'left-bottom', offset:[8,8]}));
+    // Day3→Day11 途经点：起点乌鲁木齐，终点库尔勒，中间途经点按逐日路书顺序（含阿禾公路、伊昭公路）
     var stops=[
-      {d:'D3',n:'乌鲁木齐',p:[87.6200,43.8256]},
+      {d:'D3',n:'乌鲁木齐',p:[87.6200,43.8256],kind:'start'},
       {d:'D4',n:'阿勒泰',p:[88.1383,47.8488]},
+      {d:'疏影',n:'观景台',p:[88.1263,48.3567],tip:'D4 阿禾公路 K113'},
+      {d:'禾木',n:'',p:[87.4790,48.5340],tip:'D4 阿禾公路终点'},
       {d:'D5',n:'贾登峪',p:[87.03,48.55]},
       {d:'D6',n:'喀纳斯',p:[87.0359,48.7994]},
       {d:'D7',n:'克拉玛依',p:[84.8892,45.5790]},
       {d:'D8',n:'赛里木湖',p:[81.1167,44.5940]},
+      {d:'伊宁',n:'',p:[81.2779,43.9228],tip:'D8 伊昭公路'},
+      {d:'察布查尔',n:'',p:[81.1493,43.8388],tip:'D8 伊昭公路'},
       {d:'D9',n:'昭苏',p:[81.1300,43.1570]},
       {d:'D10',n:'巴音布鲁克',p:[84.1670,43.0300]},
       {d:'D11',n:'库车',p:[82.9620,41.7170]},
-      {d:'终',n:'库尔勒',p:[86.1600,41.7700]}
+      {d:'终',n:'库尔勒',p:[86.1600,41.7700],kind:'end'}
     ];
-    var cols=['#f2a93b','#f5bb2e','#47bd95','#d9763a','#5ab0e5','#8cc176','#ec7c40','#da5347','#eecd30','#47bd95'];
-    var markObjs=[], lineObjs=[], idx=0, okLines=0, totalKm=0, totalMin=0;
-    var tilesReady=false, allDrawn=false, hasShown=false;
+    var markObjs=[], lineObjs=[], hasShown=false, tilesReady=false, routeReady=false;
     function showMap(){
       if(hasShown) return; hasShown=true;
       if(am){am.style.display='block';}
       if(fb){fb.style.display='none';}
-      var el=document.getElementById('amapInfo'), t;
-      t='DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· 全程驾车约 '+Math.round(totalKm)+' km · 约 '+Math.round(totalMin)+' 分钟';
-      if(okLines<9){ t+=' · 部分路段未返回'; }
-      if(el){ el.innerHTML=t; el.style.color='#3fae8a'; }
       // 容器刚从 display:none 恢复，需等布局完成并通知高德 resize 后再 fit
       setTimeout(function(){
         try{ if(map.resize) map.resize(); }catch(e){}
-        map.setFitView([].concat(markObjs,lineObjs),false,[50,50,50,50]);
+        map.setFitView([].concat(markObjs,lineObjs),false,[60,60,60,60]);
       },80);
     }
-    function maybeShow(){ if(tilesReady && allDrawn){ showMap(); } }
+    function maybeShow(){ if(tilesReady && routeReady){ showMap(); } }
     map.on('complete',function(){ tilesReady=true; maybeShow(); });
-    setTimeout(function(){ if(!hasShown){ fallback(); } },15000);
+    setTimeout(function(){ if(!hasShown){ fallback(); } },20000);
+
     function addStops(){
       for(var i=0;i<stops.length;i++){
-        var cls=(i===0)?'am-mk start':(i===stops.length-1?'am-mk end':'am-mk');
-        var mk=new AMap.Marker({position:stops[i].p, anchor:'bottom-center', zIndex:20,
-          content:'<div class="'+cls+'">'+stops[i].d+'<i>'+stops[i].n+'</i></div>'});
+        var cls=stops[i].kind==='start'?'am-mk start':(stops[i].kind==='end'?'am-mk end':'am-mk');
+        var html='<div class="'+cls+'">'+stops[i].d+(stops[i].n?'<i>'+stops[i].n+'</i>':'')+'</div>';
+        if(stops[i].tip){ html+='<div class="am-tip">'+stops[i].tip+'</div>'; }
+        var mk=new AMap.Marker({position:stops[i].p, anchor:'bottom-center', zIndex:20, content:html});
         markObjs.push(mk); map.add(mk);
       }
     }
-    function next(){
-      if(idx>=stops.length-1){ allDrawn=true; maybeShow(); return; }
-      var a=stops[idx], b=stops[idx+1];
-      var dd=new AMap.Driving({policy:AMap.DrivingPolicy.LEAST_TIME, showTraffic:false});
-      dd.search(a.p,b.p,function(st,res){
-        if(st==='complete'&&res.routes&&res.routes.length){
-          var rt=res.routes[0];
-          // v2.0：路线坐标在 steps[].path（兼容 v1.x 的 route.path）
-          var pts = (rt.path && rt.path.length) ? rt.path.slice() : [];
-          if(!pts.length && rt.steps){
-            for(var s=0;s<rt.steps.length;s++){
-              if(rt.steps[s].path && rt.steps[s].path.length){
-                pts = pts.concat(rt.steps[s].path);
-              }
-            }
-          }
-          if(pts.length){
-            var pl=new AMap.Polyline({path:pts, strokeColor:cols[idx%cols.length], strokeWeight:5, lineJoin:'round', lineCap:'round', showDir:true, zIndex:10});
-            lineObjs.push(pl); map.add(pl);
-            okLines++; totalKm+=rt.distance/1000; totalMin+=rt.time/60;
-          }
+
+    // 参照官方示例：将 DrivingRoute 解析为 Polyline path（v2.0 坐标在 steps[].path，兼容 v1.x route.path）
+    function parseRouteToPath(route){
+      var path=[];
+      if(route.path && route.path.length){ return route.path.slice(); }
+      for(var i=0,l=(route.steps?route.steps.length:0);i<l;i++){
+        var step=route.steps[i];
+        for(var j=0,n=(step.path?step.path.length:0);j<n;j++){
+          path.push(step.path[j]);
         }
-        idx++; next();
-      });
+      }
+      return path;
     }
-    addStops(); next();
+
+    // 参照官方示例：一次驾车路线规划，起点 → 途经点 → 终点
+    var driving=new AMap.Driving({policy:AMap.DrivingPolicy.LEAST_TIME, showTraffic:false});
+    var origin=new AMap.LngLat(stops[0].p[0], stops[0].p[1]);
+    var dest=new AMap.LngLat(stops[stops.length-1].p[0], stops[stops.length-1].p[1]);
+    var ways=[];
+    for(var i=1;i<stops.length-1;i++){
+      ways.push(new AMap.LngLat(stops[i].p[0], stops[i].p[1]));
+    }
+    driving.search(origin, dest, {waypoints: ways}, function(status, result){
+      if(status==='complete' && result.routes && result.routes.length){
+        var rt=result.routes[0];
+        var pts=parseRouteToPath(rt);
+        var el=document.getElementById('amapInfo');
+        if(el){
+          var metaTxt='DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· '+ways.length+' 个途经点 · 全程驾车约 '+Math.round(rt.distance/1000)+' km · 约 '+Math.round(rt.time/3600)+' 小时';
+          if(!pts.length){ metaTxt+=' · 路线坐标为空'; }
+          el.innerHTML=metaTxt; el.style.color='#3fae8a';
+        }
+        if(pts.length){
+          // 参照官方示例 driving-custom：蓝色主线 + 深色描边 + 圆角
+          var routeLine=new AMap.Polyline({
+            path: pts,
+            isOutline: true,
+            outlineColor: '#2a1c08',
+            borderWeight: 2,
+            strokeWeight: 5,
+            strokeOpacity: 0.95,
+            strokeColor: '#0091ff',
+            lineJoin: 'round',
+            lineCap: 'round',
+            zIndex: 12
+          });
+          lineObjs.push(routeLine); map.add(routeLine);
+        }
+        routeReady=true; maybeShow();
+      } else {
+        fallback();
+      }
+    });
+    addStops();
   }
   window.__amapInit=amapInit;
 })();
