@@ -41,5 +41,31 @@ export default defineConfig({
             prev: '上一篇',
             next: '下一篇'
         }
+    },
+
+    /*
+     * 规避 Windows 下 dev server 偶发 EBUSY 崩溃。
+     *
+     * 部分程序写入文件时采用"原子写入"：先在同目录的私有临时目录里写
+     * `.foo.html.<PID>.<UUID>.tmpdir/foo.html.tmp`，写完再 rename 覆盖目标文件。
+     * Vite 的 fs.watch 会去监听这个中转文件，而此刻它已被占用或已被删除，
+     * Windows 只能返回 EBUSY（Unix 允许 watch 已删除的文件，故不报错）；
+     * Vite 又没有监听 FSWatcher 的 'error' 事件，未捕获异常会直接终止 dev server。
+     *
+     * 这里让 watcher 直接无视这类临时文件/目录（glob 与正则双保险，
+     * 正则同时兼容 / 与 \ 两种路径分隔符）。
+     */
+    vite: {
+        server: {
+            watch: {
+                ignored: [
+                    '**/.*.tmpdir/**',
+                    '**/*.tmpdir/**',
+                    '**/*.tmp',
+                    /\.tmpdir([\\/]|$)/,
+                    /\.tmp([\\/]|$)/
+                ]
+            }
+        }
     }
 })
