@@ -8,15 +8,709 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" data-page-node-id="9D12bclJ83KIgnijxfHNwh">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-page-node-id="oIaUz0t5Vy3GdwHOHAiCUF">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" data-page-node-id="iCVSpbwGMUe9Er6xpmtKwD">
+<script>/* bj-theme-early *//* 主题：首屏前应用已保存配色，避免闪动 */(function(){try{var t=localStorage.getItem('bj-theme');if(t&&t!=='autumn'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
 <style>
-  :root{
-    --ink:#f8f0e0; --ink-dim:#e2d7bf; --sub:#b9ac8b;
-    --bg:#1a130a; --bg2:#231a0f; --card:#2a2013; --card2:#342816;
-    --line:#4b3b23; --line-soft:#3b2e1b;
-    --gold:#f2a93b; --gold-hi:#ffd06f; --amber:#dd8130; --rust:#c85a2c;
+  /* ===== 主题：金秋（默认） ===== */
+:root{
+    --ink:#f8f0e0;
+    --ink-dim:#e2d7bf;
+    --sub:#b9ac8b;
+    --bg:#1a130a;
+    --bg2:#231a0f;
+    --card:#2a2013;
+    --card2:#342816;
+    --line:#4b3b23;
+    --line-soft:#3b2e1b;
+    --gold:#f2a93b;
+    --gold-hi:#ffd06f;
+    --amber:#dd8130;
+    --rust:#c85a2c;
     --cream:#fcf2df;
-    --serif:"Noto Serif SC",serif; --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
-    --num:"Oswald","PingFang SC",sans-serif;
+    --on-acc:#2a1c08;
+    --sel-fg:#2a1c08;
+    --bg-glow-a:rgba(242,169,59,.10);
+    --bg-glow-a0:rgba(242,169,59,0);
+    --bg-glow-b:rgba(200,90,44,.06);
+    --bg-glow-b0:rgba(200,90,44,0);
+    --sh-1:rgba(0,0,0,.35);
+    --sh-2:rgba(0,0,0,.5);
+    --sh-3:rgba(0,0,0,.32);
+    --sh-4:rgba(0,0,0,.45);
+    --sh-sum:rgba(242,169,59,.12);
+    --rpm-track:#332713;
+    --rpm-bar:linear-gradient(90deg,var(--amber),var(--gold),var(--gold-hi));
+    --rpm-glow:rgba(242,169,59,.6);
+    --hero-scrim:linear-gradient(180deg,rgba(64,36,8,.34) 0%,rgba(40,24,8,.16) 34%,rgba(26,19,10,.86) 74%,var(--bg) 100%);
+    --hero-fallback:#241a0e;
+    --hero-fg:#fcf2df;
+    --hero-sub-fg:#e2d7bf;
+    --hero-kicker:#ffd06f;
+    --hero-rule:#f2a93b;
+    --hero-em:#ffd06f;
+    --hero-shadow:rgba(0,0,0,.6);
+    --chip-bg:rgba(46,30,10,.6);
+    --chip-bd:rgba(242,169,59,.55);
+    --chip-fg:#ffd06f;
+    --th-bg:#3a2b18;
+    --th-fg:#f2a93b;
+    --tr-hover:#37291a;
+    --map-bg:#171006;
+    --map-panel:#251c10;
+    --map-casing:#1a130a;
+    --map-terrain:#9a865e;
+    --map-mountain:#8f7d58;
+    --map-mountain-line:#41321d;
+    --map-city:#f2e8cd;
+    --map-dot:#2a2013;
+    --map-route:#f2a93b;
+    --mk-bg:#2a2013;
+    --mk-start:#1d4ed8;
+    --mk-end:#15803d;
+    --map-start-fg:#7db4ff;
+    --map-end-fg:#6fdc9a;
+    --route-line:#0091ff;
+    --info-fg:#3fae8a;
+    --tip-bg:rgba(26,19,10,.92);
+    --overlay:rgba(8,6,3,.6);
+    --toc-bg:#251c10;
+    --toc-chip:#3a2b18;
+    --toc-active:#3a2b18;
+    --toc-scroll:#4b3b26;
+    --toc-group-fg:#a8946a;
+    --toc-sec-fg:#a89a72;
+    --meter-track:#221a0d;
+    --note-bg:rgba(42,32,19,.5);
+    --brow-bg:rgba(42,32,19,.6);
+    --s1:#4f9fd8;
+    --s1a:#2f86d6;
+    --s1b:#4f9fd8;
+    --s1f:#0c1f33;
+    --s2:#2f9e78;
+    --s2a:#1f8378;
+    --s2b:#2f9e78;
+    --s2f:#0c1f33;
+    --s3:#dba22c;
+    --s3a:#c08617;
+    --s3b:#e8bd52;
+    --s3f:#0c1f33;
+    --s4:#dd7a3c;
+    --s4a:#c05f22;
+    --s4b:#e89a5c;
+    --s4f:#0c1f33;
+    --s5:#cf4b3c;
+    --s5a:#a83a2d;
+    --s5b:#cf4b3c;
+    --s5f:#ffffff;
+    --tag-a-bg:rgba(242,169,59,.12);
+    --tag-a-fg:#ffd06f;
+    --tag-a-bd:rgba(242,169,59,.4);
+    --tag-b-bg:rgba(110,155,235,.14);
+    --tag-b-fg:#a9c9f8;
+    --tag-b-bd:rgba(110,155,235,.4);
+    --tag-c-bg:rgba(230,100,62,.14);
+    --tag-c-fg:#f7a288;
+    --tag-c-bd:rgba(230,100,62,.45);
+    --how-bg:rgba(242,169,59,.11);
+    --how-fg:#f2ddb0;
+    --how-bd:rgba(242,169,59,.48);
+    --bc-fg:#ffd06f;
+    --bc-bg:rgba(242,169,59,.08);
+    --bc-bd:rgba(242,169,59,.4);
+    --d-road:#9aa1b0;
+    --d-desert:#e5ac52;
+    --d-birch:#f5bb2e;
+    --d-kanas:#47bd95;
+    --d-yardang:#d9763a;
+    --d-lake:#5ab0e5;
+    --d-valley:#8cc176;
+    --d-sunset:#ec7c40;
+    --d-canyon:#da5347;
+    --d-poplar:#eecd30;
+  }
+  /* ===== 主题：雪山白 / 天空蓝 ===== */
+html[data-theme="snow"]{
+    --ink:#12263c;
+    --ink-dim:#37516e;
+    --sub:#5d7896;
+    --bg:#f4f8fc;
+    --bg2:#eaf2fa;
+    --card:#ffffff;
+    --card2:#f7fbff;
+    --line:#d3e2f0;
+    --line-soft:#e7f0f8;
+    --gold:#2f86d6;
+    --gold-hi:#1a6cbb;
+    --amber:#3a76a4;
+    --rust:#173f6b;
+    --cream:#0c1f33;
+    --on-acc:#ffffff;
+    --sel-fg:#ffffff;
+    --bg-glow-a:rgba(47,134,214,.10);
+    --bg-glow-a0:rgba(47,134,214,0);
+    --bg-glow-b:rgba(23,63,107,.05);
+    --bg-glow-b0:rgba(23,63,107,0);
+    --sh-1:rgba(23,63,107,.10);
+    --sh-2:rgba(23,63,107,.12);
+    --sh-3:rgba(23,63,107,.09);
+    --sh-4:rgba(23,63,107,.10);
+    --sh-sum:rgba(23,63,107,.06);
+    --rpm-track:#dce8f4;
+    --rpm-bar:linear-gradient(90deg,#1a6cbb,#2f86d6,#6fb4e8);
+    --rpm-glow:rgba(47,134,214,.4);
+    --hero-scrim:linear-gradient(180deg,rgba(46,110,170,.22) 0%,rgba(120,170,215,.10) 30%,rgba(20,48,82,.55) 64%,rgba(12,32,58,.86) 88%,var(--bg) 100%);
+    --hero-fallback:#dbe9f6;
+    --hero-fg:#ffffff;
+    --hero-sub-fg:rgba(255,255,255,.9);
+    --hero-kicker:#d6e9fb;
+    --hero-rule:#8fc4ec;
+    --hero-em:#bfe0fb;
+    --hero-shadow:rgba(8,26,48,.55);
+    --chip-bg:rgba(16,44,78,.45);
+    --chip-bd:rgba(190,225,250,.55);
+    --chip-fg:#eaf5ff;
+    --th-bg:#e8f2fb;
+    --th-fg:#1a6cbb;
+    --tr-hover:#eef6fd;
+    --map-bg:#eaf2fa;
+    --map-panel:#eef5fc;
+    --map-casing:#ffffff;
+    --map-terrain:#7c93ab;
+    --map-mountain:#8aa0b6;
+    --map-mountain-line:#dbe7f3;
+    --map-city:#13293f;
+    --map-dot:#ffffff;
+    --map-route:#2f86d6;
+    --mk-bg:#ffffff;
+    --mk-start:#1d4ed8;
+    --mk-end:#15803d;
+    --map-start-fg:#1d5fb8;
+    --map-end-fg:#1f7a52;
+    --route-line:#0091ff;
+    --info-fg:#1f8378;
+    --tip-bg:rgba(255,255,255,.95);
+    --overlay:rgba(12,30,50,.45);
+    --toc-bg:#ffffff;
+    --toc-chip:#e8f2fb;
+    --toc-active:#e8f2fb;
+    --toc-scroll:#c6d7e8;
+    --toc-group-fg:#5f778e;
+    --toc-sec-fg:#5d7896;
+    --meter-track:#e3ecf6;
+    --note-bg:rgba(233,242,250,.9);
+    --brow-bg:rgba(240,246,252,.9);
+    --s1:#4f9fd8;
+    --s1a:#2f86d6;
+    --s1b:#4f9fd8;
+    --s1f:#0c1f33;
+    --s2:#2f9e78;
+    --s2a:#1f8378;
+    --s2b:#2f9e78;
+    --s2f:#0c1f33;
+    --s3:#dba22c;
+    --s3a:#c08617;
+    --s3b:#e8bd52;
+    --s3f:#0c1f33;
+    --s4:#dd7a3c;
+    --s4a:#c05f22;
+    --s4b:#e89a5c;
+    --s4f:#0c1f33;
+    --s5:#cf4b3c;
+    --s5a:#a83a2d;
+    --s5b:#cf4b3c;
+    --s5f:#ffffff;
+    --tag-a-bg:rgba(47,134,214,.10);
+    --tag-a-fg:#1a6cbb;
+    --tag-a-bd:rgba(47,134,214,.35);
+    --tag-b-bg:rgba(47,134,214,.10);
+    --tag-b-fg:#1f6fae;
+    --tag-b-bd:rgba(47,134,214,.30);
+    --tag-c-bg:rgba(207,75,60,.09);
+    --tag-c-fg:#b8433a;
+    --tag-c-bd:rgba(207,75,60,.32);
+    --how-bg:rgba(47,134,214,.08);
+    --how-fg:#295f8c;
+    --how-bd:rgba(47,134,214,.35);
+    --bc-fg:#1a6cbb;
+    --bc-bg:rgba(47,134,214,.07);
+    --bc-bd:rgba(47,134,214,.35);
+    --d-road:#546a80;
+    --d-desert:#2f739e;
+    --d-birch:#2c6fa5;
+    --d-kanas:#1f8378;
+    --d-yardang:#4a6d99;
+    --d-lake:#1a6fb0;
+    --d-valley:#2a7d59;
+    --d-sunset:#4a66a8;
+    --d-canyon:#2f5382;
+    --d-poplar:#277486;
+  }
+  /* ===== 主题：高亮橙 ===== */
+html[data-theme="orange"]{
+    --ink:#2b1608;
+    --ink-dim:#57392a;
+    --sub:#8a6a55;
+    --bg:#fff8f2;
+    --bg2:#fdeee2;
+    --card:#ffffff;
+    --card2:#fffaf6;
+    --line:#f6d9c2;
+    --line-soft:#fbe8db;
+    --gold:#f0560f;
+    --gold-hi:#c53d05;
+    --amber:#a8471a;
+    --rust:#7a2a08;
+    --cream:#2a1206;
+    --on-acc:#2a1206;
+    --sel-fg:#2a1206;
+    --bg-glow-a:rgba(240,86,15,.10);
+    --bg-glow-a0:rgba(240,86,15,0);
+    --bg-glow-b:rgba(122,42,8,.06);
+    --bg-glow-b0:rgba(122,42,8,0);
+    --sh-1:rgba(122,42,8,.10);
+    --sh-2:rgba(122,42,8,.12);
+    --sh-3:rgba(122,42,8,.09);
+    --sh-4:rgba(122,42,8,.10);
+    --sh-sum:rgba(122,42,8,.07);
+    --rpm-track:#f8ddcb;
+    --rpm-bar:linear-gradient(90deg,#7a2a08,#f0560f,#ffa245);
+    --rpm-glow:rgba(240,86,15,.4);
+    --hero-scrim:linear-gradient(180deg,rgba(150,60,10,.26) 0%,rgba(200,110,50,.10) 30%,rgba(110,40,8,.58) 64%,rgba(70,26,6,.86) 88%,var(--bg) 100%);
+    --hero-fallback:#f0d9c6;
+    --hero-fg:#ffffff;
+    --hero-sub-fg:rgba(255,255,255,.9);
+    --hero-kicker:#ffd9b0;
+    --hero-rule:#ffa245;
+    --hero-em:#ffd0a0;
+    --hero-shadow:rgba(60,20,4,.55);
+    --chip-bg:rgba(90,32,8,.45);
+    --chip-bd:rgba(255,215,175,.55);
+    --chip-fg:#ffe9d6;
+    --th-bg:#fbe4d4;
+    --th-fg:#c53d05;
+    --tr-hover:#fdeee2;
+    --map-bg:#fdeee2;
+    --map-panel:#fff6ee;
+    --map-casing:#ffffff;
+    --map-terrain:#a8866a;
+    --map-mountain:#b8977c;
+    --map-mountain-line:#f0d5bf;
+    --map-city:#2b1608;
+    --map-dot:#ffffff;
+    --map-route:#f0560f;
+    --mk-bg:#ffffff;
+    --mk-start:#1d4ed8;
+    --mk-end:#15803d;
+    --map-start-fg:#1d5fb8;
+    --map-end-fg:#1a7a4c;
+    --route-line:#0091ff;
+    --info-fg:#a8471a;
+    --tip-bg:rgba(255,255,255,.95);
+    --overlay:rgba(60,24,6,.45);
+    --toc-bg:#ffffff;
+    --toc-chip:#fbe4d4;
+    --toc-active:#fbe4d4;
+    --toc-scroll:#f0cdb2;
+    --toc-group-fg:#8a6a55;
+    --toc-sec-fg:#8a6a55;
+    --meter-track:#f8e3d3;
+    --note-bg:rgba(253,238,226,.9);
+    --brow-bg:rgba(255,246,238,.9);
+    --s1:#4f9fd8;
+    --s1a:#2f86d6;
+    --s1b:#4f9fd8;
+    --s1f:#0c1f33;
+    --s2:#2f9e78;
+    --s2a:#1f8378;
+    --s2b:#2f9e78;
+    --s2f:#0c1f33;
+    --s3:#dba22c;
+    --s3a:#c08617;
+    --s3b:#e8bd52;
+    --s3f:#0c1f33;
+    --s4:#dd7a3c;
+    --s4a:#c05f22;
+    --s4b:#e89a5c;
+    --s4f:#0c1f33;
+    --s5:#cf4b3c;
+    --s5a:#a83a2d;
+    --s5b:#cf4b3c;
+    --s5f:#ffffff;
+    --tag-a-bg:rgba(240,86,15,.10);
+    --tag-a-fg:#c53d05;
+    --tag-a-bd:rgba(240,86,15,.35);
+    --tag-b-bg:rgba(168,71,26,.10);
+    --tag-b-fg:#a8471a;
+    --tag-b-bd:rgba(168,71,26,.30);
+    --tag-c-bg:rgba(154,52,18,.09);
+    --tag-c-fg:#9a3412;
+    --tag-c-bd:rgba(154,52,18,.32);
+    --how-bg:rgba(240,86,15,.08);
+    --how-fg:#8c3a12;
+    --how-bd:rgba(240,86,15,.35);
+    --bc-fg:#c53d05;
+    --bc-bg:rgba(240,86,15,.07);
+    --bc-bd:rgba(240,86,15,.35);
+    --d-road:#6b6f76;
+    --d-desert:#b45309;
+    --d-birch:#a16207;
+    --d-kanas:#9a3412;
+    --d-yardang:#c2410c;
+    --d-lake:#a8471a;
+    --d-valley:#7c6f2a;
+    --d-sunset:#b5561a;
+    --d-canyon:#a02c1c;
+    --d-poplar:#8a7500;
+  }
+  /* ===== 主题：沙漠黄 ===== */
+html[data-theme="desert"]{
+    --ink:#2f2415;
+    --ink-dim:#5a4a2f;
+    --sub:#7d6a45;
+    --bg:#fbf6ec;
+    --bg2:#f5ecd9;
+    --card:#fffdf8;
+    --card2:#fdf9f1;
+    --line:#e8d9ba;
+    --line-soft:#f2e8d3;
+    --gold:#e0a521;
+    --gold-hi:#8f6a0a;
+    --amber:#7d6a45;
+    --rust:#5c4718;
+    --cream:#241a08;
+    --on-acc:#33260c;
+    --sel-fg:#33260c;
+    --bg-glow-a:rgba(224,165,33,.12);
+    --bg-glow-a0:rgba(224,165,33,0);
+    --bg-glow-b:rgba(92,71,24,.06);
+    --bg-glow-b0:rgba(92,71,24,0);
+    --sh-1:rgba(92,71,24,.10);
+    --sh-2:rgba(92,71,24,.12);
+    --sh-3:rgba(92,71,24,.09);
+    --sh-4:rgba(92,71,24,.10);
+    --sh-sum:rgba(92,71,24,.07);
+    --rpm-track:#f0e3c8;
+    --rpm-bar:linear-gradient(90deg,#5c4718,#e0a521,#f5d67a);
+    --rpm-glow:rgba(224,165,33,.45);
+    --hero-scrim:linear-gradient(180deg,rgba(160,125,40,.26) 0%,rgba(205,175,105,.10) 30%,rgba(110,84,28,.58) 64%,rgba(72,54,18,.86) 88%,var(--bg) 100%);
+    --hero-fallback:#eadfc4;
+    --hero-fg:#ffffff;
+    --hero-sub-fg:rgba(255,255,255,.9);
+    --hero-kicker:#f7e2ab;
+    --hero-rule:#e0a521;
+    --hero-em:#f7dd9a;
+    --hero-shadow:rgba(58,42,12,.55);
+    --chip-bg:rgba(88,66,22,.45);
+    --chip-bd:rgba(245,225,175,.6);
+    --chip-fg:#fbf0d4;
+    --th-bg:#f0e4c8;
+    --th-fg:#8f6a0a;
+    --tr-hover:#f8f0dd;
+    --map-bg:#f5ecd9;
+    --map-panel:#fdf8ee;
+    --map-casing:#ffffff;
+    --map-terrain:#a08a5e;
+    --map-mountain:#b09a70;
+    --map-mountain-line:#e6d8b8;
+    --map-city:#2f2415;
+    --map-dot:#ffffff;
+    --map-route:#e0a521;
+    --mk-bg:#fffdf8;
+    --mk-start:#1d4ed8;
+    --mk-end:#15803d;
+    --map-start-fg:#1d5fb8;
+    --map-end-fg:#1a7a4c;
+    --route-line:#0091ff;
+    --info-fg:#7d6a45;
+    --tip-bg:rgba(255,253,248,.95);
+    --overlay:rgba(58,44,14,.45);
+    --toc-bg:#fffdf8;
+    --toc-chip:#f0e4c8;
+    --toc-active:#f0e4c8;
+    --toc-scroll:#e4d3ad;
+    --toc-group-fg:#7d6a45;
+    --toc-sec-fg:#7d6a45;
+    --meter-track:#f2e8d3;
+    --note-bg:rgba(248,240,221,.9);
+    --brow-bg:rgba(253,249,241,.9);
+    --s1:#4f9fd8;
+    --s1a:#2f86d6;
+    --s1b:#4f9fd8;
+    --s1f:#0c1f33;
+    --s2:#2f9e78;
+    --s2a:#1f8378;
+    --s2b:#2f9e78;
+    --s2f:#0c1f33;
+    --s3:#dba22c;
+    --s3a:#c08617;
+    --s3b:#e8bd52;
+    --s3f:#0c1f33;
+    --s4:#dd7a3c;
+    --s4a:#c05f22;
+    --s4b:#e89a5c;
+    --s4f:#0c1f33;
+    --s5:#cf4b3c;
+    --s5a:#a83a2d;
+    --s5b:#cf4b3c;
+    --s5f:#ffffff;
+    --tag-a-bg:rgba(224,165,33,.12);
+    --tag-a-fg:#8f6a0a;
+    --tag-a-bd:rgba(224,165,33,.4);
+    --tag-b-bg:rgba(125,106,69,.12);
+    --tag-b-fg:#6b5a38;
+    --tag-b-bd:rgba(125,106,69,.32);
+    --tag-c-bg:rgba(143,74,28,.09);
+    --tag-c-fg:#8f4a1c;
+    --tag-c-bd:rgba(143,74,28,.32);
+    --how-bg:rgba(224,165,33,.10);
+    --how-fg:#6d5410;
+    --how-bd:rgba(224,165,33,.4);
+    --bc-fg:#8f6a0a;
+    --bc-bg:rgba(224,165,33,.08);
+    --bc-bd:rgba(224,165,33,.4);
+    --d-road:#6f6a55;
+    --d-desert:#8f6a0a;
+    --d-birch:#7d6a2c;
+    --d-kanas:#5f6b3a;
+    --d-yardang:#9a6b1f;
+    --d-lake:#7a6a3d;
+    --d-valley:#6b7040;
+    --d-sunset:#a85a1a;
+    --d-canyon:#8f4a1c;
+    --d-poplar:#857413;
+  }
+  /* ===== 主题：沥青黑 ===== */
+html[data-theme="asphalt"]{
+    --ink:#eef1f4;
+    --ink-dim:#c3cad1;
+    --sub:#8d97a1;
+    --bg:#16181b;
+    --bg2:#1d2024;
+    --card:#22262a;
+    --card2:#2a2f34;
+    --line:#3a4046;
+    --line-soft:#2e3338;
+    --gold:#f5b323;
+    --gold-hi:#ffc94d;
+    --amber:#c9a227;
+    --rust:#e08a3c;
+    --cream:#f4f7fa;
+    --on-acc:#1a1204;
+    --sel-fg:#1a1204;
+    --bg-glow-a:rgba(245,179,35,.07);
+    --bg-glow-a0:rgba(245,179,35,0);
+    --bg-glow-b:rgba(255,255,255,.03);
+    --bg-glow-b0:rgba(255,255,255,0);
+    --sh-1:rgba(0,0,0,.45);
+    --sh-2:rgba(0,0,0,.55);
+    --sh-3:rgba(0,0,0,.4);
+    --sh-4:rgba(0,0,0,.5);
+    --sh-sum:rgba(0,0,0,.3);
+    --rpm-track:#26292d;
+    --rpm-bar:linear-gradient(90deg,var(--amber),var(--gold),var(--gold-hi));
+    --rpm-glow:rgba(245,179,35,.5);
+    --hero-scrim:linear-gradient(180deg,rgba(10,11,13,.5) 0%,rgba(14,16,19,.28) 32%,rgba(12,14,16,.82) 70%,var(--bg) 100%);
+    --hero-fallback:#1a1d21;
+    --hero-fg:#ffffff;
+    --hero-sub-fg:rgba(255,255,255,.85);
+    --hero-kicker:#ffd76e;
+    --hero-rule:#f5b323;
+    --hero-em:#ffd76e;
+    --hero-shadow:rgba(0,0,0,.65);
+    --chip-bg:rgba(24,27,31,.6);
+    --chip-bd:rgba(245,179,35,.5);
+    --chip-fg:#ffd76e;
+    --th-bg:#2d3238;
+    --th-fg:#ffc94d;
+    --tr-hover:#2b3036;
+    --map-bg:#1a1e22;
+    --map-panel:#1d2126;
+    --map-casing:#0e1013;
+    --map-terrain:#7f8b96;
+    --map-mountain:#95a1ac;
+    --map-mountain-line:#333a41;
+    --map-city:#e8edf2;
+    --map-dot:#22262a;
+    --map-route:#f5b323;
+    --mk-bg:#22262a;
+    --mk-start:#1d4ed8;
+    --mk-end:#15803d;
+    --map-start-fg:#7db4ff;
+    --map-end-fg:#6fdc9a;
+    --route-line:#0091ff;
+    --info-fg:#6fdc9a;
+    --tip-bg:rgba(20,22,25,.95);
+    --overlay:rgba(6,7,9,.65);
+    --toc-bg:#1b1f23;
+    --toc-chip:#2d3238;
+    --toc-active:#2d3238;
+    --toc-scroll:#454d55;
+    --toc-group-fg:#8d97a1;
+    --toc-sec-fg:#9aa4ae;
+    --meter-track:#22272c;
+    --note-bg:rgba(38,43,48,.85);
+    --brow-bg:rgba(34,38,42,.85);
+    --s1:#4f9fd8;
+    --s1a:#2f86d6;
+    --s1b:#4f9fd8;
+    --s1f:#0c1f33;
+    --s2:#2f9e78;
+    --s2a:#1f8378;
+    --s2b:#2f9e78;
+    --s2f:#0c1f33;
+    --s3:#dba22c;
+    --s3a:#c08617;
+    --s3b:#e8bd52;
+    --s3f:#0c1f33;
+    --s4:#dd7a3c;
+    --s4a:#c05f22;
+    --s4b:#e89a5c;
+    --s4f:#0c1f33;
+    --s5:#cf4b3c;
+    --s5a:#a83a2d;
+    --s5b:#cf4b3c;
+    --s5f:#ffffff;
+    --tag-a-bg:rgba(245,179,35,.14);
+    --tag-a-fg:#ffd76e;
+    --tag-a-bd:rgba(245,179,35,.4);
+    --tag-b-bg:rgba(90,150,210,.16);
+    --tag-b-fg:#9cc4ea;
+    --tag-b-bd:rgba(90,150,210,.4);
+    --tag-c-bg:rgba(215,90,70,.16);
+    --tag-c-fg:#f0a08c;
+    --tag-c-bd:rgba(215,90,70,.45);
+    --how-bg:rgba(245,179,35,.08);
+    --how-fg:#e8cf9a;
+    --how-bd:rgba(245,179,35,.35);
+    --bc-fg:#ffd76e;
+    --bc-bg:rgba(245,179,35,.10);
+    --bc-bd:rgba(245,179,35,.35);
+    --d-road:#8b98a6;
+    --d-desert:#d9a03c;
+    --d-birch:#e0b040;
+    --d-kanas:#4fb08a;
+    --d-yardang:#c98a45;
+    --d-lake:#56a8dc;
+    --d-valley:#6fae5c;
+    --d-sunset:#e08447;
+    --d-canyon:#e06a4a;
+    --d-poplar:#d7c04a;
+  }
+  /* ===== 主题：绿洲绿 ===== */
+html[data-theme="oasis"]{
+    --ink:#12291d;
+    --ink-dim:#335344;
+    --sub:#547766;
+    --bg:#f3faf5;
+    --bg2:#e7f4ec;
+    --card:#ffffff;
+    --card2:#f7fcf9;
+    --line:#cfe7d8;
+    --line-soft:#e3f1e9;
+    --gold:#1b7a4c;
+    --gold-hi:#14663c;
+    --amber:#4a7a63;
+    --rust:#0d4a2c;
+    --cream:#0b2417;
+    --on-acc:#ffffff;
+    --sel-fg:#ffffff;
+    --bg-glow-a:rgba(33,138,86,.10);
+    --bg-glow-a0:rgba(33,138,86,0);
+    --bg-glow-b:rgba(13,74,44,.05);
+    --bg-glow-b0:rgba(13,74,44,0);
+    --sh-1:rgba(20,60,40,.10);
+    --sh-2:rgba(20,60,40,.12);
+    --sh-3:rgba(20,60,40,.09);
+    --sh-4:rgba(20,60,40,.10);
+    --sh-sum:rgba(20,60,40,.06);
+    --rpm-track:#d6e9dd;
+    --rpm-bar:linear-gradient(90deg,#14663c,#218a56,#4fc08a);
+    --rpm-glow:rgba(33,138,86,.4);
+    --hero-scrim:linear-gradient(180deg,rgba(16,60,40,.24) 0%,rgba(60,120,90,.10) 30%,rgba(12,48,32,.58) 64%,rgba(8,34,22,.86) 88%,var(--bg) 100%);
+    --hero-fallback:#dbeae1;
+    --hero-fg:#ffffff;
+    --hero-sub-fg:rgba(255,255,255,.9);
+    --hero-kicker:#c9ecd8;
+    --hero-rule:#7fc4a0;
+    --hero-em:#bfe8d2;
+    --hero-shadow:rgba(6,26,17,.55);
+    --chip-bg:rgba(14,52,34,.45);
+    --chip-bd:rgba(190,235,210,.55);
+    --chip-fg:#e6f7ee;
+    --th-bg:#e4f2e9;
+    --th-fg:#14663c;
+    --tr-hover:#f0f9f4;
+    --map-bg:#e9f5ee;
+    --map-panel:#f0f8f3;
+    --map-casing:#ffffff;
+    --map-terrain:#6b8a79;
+    --map-mountain:#7f9c8c;
+    --map-mountain-line:#cfe3d8;
+    --map-city:#12291d;
+    --map-dot:#ffffff;
+    --map-route:#218a56;
+    --mk-bg:#ffffff;
+    --mk-start:#1d4ed8;
+    --mk-end:#15803d;
+    --map-start-fg:#1d5fb8;
+    --map-end-fg:#1a7a4c;
+    --route-line:#0091ff;
+    --info-fg:#1a7a65;
+    --tip-bg:rgba(255,255,255,.95);
+    --overlay:rgba(8,30,20,.45);
+    --toc-bg:#ffffff;
+    --toc-chip:#e4f2e9;
+    --toc-active:#e4f2e9;
+    --toc-scroll:#c3ddcd;
+    --toc-group-fg:#5c7f6d;
+    --toc-sec-fg:#547766;
+    --meter-track:#e0efe6;
+    --note-bg:rgba(232,244,237,.9);
+    --brow-bg:rgba(238,247,241,.9);
+    --s1:#4f9fd8;
+    --s1a:#2f86d6;
+    --s1b:#4f9fd8;
+    --s1f:#0c1f33;
+    --s2:#2f9e78;
+    --s2a:#1f8378;
+    --s2b:#2f9e78;
+    --s2f:#0c1f33;
+    --s3:#dba22c;
+    --s3a:#c08617;
+    --s3b:#e8bd52;
+    --s3f:#0c1f33;
+    --s4:#dd7a3c;
+    --s4a:#c05f22;
+    --s4b:#e89a5c;
+    --s4f:#0c1f33;
+    --s5:#cf4b3c;
+    --s5a:#a83a2d;
+    --s5b:#cf4b3c;
+    --s5f:#ffffff;
+    --tag-a-bg:rgba(33,138,86,.10);
+    --tag-a-fg:#14663c;
+    --tag-a-bd:rgba(33,138,86,.35);
+    --tag-b-bg:rgba(42,122,158,.10);
+    --tag-b-fg:#22697f;
+    --tag-b-bd:rgba(42,122,158,.30);
+    --tag-c-bg:rgba(207,75,60,.09);
+    --tag-c-fg:#b8433a;
+    --tag-c-bd:rgba(207,75,60,.32);
+    --how-bg:rgba(33,138,86,.08);
+    --how-fg:#256b4a;
+    --how-bd:rgba(33,138,86,.35);
+    --bc-fg:#14663c;
+    --bc-bg:rgba(33,138,86,.07);
+    --bc-bd:rgba(33,138,86,.35);
+    --d-road:#5c7a6a;
+    --d-desert:#6b7a2f;
+    --d-birch:#3f7a3f;
+    --d-kanas:#1a7a65;
+    --d-yardang:#3f7a6a;
+    --d-lake:#2a7a9e;
+    --d-valley:#407a36;
+    --d-sunset:#7a6a1f;
+    --d-canyon:#8a4a4a;
+    --d-poplar:#5f7a22;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -24,43 +718,43 @@
     font-family:var(--sans); color:var(--ink); line-height:1.75;
     padding-bottom:70px; overflow-x:hidden;
     background:
-      radial-gradient(1200px 560px at 50% -6%, rgba(242,169,59,.10), rgba(242,169,59,0) 60%),
-      radial-gradient(900px 480px at 88% 12%, rgba(200,90,44,.06), rgba(200,90,44,0) 65%),
+      radial-gradient(1200px 560px at 50% -6%, var(--bg-glow-a), var(--bg-glow-a0) 60%),
+      radial-gradient(900px 480px at 88% 12%, var(--bg-glow-b), var(--bg-glow-b0) 65%),
       var(--bg);
   }
-  ::selection{background:var(--gold); color:#2a1c08;}
+  ::selection{background:var(--gold-hi); color:var(--sel-fg);}
 
   /* ============ 顶部转速条（阅读进度） ============ */
-  #rpm{position:fixed; top:0; left:0; right:0; height:4px; z-index:90; background:#332713;}
-  #rpm .bar{height:100%; width:0; background:linear-gradient(90deg,var(--amber),var(--gold),var(--gold-hi)); box-shadow:0 0 10px rgba(242,169,59,.6); transition:width .12s linear;}
+  #rpm{position:fixed; top:0; left:0; right:0; height:4px; z-index:90; background:var(--rpm-track);}
+  #rpm .bar{height:100%; width:0; background:var(--rpm-bar); box-shadow:0 0 10px var(--rpm-glow); transition:width .12s linear;}
 
   /* ============ HERO ============ */
   header.hero{
     position:relative; min-height:clamp(520px, 68vh, 800px); display:flex; align-items:flex-end;
     background:
-      linear-gradient(180deg,rgba(64,36,8,.34) 0%,rgba(40,24,8,.16) 34%,rgba(26,19,10,.86) 74%,var(--bg) 100%),
-      url("./beijiang-hero.jpg") center/cover no-repeat #241a0e;
+      var(--hero-scrim),
+      url("./beijiang-hero.jpg") center/cover no-repeat var(--hero-fallback);
   }
   .hero-inner{width:100%; max-width:1080px; margin:0 auto; padding:0 24px 58px;}
   .hero-kicker{
     font-family:var(--num); letter-spacing:7px; font-size:13px; font-weight:600;
-    color:var(--gold-hi); text-transform:uppercase; margin-bottom:16px;
+    color:var(--hero-kicker); text-transform:uppercase; margin-bottom:16px;
     display:flex; align-items:center; gap:14px;
   }
-  .hero-kicker::before{content:""; width:46px; height:2px; background:var(--gold);}
+  .hero-kicker::before{content:""; width:46px; height:2px; background:var(--hero-rule);}
   .hero h1{
-    font-family:var(--serif); font-weight:900; color:var(--cream);
+    font-family:var(--serif); font-weight:900; color:var(--hero-fg);
     font-size:clamp(40px,7vw,76px); line-height:1.14; letter-spacing:2px;
-    text-shadow:0 4px 30px rgba(0,0,0,.6);
+    text-shadow:0 4px 30px var(--hero-shadow);
   }
-  .hero h1 em{font-style:normal; color:var(--gold-hi);}
-  .hero-sub{margin-top:16px; font-size:16px; color:var(--ink-dim); max-width:640px;}
-  .hero-sub b{color:var(--cream);}
+  .hero h1 em{font-style:normal; color:var(--hero-em);}
+  .hero-sub{margin-top:16px; font-size:16px; color:var(--hero-sub-fg); max-width:640px;}
+  .hero-sub b{color:var(--hero-fg);}
   .hero-chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
   .chip{
     font-size:12.5px; letter-spacing:1px; padding:6px 14px; border-radius:999px;
-    border:1px solid rgba(242,169,59,.55); color:var(--gold-hi);
-    background:rgba(46,30,10,.6); backdrop-filter:blur(4px);
+    border:1px solid var(--chip-bd); color:var(--chip-fg);
+    background:var(--chip-bg); backdrop-filter:blur(4px);
   }
 
   /* 仪表数据带 */
@@ -89,44 +783,44 @@
   h2.sec .en{font-family:var(--num); font-size:12px; letter-spacing:3px; color:var(--sub); font-weight:600; text-transform:uppercase;}
 
   /* ============ 总览表 ============ */
-  .table-scroll{overflow-x:auto; border-radius:16px; border:1px solid var(--line); box-shadow:0 10px 34px rgba(0,0,0,.35);}
+  .table-scroll{overflow-x:auto; border-radius:16px; border:1px solid var(--line); box-shadow:0 10px 34px var(--sh-1);}
   .table-hint{display:none; font-size:12px; color:var(--sub); letter-spacing:1px; margin-top:8px; text-align:right;}
   @media(max-width:900px){.table-hint{display:block;}}
   table{width:100%; border-collapse:collapse; background:var(--card); min-width:820px;}
   th,td{padding:12px 13px; font-size:13.5px; text-align:left; border-bottom:1px solid var(--line-soft);}
-  th{background:#3a2b18; color:var(--gold); font-weight:600; white-space:nowrap; letter-spacing:1px; font-size:12.5px;}
+  th{background:var(--th-bg); color:var(--th-fg); font-weight:600; white-space:nowrap; letter-spacing:1px; font-size:12.5px;}
   td{color:var(--ink-dim);}
   td b{color:var(--ink); font-weight:600;}
   tr:last-child td{border-bottom:none;}
   table tbody tr{cursor:pointer; transition:background .18s;}
-  table tbody tr:hover{background:#37291a;}
+  table tbody tr:hover{background:var(--tr-hover);}
   .tdot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px; vertical-align:1px;}
 
   /* ============ 路线图卡 ============ */
-  .mapcard{background:var(--card); border:1px solid var(--line); border-radius:18px; margin:26px 0 4px; padding:20px 22px 18px; box-shadow:0 10px 34px rgba(0,0,0,.35);}
+  .mapcard{background:var(--card); border:1px solid var(--line); border-radius:18px; margin:26px 0 4px; padding:20px 22px 18px; box-shadow:0 10px 34px var(--sh-1);}
   .mapcard-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:12px;}
   .mapcard-title{font-family:var(--serif); font-size:18px; font-weight:700; color:var(--cream); border-left:4px solid var(--gold); padding-left:11px;}
   .mapcard-sub{font-size:12.5px; color:var(--sub);}
   .mapcard-svg{max-width:880px; margin:0 auto;}
   .mapcard svg{width:100%; height:auto; display:block;}
-  .amap-box{height:460px; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#171006;}
+  .amap-box{height:460px; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:var(--map-bg);}
   .mapfallback svg{width:100%; height:auto; display:block;}
-  .am-mk{background:#2a2013; border:2px solid var(--gold); color:var(--gold-hi); border-radius:999px; padding:2px 9px; font-size:12px; font-weight:700; box-shadow:0 1px 6px rgba(0,0,0,.5); white-space:nowrap; line-height:1.5;}
-  .am-mk.start{background:#1d4ed8; border-color:#1d4ed8; color:#fff;}
-  .am-mk.end{background:#15803d; border-color:#15803d; color:#fff;}
+  .am-mk{background:var(--mk-bg); border:2px solid var(--gold); color:var(--gold-hi); border-radius:999px; padding:2px 9px; font-size:12px; font-weight:700; box-shadow:0 1px 6px var(--sh-2); white-space:nowrap; line-height:1.5;}
+  .am-mk.start{background:var(--mk-start); border-color:var(--mk-start); color:#fff;}
+  .am-mk.end{background:var(--mk-end); border-color:var(--mk-end); color:#fff;}
   .am-mk i{font-style:normal; font-weight:600; margin-left:4px;}
-  .am-mk + .am-tip{background:rgba(26,19,10,.92); border:1px solid var(--line); color:var(--sub); font-size:11px; letter-spacing:.5px; border-radius:6px; padding:2px 7px; white-space:nowrap; margin-top:5px; text-align:center; box-shadow:0 1px 5px rgba(0,0,0,.45);}
-  .mapcard .mc-dot{fill:#2a2013; stroke:var(--gold); stroke-width:2.5;}
+  .am-mk + .am-tip{background:var(--tip-bg); border:1px solid var(--line); color:var(--sub); font-size:11px; letter-spacing:.5px; border-radius:6px; padding:2px 7px; white-space:nowrap; margin-top:5px; text-align:center; box-shadow:0 1px 5px var(--sh-1);}
+  .mapcard .mc-dot{fill:var(--map-dot); stroke:var(--gold); stroke-width:2.5;}
   .mapcard .mc-day{font-size:9.5px; fill:var(--gold-hi); font-weight:700; text-anchor:middle;}
-  .mapcard .mc-city{font-size:13px; fill:#f2e8cd; font-weight:600; text-anchor:middle; paint-order:stroke; stroke:#1a130a; stroke-width:4; stroke-linejoin:round;}
-  .mapcard .mc-start .mc-city{fill:#7db4ff;} .mapcard .mc-end .mc-city{fill:#6fdc9a;}
+  .mapcard .mc-city{font-size:13px; fill:var(--map-city); font-weight:600; text-anchor:middle; paint-order:stroke; stroke:var(--map-casing); stroke-width:4; stroke-linejoin:round;}
+  .mapcard .mc-start .mc-city{fill:var(--map-start-fg);} .mapcard .mc-end .mc-city{fill:var(--map-end-fg);}
 
   /* ============ 逐日卡片 ============ */
   .day{
     --acc:var(--gold);
     background:linear-gradient(165deg,var(--card2) 0%,var(--card) 40%);
     border:1px solid var(--line); border-radius:18px;
-    margin:22px 0; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.32);
+    margin:22px 0; overflow:hidden; box-shadow:0 10px 30px var(--sh-3);
     position:relative;
   }
   .day::before{content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--acc);}
@@ -136,8 +830,8 @@
   }
   .day-no{
     font-family:var(--num); font-size:15px; font-weight:700; letter-spacing:2px;
-    color:#2a1c08; background:var(--acc); border-radius:8px; padding:4px 12px;
-    box-shadow:0 3px 12px color-mix(in srgb, var(--acc) 45%, transparent);
+    color:var(--on-acc); background:var(--acc); border-radius:8px; padding:4px 12px;
+    box-shadow:0 2px 8px color-mix(in srgb, var(--acc) 22%, transparent);
   }
   .day-title{font-family:var(--serif); font-size:21px; font-weight:700; color:var(--cream); letter-spacing:1px;}
   .day-date{font-size:13px; color:var(--sub); margin-top:2px;}
@@ -158,25 +852,25 @@
   .stress{margin:8px 0 4px;}
   .stress-top{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px;}
   .stress-lab{font-size:11px; letter-spacing:2px; color:var(--sub);}
-  .stress-lv{font-size:12px; font-weight:700; letter-spacing:1px; color:#2a1c08; border-radius:999px; padding:3px 12px;}
-  .stress-meter{position:relative; height:8px; border-radius:5px; background:#221a0d; border:1px solid var(--line-soft); overflow:hidden;}
+  .stress-lv{font-size:12px; font-weight:700; letter-spacing:1px; color:var(--on-acc); border-radius:999px; padding:3px 12px;}
+  .stress-meter{position:relative; height:8px; border-radius:5px; background:var(--meter-track); border:1px solid var(--line-soft); overflow:hidden;}
   .stress-fill{height:100%; border-radius:5px;}
   .stress-meta{display:flex; flex-wrap:wrap; gap:5px 14px; margin-top:7px; font-size:12px; color:var(--sub);}
   .stress-meta b{color:var(--ink); font-weight:600;}
-  .stress-meta .em{color:var(--gold);}
-  .stress-note{font-size:12px; color:var(--sub); line-height:1.8; margin:12px 0 4px; padding:10px 14px; background:rgba(42,32,19,.5); border:1px dashed var(--line); border-radius:10px;}
+  .stress-meta .em{color:var(--gold-hi);}
+  .stress-note{font-size:12px; color:var(--sub); line-height:1.8; margin:12px 0 4px; padding:10px 14px; background:var(--note-bg); border:1px dashed var(--line); border-radius:10px;}
   .stress-note b{color:var(--cream);}
   /* 等级配色 */
-  .lv-1 .stress-lv{background:#7db4ff;}
-  .lv-1 .stress-fill{background:linear-gradient(90deg,#4fa3d8,#7db4ff);}
-  .lv-2 .stress-lv{background:#6fdc9a;}
-  .lv-2 .stress-fill{background:linear-gradient(90deg,#3fae8a,#6fdc9a);}
-  .lv-3 .stress-lv{background:var(--gold);}
-  .lv-3 .stress-fill{background:linear-gradient(90deg,var(--amber),var(--gold));}
-  .lv-4 .stress-lv{background:#ec7c40;}
-  .lv-4 .stress-fill{background:linear-gradient(90deg,var(--rust),#ec7c40);}
-  .lv-5 .stress-lv{background:#da5347; color:#fdf3e7;}
-  .lv-5 .stress-fill{background:linear-gradient(90deg,#b23a2e,#da5347);}
+  .lv-1 .stress-lv{background:var(--s1); color:var(--s1f);}
+  .lv-1 .stress-fill{background:linear-gradient(90deg,var(--s1a),var(--s1b));}
+  .lv-2 .stress-lv{background:var(--s2); color:var(--s2f);}
+  .lv-2 .stress-fill{background:linear-gradient(90deg,var(--s2a),var(--s2b));}
+  .lv-3 .stress-lv{background:var(--s3); color:var(--s3f);}
+  .lv-3 .stress-fill{background:linear-gradient(90deg,var(--s3a),var(--s3b));}
+  .lv-4 .stress-lv{background:var(--s4); color:var(--s4f);}
+  .lv-4 .stress-fill{background:linear-gradient(90deg,var(--s4a),var(--s4b));}
+  .lv-5 .stress-lv{background:var(--s5); color:var(--s5f);}
+  .lv-5 .stress-fill{background:linear-gradient(90deg,var(--s5a),var(--s5b));}
 
   .kv{font-size:13.5px; color:var(--sub); margin:12px 0 4px;}
   .kv b{color:var(--ink); font-weight:600;}
@@ -196,33 +890,33 @@
   ul.timeline .stop{color:var(--sub); font-size:13px;}
 
   .how{
-    font-size:13.5px; color:#f2ddb0; background:rgba(242,169,59,.11);
-    border:1px dashed rgba(242,169,59,.48); border-radius:10px; padding:10px 14px; margin-top:10px;
+    font-size:13.5px; color:var(--how-fg); background:var(--how-bg);
+    border:1px dashed var(--how-bd); border-radius:10px; padding:10px 14px; margin-top:10px;
   }
   .how b{color:var(--gold-hi);}
 
   .tags-row{margin-top:12px; display:flex; flex-wrap:wrap; gap:7px;}
   .tag{display:inline-block; font-size:12px; padding:3px 11px; border-radius:999px; white-space:nowrap; letter-spacing:.5px;}
-  .tag-y{background:rgba(242,169,59,.12); color:var(--gold-hi); border:1px solid rgba(242,169,59,.4);}
-  .tag-b{background:rgba(110,155,235,.14); color:#a9c9f8; border:1px solid rgba(110,155,235,.4);}
-  .tag-r{background:rgba(230,100,62,.14); color:#f7a288; border:1px solid rgba(230,100,62,.45);}
+  .tag-y{background:var(--tag-a-bg); color:var(--tag-a-fg); border:1px solid var(--tag-a-bd);}
+  .tag-b{background:var(--tag-b-bg); color:var(--tag-b-fg); border:1px solid var(--tag-b-bd);}
+  .tag-r{background:var(--tag-c-bg); color:var(--tag-c-fg); border:1px solid var(--tag-c-bd);}
 
   /* 每日主题色 */
-  .acc-road{--acc:#9aa1b0;} .acc-desert{--acc:#e5ac52;} .acc-birch{--acc:#f5bb2e;}
-  .acc-kanas{--acc:#47bd95;} .acc-yardang{--acc:#d9763a;} .acc-lake{--acc:#5ab0e5;}
-  .acc-valley{--acc:#8cc176;} .acc-sunset{--acc:#ec7c40;} .acc-canyon{--acc:#da5347;}
-  .acc-poplar{--acc:#eecd30;}
+  .acc-road{--acc:var(--d-road);} .acc-desert{--acc:var(--d-desert);} .acc-birch{--acc:var(--d-birch);}
+  .acc-kanas{--acc:var(--d-kanas);} .acc-yardang{--acc:var(--d-yardang);} .acc-lake{--acc:var(--d-lake);}
+  .acc-valley{--acc:var(--d-valley);} .acc-sunset{--acc:var(--d-sunset);} .acc-canyon{--acc:var(--d-canyon);}
+  .acc-poplar{--acc:var(--d-poplar);}
 
   /* ============ 实用清单 ============ */
   .practical{
     background:var(--card); border:1px solid var(--line); border-radius:18px;
-    padding:10px 26px 26px; box-shadow:0 10px 30px rgba(0,0,0,.32);
+    padding:10px 26px 26px; box-shadow:0 10px 30px var(--sh-3);
   }
   .practical h3{
     font-family:var(--serif); font-size:17px; margin:22px 0 8px; color:var(--gold-hi);
     display:flex; align-items:center; gap:10px; letter-spacing:1px;
   }
-  .practical h3::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold);}
+  .practical h3::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--gold);}
   .practical ol{margin-left:20px;}
   .practical li{font-size:14.5px; margin:6px 0; color:var(--ink-dim);}
   .practical li b{color:var(--cream);}
@@ -231,7 +925,7 @@
   .budget{
     background:linear-gradient(165deg,var(--card2) 0%,var(--card) 45%);
     border:1px solid var(--line); border-radius:18px;
-    padding:0 26px 26px; box-shadow:0 10px 30px rgba(0,0,0,.32);
+    padding:0 26px 26px; box-shadow:0 10px 30px var(--sh-3);
   }
   .budget-head{
     display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
@@ -243,18 +937,18 @@
   .budget-total .bt-lab{font-size:12px; letter-spacing:2px; color:var(--sub); margin-top:3px;}
   .budget-chips{display:flex; gap:8px; flex-wrap:wrap;}
   .budget-chips .bc{
-    font-size:12px; color:var(--gold-hi); border:1px solid rgba(242,169,59,.4);
-    background:rgba(242,169,59,.08); border-radius:999px; padding:5px 12px; white-space:nowrap;
+    font-size:12px; color:var(--bc-fg); border:1px solid var(--bc-bd);
+    background:var(--bc-bg); border-radius:999px; padding:5px 12px; white-space:nowrap;
   }
   .budget-rows{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px;}
   @media(max-width:760px){.budget-rows{grid-template-columns:1fr;}}
   .brow{
-    background:rgba(42,32,19,.6); border:1px solid var(--line-soft); border-radius:14px;
+    background:var(--brow-bg); border:1px solid var(--line-soft); border-radius:14px;
     padding:14px 16px; position:relative; overflow:hidden;
   }
   .brow::before{content:""; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--gold),transparent);}
   .brow .bn{font-size:13.5px; font-weight:600; color:var(--cream); letter-spacing:1px; display:flex; align-items:center; gap:8px;}
-  .brow .bn::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold); flex:none;}
+  .brow .bn::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--gold); flex:none;}
   .brow .bd{font-size:12.5px; color:var(--sub); margin-top:6px; line-height:1.7;}
   .brow .bd b{color:var(--ink);}
   .brow .bv{font-family:var(--num); font-size:24px; font-weight:700; color:var(--gold-hi); margin-top:10px; line-height:1.1;}
@@ -263,14 +957,14 @@
     margin-top:18px; background:linear-gradient(160deg,var(--card2),var(--card));
     border:1px solid var(--gold); border-radius:14px; padding:14px 18px;
     display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
-    box-shadow:0 0 20px rgba(242,169,59,.12);
+    box-shadow:0 1px 2px var(--sh-sum);
   }
   .budget-sum .bs-lab{font-size:15px; font-weight:700; color:var(--gold-hi); letter-spacing:2px; display:flex; align-items:center; gap:10px;}
-  .budget-sum .bs-lab::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold);}
+  .budget-sum .bs-lab::before{content:""; width:10px; height:10px; border-radius:50%; background:var(--gold);}
   .budget-sum .bs-val{font-family:var(--num); font-size:34px; font-weight:700; color:var(--gold); line-height:1;}
   .budget-sum .bs-val small{font-size:14px; color:var(--amber); margin-left:4px;}
   .budget-note{font-size:12px; color:var(--sub); margin-top:12px; letter-spacing:.5px;}
-  .budget-note b{color:var(--gold);}
+  .budget-note b{color:var(--gold-hi);}
 
   footer{
     text-align:center; color:var(--sub); font-size:13px; margin-top:44px;
@@ -281,46 +975,46 @@
   /* ============ 目录 ============ */
   #tocToggle{
     display:block; position:fixed; left:0; bottom:26px; z-index:60;
-    background:var(--gold); color:#2a1c08; border:none; cursor:pointer;
+    background:var(--gold-hi); color:var(--on-acc); border:none; cursor:pointer;
     border-radius:0 12px 12px 0; padding:11px 13px;
     font-size:13px; font-weight:700; letter-spacing:1px;
-    box-shadow:0 3px 14px rgba(0,0,0,.5);
+    box-shadow:0 3px 14px var(--sh-2);
     opacity:.55; transition:opacity .2s;
   }
   #tocToggle:hover, #tocToggle:focus-visible{opacity:1;}
-  #tocOverlay{position:fixed; inset:0; background:rgba(8,6,3,.6); z-index:64; opacity:0; visibility:hidden; transition:.25s;}
+  #tocOverlay{position:fixed; inset:0; background:var(--overlay); z-index:64; opacity:0; visibility:hidden; transition:.25s;}
   #tocOverlay.show{opacity:1; visibility:visible;}
   #toc{
     position:fixed; top:0; bottom:0; left:0; width:264px; z-index:70;
-    background:#251c10; border-right:1px solid var(--line);
-    box-shadow:6px 0 26px rgba(0,0,0,.5);
+    background:var(--toc-bg); border-right:1px solid var(--line);
+    box-shadow:6px 0 26px var(--sh-2);
     display:flex; flex-direction:column; padding:0 0 22px; overflow-y:auto;
     transform:translateX(-104%); transition:transform .28s ease;
   }
   #toc.open{transform:translateX(0);}
   #toc::-webkit-scrollbar{width:6px;}
-  #toc::-webkit-scrollbar-thumb{background:#4b3b26; border-radius:3px;}
+  #toc::-webkit-scrollbar-thumb{background:var(--toc-scroll); border-radius:3px;}
   .toc-brand{padding:22px 20px 16px; border-bottom:1px solid var(--line-soft); margin-bottom:6px;}
-  .toc-brand .bk{font-family:var(--num); font-size:11px; letter-spacing:3px; color:var(--gold); font-weight:600;}
+  .toc-brand .bk{font-family:var(--num); font-size:11px; letter-spacing:3px; color:var(--gold-hi); font-weight:600;}
   .toc-brand .bt{font-family:var(--serif); font-size:18px; font-weight:700; color:var(--cream); margin-top:6px;}
   .toc-brand .bs{font-size:11.5px; color:var(--sub); margin-top:4px;}
-  .toc-group{font-size:11px; letter-spacing:3px; color:#a8946a; font-weight:700; padding:16px 21px 5px;}
+  .toc-group{font-size:11px; letter-spacing:3px; color:var(--toc-group-fg); font-weight:700; padding:16px 21px 5px;}
   #toc a{
     display:flex; align-items:center; gap:10px; margin:1px 8px;
     padding:7px 12px; font-size:13px; color:var(--ink-dim); text-decoration:none;
     border-left:3px solid transparent; border-radius:8px; line-height:1.35;
   }
   #toc a .toc-day{
-    flex:none; width:30px; font-family:var(--num); font-size:11px; font-weight:700; color:var(--gold);
-    background:#3a2b18; border-radius:6px; text-align:center; padding:3px 0;
+    flex:none; width:30px; font-family:var(--num); font-size:11px; font-weight:700; color:var(--gold-hi);
+    background:var(--toc-chip); border-radius:6px; text-align:center; padding:3px 0;
   }
   #toc a .toc-route{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   #toc a:hover{color:var(--gold-hi);}
-  #toc a.on{background:#3a2b18;}
-  #toc a.on .toc-day{background:var(--gold); color:#2a1c08;}
+  #toc a.on{background:var(--toc-active);}
+  #toc a.on .toc-day{background:var(--gold-hi); color:var(--on-acc);}
   #toc a.on .toc-route{color:var(--cream); font-weight:600;}
-  #toc a.sec-mode{color:#a89a72; font-weight:600;}
-  #toc a.sec-mode.on{color:var(--gold-hi); background:#3a2b18;}
+  #toc a.sec-mode{color:var(--toc-sec-fg); font-weight:600;}
+  #toc a.sec-mode.on{color:var(--gold-hi); background:var(--toc-active);}
   .toc-close{
     position:absolute; top:14px; right:12px; background:transparent; border:1px solid var(--line);
     border-radius:8px; font-size:13px; color:var(--sub); cursor:pointer; padding:4px 9px; z-index:2;
@@ -350,6 +1044,39 @@
     #toc{position:sticky; top:24px; height:calc(100vh - 48px); width:256px; flex:0 0 256px; transform:none !important; box-shadow:none; border-radius:16px; border:1px solid var(--line); margin-top:26px;}
     #toc .toc-brand{border-radius:16px 16px 0 0; margin-bottom:0;}
     .wrap{flex:1 1 auto; min-width:0; max-width:920px; margin:0 auto;}
+  }
+  /* ===== 静态路线图配色（主题跟随） ===== */
+  .mapcard .mc-panel{fill:var(--map-panel);}
+  .mapcard .mc-arrow{fill:var(--map-route);}
+  .mapcard .mc-terrain{fill:var(--map-terrain);}
+  .mapcard .mc-terrain2{fill:var(--map-mountain);}
+  .mapcard .mc-mline{fill:none; stroke:var(--map-mountain-line);}
+  .mapcard .mc-casing{stroke:var(--map-casing);}
+  .mapcard .mc-route{stroke:var(--map-route);}
+  .mapcard .mc-start .mc-dot{stroke:var(--map-start-fg);}
+  .mapcard .mc-start .mc-day{fill:var(--map-start-fg);}
+  .mapcard .mc-end .mc-dot{stroke:var(--map-end-fg);}
+  .mapcard .mc-end .mc-day{fill:var(--map-end-fg);}
+  /* ===== 主题切换器 ===== */
+  .themebar{margin-left:auto; flex:none; display:flex; align-items:center; gap:7px;}
+  .themebar-lab{font-family:var(--num); font-size:10.5px; letter-spacing:2px; color:var(--sub); font-weight:600;}
+  .tbtn{width:25px; height:25px; padding:0; border-radius:50%; cursor:pointer;
+        border:1.5px solid var(--line); background:transparent; line-height:0;
+        display:grid; place-items:center;
+        transition:transform .16s ease, border-color .16s ease, box-shadow .16s ease;}
+  .tbtn i{display:block; width:15px; height:15px; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(0,0,0,.10);}
+  .tbtn:hover{transform:translateY(-1.5px);}
+  .tbtn:focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+  .tbtn[aria-pressed="true"]{border-color:var(--gold); box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 32%,transparent);}
+  .tb-autumn i{background:linear-gradient(135deg,#2a2013 0 54%,#f2a93b 54% 100%);}
+  .tb-snow i{background:linear-gradient(135deg,#f4f8fc 0 54%,#2f86d6 54% 100%);}
+  .tb-orange i{background:linear-gradient(135deg,#fff1e6 0 54%,#f0560f 54% 100%);}
+  .tb-desert i{background:linear-gradient(135deg,#fbf6ec 0 54%,#e0a521 54% 100%);}
+  .tb-asphalt i{background:linear-gradient(135deg,#3a4046 0 54%,#f5b323 54% 100%);}
+  .tb-oasis i{background:linear-gradient(135deg,#f3faf5 0 54%,#1b7a4c 54% 100%);}
+  @media(max-width:680px){
+    h2.sec{flex-wrap:wrap;}
+    .themebar{margin-left:0; width:100%; padding-top:2px;}
   }
 </style>
 </head>
@@ -412,24 +1139,24 @@
 
 <div class="wrap" data-page-node-id="BlVZgJGzclaCePCj49dafb">
 
-  <h2 class="sec" id="overview" data-page-node-id="mnwIwWx5zR0lDVEoyJDj9C">总览 <span class="en" data-page-node-id="kMY4ZqlQbsmn0O0o3LNy8S">Route Overview</span></h2>
+  <h2 class="sec" id="overview" data-page-node-id="mnwIwWx5zR0lDVEoyJDj9C">总览 <span class="en" data-page-node-id="kMY4ZqlQbsmn0O0o3LNy8S">Route Overview</span><div class="themebar" role="group" aria-label="主题配色"><span class="themebar-lab">THEME</span><button type="button" class="tbtn tb-autumn" data-theme="autumn" title="金秋 · 原色" aria-label="金秋 · 原色配色" aria-pressed="false"><i></i></button><button type="button" class="tbtn tb-snow" data-theme="snow" title="雪山白 · 天空蓝" aria-label="雪山白 · 天空蓝配色" aria-pressed="false"><i></i></button><button type="button" class="tbtn tb-orange" data-theme="orange" title="高亮橙" aria-label="高亮橙配色" aria-pressed="false"><i></i></button><button type="button" class="tbtn tb-desert" data-theme="desert" title="沙漠黄" aria-label="沙漠黄配色" aria-pressed="false"><i></i></button><button type="button" class="tbtn tb-asphalt" data-theme="asphalt" title="沥青黑" aria-label="沥青黑配色" aria-pressed="false"><i></i></button><button type="button" class="tbtn tb-oasis" data-theme="oasis" title="绿洲绿" aria-label="绿洲绿配色" aria-pressed="false"><i></i></button></div></h2>
   <div class="table-scroll rv" data-page-node-id="n5MFxujHrGHekOSzwiVCrD">
     <table data-page-node-id="WioUqwcyi2bUtifaAbBVmK">
       <thead data-page-node-id="ocnjeTAFfxD4g65G1LnCUH"><tr data-page-node-id="CAqeFBPbw2HpHfkHrqheHa"><th data-page-node-id="SXlBm7XGY9PWWJBXTF07Gf">日期</th><th data-page-node-id="5zpW8t2L5XWht3Ltmg0A4G">Day</th><th data-page-node-id="UWKwH0uscW5VqNePlrJfgx">起点 → 终点</th><th data-page-node-id="kpI5DM4RZGLOx7EAtWaaGI">参考里程</th><th data-page-node-id="Llex67dXNM7MQA2QRcZ5Wb">参考时长</th><th data-page-node-id="Dc922YP4CMqW6DQIFv9TOz">主要看点</th><th data-page-node-id="MT4aBY2sCWb7UxETjA2zIr">住宿安排</th></tr></thead>
       <tbody data-page-node-id="Ah6Gm69J24WGfOSl09B3Yo">
-        <tr data-href="#d1" data-page-node-id="0JY3LOqlQk0ABz508O7aJT"><td data-page-node-id="khmDmedWk1gQUAEE0hAK5A">9/25</td><td data-page-node-id="UX3HWkjDXdy87pvRM2wkUH"><b data-page-node-id="WCBFjYQ7EkEf2YycDFDBYQ">Day 1</b></td><td data-page-node-id="vBfMSCM7F0G6jWgIPLlh9f"><span class="tdot" style="background:#8d94a3" data-page-node-id="9D1Lxg0nx3obOEG1Ma1Gea"></span>长沙 → 甘肃长城驿服务区</td><td data-page-node-id="1ldoFzPfMnLelvemzUSJkX">≈2136 km</td><td data-page-node-id="UlI7HQgPcPWPTofwJj5W76">约16h25分</td><td data-page-node-id="K1MlTNMxMMKHGsHSedDAEc">全程高速（二广/连霍）赶路</td><td data-page-node-id="GWXcE0706dZxCmHB4J0Up9">长城驿·司机之家</td></tr>
-        <tr data-href="#d2" data-page-node-id="QgsFPHCEJDC8UO0Qg1MfDy"><td data-page-node-id="a3addp90AnbthPJmHhVD3A">9/26</td><td data-page-node-id="qL7EREqZENgy7uSmIVFNHu"><b data-page-node-id="XKgc5eADLMGIBJDRODcmX3">Day 2</b></td><td data-page-node-id="Yf7b4JJ89Ra04gEF34obfs"><span class="tdot" style="background:#8d94a3" data-page-node-id="ThGDITPS5Rb7ryCoI025Kb"></span>甘肃长城驿 → 乌鲁木齐</td><td data-page-node-id="cmx61OMXPg7neaPNBhJ7kX">≈1489 km</td><td data-page-node-id="9oBzHBKadqNGm2370oSzeR">约11h27分</td><td data-page-node-id="v6AVUthsuuCZuvwRRZRkQ4">河西走廊、嘉峪关、G30连霍</td><td data-page-node-id="30LcQHDqSmCMb2xiVJyMNb">乌鲁木齐市区</td></tr>
-        <tr data-href="#d3" data-page-node-id="ogVnUiBZF7bh6IGJeuBnX1"><td data-page-node-id="lHC7B5wmxjc6zwOr39RS3Q">9/27</td><td data-page-node-id="REab7SKhYCkESRcMsGFloL"><b data-page-node-id="SOi0QVfBR7d4CkjE3eLB2U">Day 3</b></td><td data-page-node-id="aooY7hyxZ4mTxHSdTpUZGz"><span class="tdot" style="background:#d9a04a" data-page-node-id="yapJiCol860WrlDKoq8fpw"></span>乌鲁木齐 → 阿勒泰</td><td data-page-node-id="zTDA9AfAMxLfdjwzyXk7Vf">≈540 km</td><td data-page-node-id="4SVeAyBJ7o8obTJrhupmU3">约6h</td><td data-page-node-id="Vrf0ddeG8nMFZO2UtxYv7t">S21沙漠公路、乌伦古湖</td><td data-page-node-id="Jw5jZfssG45J0d1jjxWOr3">阿勒泰市区</td></tr>
-        <tr data-href="#d4" data-page-node-id="B2Sno4fqS6fyXDyJ6esDIn"><td data-page-node-id="3Rn7nurEx4YmHNVB55GF6k">9/28</td><td data-page-node-id="68imLMVzb8G9k2TAApDDEF"><b data-page-node-id="Yq0poBLWcGfuBtDxqFcKWL">Day 4</b></td><td data-page-node-id="VQWzWBUquEjG76VXRFHG2w"><span class="tdot" style="background:#f0b429" data-page-node-id="2PJOXIkHurxJFDxu4mJRih"></span>阿勒泰 → 贾登峪</td><td data-page-node-id="SZulOkG81crVVgaLVnRF2z">≈286 km</td><td data-page-node-id="LZjyFaCFBlnkWAh8xYd78G">约4.5h</td><td data-page-node-id="AxFKdVOuWqbkOhY7B27hNK">阿禾公路、贾登峪、喀纳斯口</td><td data-page-node-id="8Zmx986D5A3iJ0eaBBQ4rq">贾登峪</td></tr>
-        <tr data-href="#d5" data-page-node-id="RDOcBOL4UiCIr5xV8UjEkK"><td data-page-node-id="jrzd8LeWurZq4eBAfixCzb">9/29</td><td data-page-node-id="Z8LqNB1VHBE6AdUlaWwgMp"><b data-page-node-id="LwmzDhI5vb5cFBkIcYf5N1">Day 5</b></td><td data-page-node-id="167eImgllrKtJR10vfpJ0g"><span class="tdot" style="background:#3fae8a" data-page-node-id="W057EZKAUG3OGhzHQSfQ0Z"></span>喀纳斯一日游</td><td data-page-node-id="gHRCKszTyxbTGgjT1gjBsM">≈0 km</td><td data-page-node-id="FQ02K8xZ1RcKfcqRj7ynjE">—</td><td data-page-node-id="tRoU81HrYiqOMqLvoLcBaC">观鱼台、喀纳斯湖、三湾</td><td data-page-node-id="ivR5TPoKSPMdlnkoQxGbG0">贾登峪</td></tr>
-        <tr data-href="#d6" data-page-node-id="qCTHuBgEwRf5YHRqLQdcMc"><td data-page-node-id="RZV690DFEGyBufEa2jesTJ">9/30</td><td data-page-node-id="L9Q7COr2aGY2qAnKymh00h"><b data-page-node-id="jPKoLJB2vQk69GnciynLVp">Day 6</b></td><td data-page-node-id="eINT5zC6cxovFC8PDx7P4z"><span class="tdot" style="background:#c96b32" data-page-node-id="cMlMeD6TGztIK8I8guzEwG"></span>贾登峪 → 克拉玛依</td><td data-page-node-id="cLALbd7fVrKKineFyBbPnJ">≈440 km</td><td data-page-node-id="KmksBatJqYOrXXIlebjmcQ">约7h</td><td data-page-node-id="lXQxGGlF8lQKfJnaVFHDLq">三湾晨雾、乌尔禾魔鬼城</td><td data-page-node-id="dO1IEdWZZ7FiQmEgBVbfoC">克拉玛依市区</td></tr>
-        <tr data-href="#d7" data-page-node-id="yIhmZRPw5MDxzZD4W5aeuz"><td data-page-node-id="r1PUhaLHr6mBk5703Kkqz0">10/1</td><td data-page-node-id="TX8iaImYH0xrSRFXCGKHfS"><b data-page-node-id="DGTHBdJpOGshuatA2SohgJ">Day 7</b></td><td data-page-node-id="8on929Iky5HjGAS0u3jMBT"><span class="tdot" style="background:#4fa3d8" data-page-node-id="wuf2yOmCprKVN5Bnb0IVau"></span>克拉玛依 → 赛里木湖</td><td data-page-node-id="EsW7ARVewkymD4P31yIQhA">≈480 km</td><td data-page-node-id="h4V7CTfbNSz8FLMogJ3jCw">约6h</td><td data-page-node-id="o0TUmV3ZCa9rHrICgiwH7v">赛里木湖环湖、日落</td><td data-page-node-id="MfxcvlVBzdHp8eBs9x3BBe">赛里木湖东门</td></tr>
-        <tr data-href="#d8" data-page-node-id="JyQhuHqeLRsOW53JDHJNHp"><td data-page-node-id="0QQyPxJWGmUmPziUnd0QRc">10/2</td><td data-page-node-id="nQgUGf7TWBr8OFy9A1twbR"><b data-page-node-id="LQVBFalrMLdZeJP7bZDD1u">Day 8</b></td><td data-page-node-id="BwfKBCBUS1rT02824cJCl8"><span class="tdot" style="background:#7fb069" data-page-node-id="UYt4v5tti6tgPjpReQNfxX"></span>赛里木湖 → 昭苏</td><td data-page-node-id="Rka9TB5HhasHPoGuGlG46j">≈300 km</td><td data-page-node-id="nzBojVOTvXdKw9iob4eeSD">约5h</td><td data-page-node-id="XvxAGtHEFU7FdiqG27SH5D">果子沟大桥、伊犁河谷</td><td data-page-node-id="wq7pCOEvsez4x1Eyl4MCNt">昭苏县城</td></tr>
-        <tr data-href="#d9" data-page-node-id="PY9FPqkUwldZUuWwZ7TCan"><td data-page-node-id="34jgJkOMY3AYCthXLlz4W2">10/3</td><td data-page-node-id="luAa7C0w5xep9ZIBEWmWKI"><b data-page-node-id="NBFQSqWhwa0Aj3ahXYPTec">Day 9</b></td><td data-page-node-id="iTDlbHCGb7k5Zp2FfbY7KR"><span class="tdot" style="background:#e2713a" data-page-node-id="lEEjwaX1OMGDckQlkWqiqp"></span>昭苏 → 巴音布鲁克镇</td><td data-page-node-id="oMDxP7ZrHPmYeePrchHlhY">≈360 km</td><td data-page-node-id="oToQDWi5RAcT6MzWnKeLWY">约6h</td><td data-page-node-id="8BoPSCmDFA1Je9bkX583oQ">特克斯八卦城、九曲十八弯日落</td><td data-page-node-id="RaLl8zGxawddbRcbPv8cTn">巴音布鲁克镇</td></tr>
-        <tr data-href="#d10" data-page-node-id="qlQyQzOUHBWv74LIDDT29G"><td data-page-node-id="IhCjeU0nejdECPV3KC9UH4">10/4</td><td data-page-node-id="5AuEgDgdTJ5fxH9IXLt2hu"><b data-page-node-id="IzbzHk4HxlBuZaIOwUbauG">Day 10</b></td><td data-page-node-id="F0LVnsNXPB7iRJlHDE7aGg"><span class="tdot" style="background:#d0483e" data-page-node-id="kvg3eXkMUE01AMGXP1sT4N"></span>巴音布鲁克 → 库车</td><td data-page-node-id="X4aOQy1FEuWi4zdrQYTEGq">≈260 km</td><td data-page-node-id="jHgXOmwitZye4amgDsxlb0">约5h</td><td data-page-node-id="J5Ev3t46c4DSbYkfl1Qe5t">独库南段、大小龙池、库车大峡谷</td><td data-page-node-id="rtyAIntiYOiDx3yEltnYQ7">库车市</td></tr>
-        <tr data-href="#d11" data-page-node-id="Zq7EC5tsBGVgsL8gf4pqa6"><td data-page-node-id="ls7kGC03cyucCDLR6BKBSe">10/5</td><td data-page-node-id="BiRnYYA7lQUUorQg5Mjug0"><b data-page-node-id="Azh9ZpSjfF0yq17mpNGNDY">Day 11</b></td><td data-page-node-id="R8sNHVGImOJQ5r31qMJ05a"><span class="tdot" style="background:#e6c229" data-page-node-id="jeYX1iQArmjPiGLZG8nIy8"></span>库车 → 库尔勒</td><td data-page-node-id="YLtqLLyQdROhBNMscnVGFe">≈300 km</td><td data-page-node-id="MTnf0SKZ0THtJL6y3W4m0k">约4.5h</td><td data-page-node-id="8jzWiBaokxuqkDBphxo0iz">轮台胡杨、库尔勒收尾</td><td data-page-node-id="eiWNZUgKEGgCLcHzrzOdQH">库尔勒（或离场）</td></tr>
-        <tr data-href="#d12" data-page-node-id="RtA9lOvpXBeTRaCHHOIDnK"><td data-page-node-id="trv99182lJ63fWXuy1ACkp">10/6</td><td data-page-node-id="exGYC7qF1744O29P8IRnGk"><b data-page-node-id="QA0v9O2oxwcUqB83IZZKvq">Day 12</b></td><td data-page-node-id="sAfDfHgzNORk4EAFHsEBDQ"><span class="tdot" style="background:#8d94a3" data-page-node-id="CHHiCTfN0nRlpXjDWhA2mE"></span>库尔勒 → 甘肃武威服务区</td><td data-page-node-id="SwJ8sfT0uDOz4EX1U7hRqS">≈1869 km</td><td data-page-node-id="KUBN2JZpJ3RSDU3qRo8BKC">约14h22分</td><td data-page-node-id="zOfOC6sKGzEWeA8anGPdyX">吐和/连霍东归（库尔勒→武威）</td><td data-page-node-id="T7VrNNUdRgiH4H4E6087BX">武威·司机之家</td></tr>
-        <tr data-href="#d13" data-page-node-id="YBTp5tBcdVLTDGAXGNiYqs"><td data-page-node-id="rABUqxIhRY6llNxwUtdpFn">10/7</td><td data-page-node-id="g1bxGgJRwRIr65eDPGewpV"><b data-page-node-id="7k91aFoEAJLWj2G3KflwPo">Day 13</b></td><td data-page-node-id="gq3EE5DUtouOjl6gOtiTrK"><span class="tdot" style="background:#8d94a3" data-page-node-id="Ho33qG62L2UNjH4wgdtWFt"></span>武威服务区 → 长沙（白箬铺）</td><td data-page-node-id="e2CqKlafGSyBB9cbc7FKyu">≈1923 km</td><td data-page-node-id="XRhGzeVUaIjBJgHqltmYfr">约14h47分</td><td data-page-node-id="YWljlCww7WXNbcwCAXZBP5">兰州、西安、二广高速奔长沙</td><td data-page-node-id="cR83Jtd9gnuxK8yNJEpOXl">家里</td></tr>
+        <tr data-href="#d1" data-page-node-id="0JY3LOqlQk0ABz508O7aJT"><td data-page-node-id="khmDmedWk1gQUAEE0hAK5A">9/25</td><td data-page-node-id="UX3HWkjDXdy87pvRM2wkUH"><b data-page-node-id="WCBFjYQ7EkEf2YycDFDBYQ">Day 1</b></td><td data-page-node-id="vBfMSCM7F0G6jWgIPLlh9f"><span class="tdot" style="background:var(--d-road)" data-page-node-id="9D1Lxg0nx3obOEG1Ma1Gea"></span>长沙 → 甘肃长城驿服务区</td><td data-page-node-id="1ldoFzPfMnLelvemzUSJkX">≈2136 km</td><td data-page-node-id="UlI7HQgPcPWPTofwJj5W76">约16h25分</td><td data-page-node-id="K1MlTNMxMMKHGsHSedDAEc">全程高速（二广/连霍）赶路</td><td data-page-node-id="GWXcE0706dZxCmHB4J0Up9">长城驿·司机之家</td></tr>
+        <tr data-href="#d2" data-page-node-id="QgsFPHCEJDC8UO0Qg1MfDy"><td data-page-node-id="a3addp90AnbthPJmHhVD3A">9/26</td><td data-page-node-id="qL7EREqZENgy7uSmIVFNHu"><b data-page-node-id="XKgc5eADLMGIBJDRODcmX3">Day 2</b></td><td data-page-node-id="Yf7b4JJ89Ra04gEF34obfs"><span class="tdot" style="background:var(--d-road)" data-page-node-id="ThGDITPS5Rb7ryCoI025Kb"></span>甘肃长城驿 → 乌鲁木齐</td><td data-page-node-id="cmx61OMXPg7neaPNBhJ7kX">≈1489 km</td><td data-page-node-id="9oBzHBKadqNGm2370oSzeR">约11h27分</td><td data-page-node-id="v6AVUthsuuCZuvwRRZRkQ4">河西走廊、嘉峪关、G30连霍</td><td data-page-node-id="30LcQHDqSmCMb2xiVJyMNb">乌鲁木齐市区</td></tr>
+        <tr data-href="#d3" data-page-node-id="ogVnUiBZF7bh6IGJeuBnX1"><td data-page-node-id="lHC7B5wmxjc6zwOr39RS3Q">9/27</td><td data-page-node-id="REab7SKhYCkESRcMsGFloL"><b data-page-node-id="SOi0QVfBR7d4CkjE3eLB2U">Day 3</b></td><td data-page-node-id="aooY7hyxZ4mTxHSdTpUZGz"><span class="tdot" style="background:var(--d-desert)" data-page-node-id="yapJiCol860WrlDKoq8fpw"></span>乌鲁木齐 → 阿勒泰</td><td data-page-node-id="zTDA9AfAMxLfdjwzyXk7Vf">≈540 km</td><td data-page-node-id="4SVeAyBJ7o8obTJrhupmU3">约6h</td><td data-page-node-id="Vrf0ddeG8nMFZO2UtxYv7t">S21沙漠公路、乌伦古湖</td><td data-page-node-id="Jw5jZfssG45J0d1jjxWOr3">阿勒泰市区</td></tr>
+        <tr data-href="#d4" data-page-node-id="B2Sno4fqS6fyXDyJ6esDIn"><td data-page-node-id="3Rn7nurEx4YmHNVB55GF6k">9/28</td><td data-page-node-id="68imLMVzb8G9k2TAApDDEF"><b data-page-node-id="Yq0poBLWcGfuBtDxqFcKWL">Day 4</b></td><td data-page-node-id="VQWzWBUquEjG76VXRFHG2w"><span class="tdot" style="background:var(--d-birch)" data-page-node-id="2PJOXIkHurxJFDxu4mJRih"></span>阿勒泰 → 贾登峪</td><td data-page-node-id="SZulOkG81crVVgaLVnRF2z">≈286 km</td><td data-page-node-id="LZjyFaCFBlnkWAh8xYd78G">约4.5h</td><td data-page-node-id="AxFKdVOuWqbkOhY7B27hNK">阿禾公路、贾登峪、喀纳斯口</td><td data-page-node-id="8Zmx986D5A3iJ0eaBBQ4rq">贾登峪</td></tr>
+        <tr data-href="#d5" data-page-node-id="RDOcBOL4UiCIr5xV8UjEkK"><td data-page-node-id="jrzd8LeWurZq4eBAfixCzb">9/29</td><td data-page-node-id="Z8LqNB1VHBE6AdUlaWwgMp"><b data-page-node-id="LwmzDhI5vb5cFBkIcYf5N1">Day 5</b></td><td data-page-node-id="167eImgllrKtJR10vfpJ0g"><span class="tdot" style="background:var(--d-kanas)" data-page-node-id="W057EZKAUG3OGhzHQSfQ0Z"></span>喀纳斯一日游</td><td data-page-node-id="gHRCKszTyxbTGgjT1gjBsM">≈0 km</td><td data-page-node-id="FQ02K8xZ1RcKfcqRj7ynjE">—</td><td data-page-node-id="tRoU81HrYiqOMqLvoLcBaC">观鱼台、喀纳斯湖、三湾</td><td data-page-node-id="ivR5TPoKSPMdlnkoQxGbG0">贾登峪</td></tr>
+        <tr data-href="#d6" data-page-node-id="qCTHuBgEwRf5YHRqLQdcMc"><td data-page-node-id="RZV690DFEGyBufEa2jesTJ">9/30</td><td data-page-node-id="L9Q7COr2aGY2qAnKymh00h"><b data-page-node-id="jPKoLJB2vQk69GnciynLVp">Day 6</b></td><td data-page-node-id="eINT5zC6cxovFC8PDx7P4z"><span class="tdot" style="background:var(--d-yardang)" data-page-node-id="cMlMeD6TGztIK8I8guzEwG"></span>贾登峪 → 克拉玛依</td><td data-page-node-id="cLALbd7fVrKKineFyBbPnJ">≈440 km</td><td data-page-node-id="KmksBatJqYOrXXIlebjmcQ">约7h</td><td data-page-node-id="lXQxGGlF8lQKfJnaVFHDLq">三湾晨雾、乌尔禾魔鬼城</td><td data-page-node-id="dO1IEdWZZ7FiQmEgBVbfoC">克拉玛依市区</td></tr>
+        <tr data-href="#d7" data-page-node-id="yIhmZRPw5MDxzZD4W5aeuz"><td data-page-node-id="r1PUhaLHr6mBk5703Kkqz0">10/1</td><td data-page-node-id="TX8iaImYH0xrSRFXCGKHfS"><b data-page-node-id="DGTHBdJpOGshuatA2SohgJ">Day 7</b></td><td data-page-node-id="8on929Iky5HjGAS0u3jMBT"><span class="tdot" style="background:var(--d-lake)" data-page-node-id="wuf2yOmCprKVN5Bnb0IVau"></span>克拉玛依 → 赛里木湖</td><td data-page-node-id="EsW7ARVewkymD4P31yIQhA">≈480 km</td><td data-page-node-id="h4V7CTfbNSz8FLMogJ3jCw">约6h</td><td data-page-node-id="o0TUmV3ZCa9rHrICgiwH7v">赛里木湖环湖、日落</td><td data-page-node-id="MfxcvlVBzdHp8eBs9x3BBe">赛里木湖东门</td></tr>
+        <tr data-href="#d8" data-page-node-id="JyQhuHqeLRsOW53JDHJNHp"><td data-page-node-id="0QQyPxJWGmUmPziUnd0QRc">10/2</td><td data-page-node-id="nQgUGf7TWBr8OFy9A1twbR"><b data-page-node-id="LQVBFalrMLdZeJP7bZDD1u">Day 8</b></td><td data-page-node-id="BwfKBCBUS1rT02824cJCl8"><span class="tdot" style="background:var(--d-valley)" data-page-node-id="UYt4v5tti6tgPjpReQNfxX"></span>赛里木湖 → 昭苏</td><td data-page-node-id="Rka9TB5HhasHPoGuGlG46j">≈300 km</td><td data-page-node-id="nzBojVOTvXdKw9iob4eeSD">约5h</td><td data-page-node-id="XvxAGtHEFU7FdiqG27SH5D">果子沟大桥、伊犁河谷</td><td data-page-node-id="wq7pCOEvsez4x1Eyl4MCNt">昭苏县城</td></tr>
+        <tr data-href="#d9" data-page-node-id="PY9FPqkUwldZUuWwZ7TCan"><td data-page-node-id="34jgJkOMY3AYCthXLlz4W2">10/3</td><td data-page-node-id="luAa7C0w5xep9ZIBEWmWKI"><b data-page-node-id="NBFQSqWhwa0Aj3ahXYPTec">Day 9</b></td><td data-page-node-id="iTDlbHCGb7k5Zp2FfbY7KR"><span class="tdot" style="background:var(--d-sunset)" data-page-node-id="lEEjwaX1OMGDckQlkWqiqp"></span>昭苏 → 巴音布鲁克镇</td><td data-page-node-id="oMDxP7ZrHPmYeePrchHlhY">≈360 km</td><td data-page-node-id="oToQDWi5RAcT6MzWnKeLWY">约6h</td><td data-page-node-id="8BoPSCmDFA1Je9bkX583oQ">特克斯八卦城、九曲十八弯日落</td><td data-page-node-id="RaLl8zGxawddbRcbPv8cTn">巴音布鲁克镇</td></tr>
+        <tr data-href="#d10" data-page-node-id="qlQyQzOUHBWv74LIDDT29G"><td data-page-node-id="IhCjeU0nejdECPV3KC9UH4">10/4</td><td data-page-node-id="5AuEgDgdTJ5fxH9IXLt2hu"><b data-page-node-id="IzbzHk4HxlBuZaIOwUbauG">Day 10</b></td><td data-page-node-id="F0LVnsNXPB7iRJlHDE7aGg"><span class="tdot" style="background:var(--d-canyon)" data-page-node-id="kvg3eXkMUE01AMGXP1sT4N"></span>巴音布鲁克 → 库车</td><td data-page-node-id="X4aOQy1FEuWi4zdrQYTEGq">≈260 km</td><td data-page-node-id="jHgXOmwitZye4amgDsxlb0">约5h</td><td data-page-node-id="J5Ev3t46c4DSbYkfl1Qe5t">独库南段、大小龙池、库车大峡谷</td><td data-page-node-id="rtyAIntiYOiDx3yEltnYQ7">库车市</td></tr>
+        <tr data-href="#d11" data-page-node-id="Zq7EC5tsBGVgsL8gf4pqa6"><td data-page-node-id="ls7kGC03cyucCDLR6BKBSe">10/5</td><td data-page-node-id="BiRnYYA7lQUUorQg5Mjug0"><b data-page-node-id="Azh9ZpSjfF0yq17mpNGNDY">Day 11</b></td><td data-page-node-id="R8sNHVGImOJQ5r31qMJ05a"><span class="tdot" style="background:var(--d-poplar)" data-page-node-id="jeYX1iQArmjPiGLZG8nIy8"></span>库车 → 库尔勒</td><td data-page-node-id="YLtqLLyQdROhBNMscnVGFe">≈300 km</td><td data-page-node-id="MTnf0SKZ0THtJL6y3W4m0k">约4.5h</td><td data-page-node-id="8jzWiBaokxuqkDBphxo0iz">轮台胡杨、库尔勒收尾</td><td data-page-node-id="eiWNZUgKEGgCLcHzrzOdQH">库尔勒（或离场）</td></tr>
+        <tr data-href="#d12" data-page-node-id="RtA9lOvpXBeTRaCHHOIDnK"><td data-page-node-id="trv99182lJ63fWXuy1ACkp">10/6</td><td data-page-node-id="exGYC7qF1744O29P8IRnGk"><b data-page-node-id="QA0v9O2oxwcUqB83IZZKvq">Day 12</b></td><td data-page-node-id="sAfDfHgzNORk4EAFHsEBDQ"><span class="tdot" style="background:var(--d-road)" data-page-node-id="CHHiCTfN0nRlpXjDWhA2mE"></span>库尔勒 → 甘肃武威服务区</td><td data-page-node-id="SwJ8sfT0uDOz4EX1U7hRqS">≈1869 km</td><td data-page-node-id="KUBN2JZpJ3RSDU3qRo8BKC">约14h22分</td><td data-page-node-id="zOfOC6sKGzEWeA8anGPdyX">吐和/连霍东归（库尔勒→武威）</td><td data-page-node-id="T7VrNNUdRgiH4H4E6087BX">武威·司机之家</td></tr>
+        <tr data-href="#d13" data-page-node-id="YBTp5tBcdVLTDGAXGNiYqs"><td data-page-node-id="rABUqxIhRY6llNxwUtdpFn">10/7</td><td data-page-node-id="g1bxGgJRwRIr65eDPGewpV"><b data-page-node-id="7k91aFoEAJLWj2G3KflwPo">Day 13</b></td><td data-page-node-id="gq3EE5DUtouOjl6gOtiTrK"><span class="tdot" style="background:var(--d-road)" data-page-node-id="Ho33qG62L2UNjH4wgdtWFt"></span>武威服务区 → 长沙（白箬铺）</td><td data-page-node-id="e2CqKlafGSyBB9cbc7FKyu">≈1923 km</td><td data-page-node-id="XRhGzeVUaIjBJgHqltmYfr">约14h47分</td><td data-page-node-id="YWljlCww7WXNbcwCAXZBP5">兰州、西安、二广高速奔长沙</td><td data-page-node-id="cR83Jtd9gnuxK8yNJEpOXl">家里</td></tr>
       </tbody>
     </table>
   </div>
@@ -447,16 +1174,16 @@
 <svg viewBox="0 0 820 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="北疆金秋环线 DAY3 至 DAY11 路线图" data-page-node-id="TAwx4nHTUJD2HOiun0LIc7">
   <defs data-page-node-id="gsEwODWLg53LrbFQ045WNL">
     <marker id="mc-arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" data-page-node-id="ZxdWxOFotFzrpYXXnB7ocy">
-      <path d="M0,0 L10,5 L0,10 z" fill="#f2a93b" data-page-node-id="3kZCN709vyFeWJ44jqodQE"/>
+      <path d="M0,0 L10,5 L0,10 z" class="mc-arrow" data-page-node-id="3kZCN709vyFeWJ44jqodQE"/>
     </marker>
   </defs>
-  <rect x="1" y="1" width="818" height="518" fill="#251c10" rx="12" data-page-node-id="BHY5uZfrlAcPLRthYOXvoP"/>
-  <text x="352" y="30" font-size="12" fill="#9a865e" letter-spacing="3" data-page-node-id="3nFjnSzd9syxxWpUkdmyXa">阿尔泰山</text>
-  <path d="M40,470 Q410,360 790,470" fill="none" stroke="#41321d" stroke-width="20" stroke-linecap="round" opacity="0.7" data-page-node-id="zpQZ0RQHV4nlpsGQzPdEhR"/>
-  <text x="520" y="452" font-size="12" fill="#8f7d58" letter-spacing="6" data-page-node-id="unFm5sGHCJ9VIJAeZYkJYS">天 山 山 脉</text>
-  <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#1a130a" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0.92" data-page-node-id="Im5zdm7BEGsPHGx85DtKdI"/>
-  <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" stroke="#f2a93b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mc-arw)" data-page-node-id="q1wSTsFVOw0TBqQUmjovW7"/>
-  <g class="mc-start" transform="translate(240,462)" data-page-node-id="kKfCIoc9VS0M1xcCCz5JqN"><circle class="mc-dot" r="12" style="stroke:#4fa3d8;" data-page-node-id="x4xHdOPfUVloOPb8nqpO9w"/><text class="mc-day" dy="3.5" style="fill:#4fa3d8;" data-page-node-id="GkdfurELzODmf4Fmqjz9DK">D3</text><text class="mc-city" y="26" data-page-node-id="DcYAvA0NggyuefkNBtn0UM">乌鲁木齐</text></g>
+  <rect x="1" y="1" width="818" height="518" class="mc-panel" rx="12" data-page-node-id="BHY5uZfrlAcPLRthYOXvoP"/>
+  <text x="352" y="30" font-size="12" class="mc-terrain" letter-spacing="3" data-page-node-id="3nFjnSzd9syxxWpUkdmyXa">阿尔泰山</text>
+  <path d="M40,470 Q410,360 790,470" fill="none" class="mc-mline" stroke-width="20" stroke-linecap="round" opacity="0.7" data-page-node-id="zpQZ0RQHV4nlpsGQzPdEhR"/>
+  <text x="520" y="452" font-size="12" class="mc-terrain2" letter-spacing="6" data-page-node-id="unFm5sGHCJ9VIJAeZYkJYS">天 山 山 脉</text>
+  <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" class="mc-casing" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity="0.92" data-page-node-id="Im5zdm7BEGsPHGx85DtKdI"/>
+  <polyline points="240,462 250,92 330,58 400,42 112,242 92,362 72,472 332,424 470,424 600,382" fill="none" class="mc-route" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mc-arw)" data-page-node-id="q1wSTsFVOw0TBqQUmjovW7"/>
+  <g class="mc-start" transform="translate(240,462)" data-page-node-id="kKfCIoc9VS0M1xcCCz5JqN"><circle class="mc-dot" r="12" data-page-node-id="x4xHdOPfUVloOPb8nqpO9w"/><text class="mc-day" dy="3.5" data-page-node-id="GkdfurELzODmf4Fmqjz9DK">D3</text><text class="mc-city" y="26" data-page-node-id="DcYAvA0NggyuefkNBtn0UM">乌鲁木齐</text></g>
   <g transform="translate(250,92)" data-page-node-id="ARp0gynJdq6yDpQozpHceS"><circle class="mc-dot" r="11" data-page-node-id="4BijFuB83sBGS0tbZIQMQF"/><text class="mc-day" dy="3.5" data-page-node-id="j6N3h2PNYqJJoCQDjZ2YjZ">D4</text><text class="mc-city" y="-17" data-page-node-id="JAlRCBDgufxFDFbugcfb65">阿勒泰</text></g>
   <g transform="translate(330,58)" data-page-node-id="ohsI6d0UGWvDjB8BbtEFkp"><circle class="mc-dot" r="11" data-page-node-id="UrJ3CLMHKnJ14ZBhskBdZD"/><text class="mc-day" dy="3.5" data-page-node-id="NeqPP9OnCmJNFchDT9fsvt">D5</text><text class="mc-city" y="-17" data-page-node-id="olAq3Dp6FCqWw02sYhhs8R">贾登峪</text></g>
   <g transform="translate(400,42)" data-page-node-id="Z7Gi0rI6rxV1vSfW2S4EcX"><circle class="mc-dot" r="11" data-page-node-id="JTJ7gbBHyNahKTTFG2tbFx"/><text class="mc-day" dy="3.5" data-page-node-id="2YakWpZy78PzEzsQqSooBx">D6</text><text class="mc-city" y="-17" data-page-node-id="54ZhoaBYLpX1und9IzWnPz">喀纳斯</text></g>
@@ -465,8 +1192,8 @@
   <g transform="translate(72,472)" data-page-node-id="lTbCJGimaRRtkB6YEYVMWr"><circle class="mc-dot" r="11" data-page-node-id="9HnErYL2WQD11MABB5L3ym"/><text class="mc-day" dy="3.5" data-page-node-id="sC68aKU7XcFF5JFw7wzGv6">D9</text><text class="mc-city" y="26" data-page-node-id="VUph0YCSJD9NrVqiDKISd0">昭苏</text></g>
   <g transform="translate(332,424)" data-page-node-id="mhq0hMLIffvtVpwgDpY5DF"><circle class="mc-dot" r="11" data-page-node-id="T95gTTQ3x0bhFo3g4QprUU"/><text class="mc-day" dy="3.5" data-page-node-id="U6R7usRlcFiP9ySim3WDHH">D10</text><text class="mc-city" y="26" data-page-node-id="2Jf6WQ6GDm39CJJypq4iIl">巴音布鲁克</text></g>
   <g transform="translate(470,424)" data-page-node-id="f378paE2AmRGJLI4LCyJXH"><circle class="mc-dot" r="11" data-page-node-id="zIHhn6LvqFefwGuu1UifN5"/><text class="mc-day" dy="3.5" data-page-node-id="75BbmCoHXxBQlah2UgNW4v">D11</text><text class="mc-city" y="26" data-page-node-id="zNUcKg1D1A4KuddmNSk1G0">库车</text></g>
-  <g class="mc-end" transform="translate(600,382)" data-page-node-id="cQJ9JeNKhFE9DFamKxtwRO"><circle class="mc-dot" r="12" style="stroke:#3fae8a;" data-page-node-id="Esbwm9srtwEjONK0zq5atI"/><text class="mc-day" dy="3.5" style="fill:#3fae8a;" data-page-node-id="i5BTNRrtZ1pcmN7smJ6zfH">终</text><text class="mc-city" y="26" data-page-node-id="rRuRYGeSehob97d8pAEQNm">库尔勒</text></g>
-  <g transform="translate(778,44)" data-page-node-id="KNTd7j6MJm1bCoomuWowF0"><path d="M0,-14 L9,7 L0,3 L-9,7 Z" fill="#9a865e" data-page-node-id="ZGOUcSmlbxuHuaYa18Rfyj"/><text x="0" y="-20" font-size="11" fill="#9a865e" text-anchor="middle" font-weight="700" data-page-node-id="HCXlElzvxE4HUt1oYWH9KE">北</text></g>
+  <g class="mc-end" transform="translate(600,382)" data-page-node-id="cQJ9JeNKhFE9DFamKxtwRO"><circle class="mc-dot" r="12" data-page-node-id="Esbwm9srtwEjONK0zq5atI"/><text class="mc-day" dy="3.5" data-page-node-id="i5BTNRrtZ1pcmN7smJ6zfH">终</text><text class="mc-city" y="26" data-page-node-id="rRuRYGeSehob97d8pAEQNm">库尔勒</text></g>
+  <g transform="translate(778,44)" data-page-node-id="KNTd7j6MJm1bCoomuWowF0"><path d="M0,-14 L9,7 L0,3 L-9,7 Z" class="mc-terrain" data-page-node-id="ZGOUcSmlbxuHuaYa18Rfyj"/><text x="0" y="-20" font-size="11" class="mc-terrain" text-anchor="middle" font-weight="700" data-page-node-id="HCXlElzvxE4HUt1oYWH9KE">北</text></g>
 </svg>
       </div>
     </div>
@@ -476,7 +1203,7 @@
 
   <div class="stress-note rv" data-page-node-id="PONFhq0cGP3t9V8bI97Ju5">
     <b data-page-node-id="iZ27ONDILN1YYA0TLEp0yL">强度算法</b>：等效疲劳＝高速×1.0 ＋ 国道×1.2 ＋ 山路×1.5，再按山路弯道密集度与技术难度加成（＋15%～＋100%）；连续驾驶超 5 小时后，每多 1 小时加 35 km 等效里程。<br data-page-node-id="TMxnRl1TPHyKxfCcn78Tke">
-    等级 <b style="color:#7db4ff" data-page-node-id="BCIkkzhsqbfIIhWPf14pFw">G1 轻松</b>（≤260）· <b style="color:#6fdc9a" data-page-node-id="sB6VjxUSwcr87PHvj95jF5">G2 适中</b>（≤600）· <b style="color:#f2a93b" data-page-node-id="brlhlG81zHGDciIXFRUvy1">G3 较难</b>（≤1150）· <b style="color:#ec7c40" data-page-node-id="2g59SrVzyWRMrimAynr6Ni">G4 困难</b>（≤1750）· <b style="color:#da5347" data-page-node-id="gBHEH3j3hznzAJlqPxzGm7">G5 极难</b>（&gt;1750）。高速与国道分列，弯道、垭口单独标注。
+    等级 <b style="color:var(--s1)" data-page-node-id="BCIkkzhsqbfIIhWPf14pFw">G1 轻松</b>（≤260）· <b style="color:var(--s2)" data-page-node-id="sB6VjxUSwcr87PHvj95jF5">G2 适中</b>（≤600）· <b style="color:var(--s3)" data-page-node-id="brlhlG81zHGDciIXFRUvy1">G3 较难</b>（≤1150）· <b style="color:var(--s4)" data-page-node-id="2g59SrVzyWRMrimAynr6Ni">G4 困难</b>（≤1750）· <b style="color:var(--s5)" data-page-node-id="gBHEH3j3hznzAJlqPxzGm7">G5 极难</b>（&gt;1750）。高速与国道分列，弯道、垭口单独标注。
   </div>
 
   <!-- 出疆第1天 -->
@@ -1132,6 +1859,15 @@
 (function(){
   var KEY='4a46ac91ba57be90781b293f5d10c17f';
   window._AMapSecurityConfig={securityJsCode:'757667fb48c8be04ed068eaa1c9350a4'};
+  /* 主题取色：让高德路线与底图样式跟随当前配色 */
+  function cssv(n){ try{ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }catch(e){ return ''; } }
+  function curTheme(){ return document.documentElement.getAttribute('data-theme')||'autumn'; }
+  function amapStyle(){ return (curTheme()==='autumn'||curTheme()==='asphalt') ? 'amap://styles/dark' : 'amap://styles/normal'; }
+  window.__applyThemeColors=function(){
+    try{ if(window.__amapMap&&window.__amapMap.setMapStyle){ window.__amapMap.setMapStyle(amapStyle()); } }catch(e){}
+    var c=cssv('--route-line')||'#0091ff', o=cssv('--map-casing')||'#ffffff';
+    (window.__amapLines||[]).forEach(function(l){ try{ l.setOptions({strokeColor:c, outlineColor:o}); }catch(e){} });
+  };
   var am=document.getElementById('amap'), fb=document.getElementById('mapFallback');
   // 默认显示静态路线图，仅在高德真实渲染成功后切换为地图
   function fallback(){
@@ -1152,7 +1888,8 @@
     if(am){ am.style.display='block'; }
     if(fb){ fb.style.display='none'; }
     // 参照官方示例：暗色地图样式，与页面整体风格统一
-    var map=new AMap.Map('amap',{zoom:6, center:[86,44], lang:'zh_cn', mapStyle:'amap://styles/dark'});
+    var map=new AMap.Map('amap',{zoom:6, center:[86,44], lang:'zh_cn', mapStyle:amapStyle()});
+    window.__amapMap=map;
     map.addControl(new AMap.ToolBar({position:'left-bottom', lite:true}));
     map.addControl(new AMap.Scale({position:'left-bottom', offset:[8,8]}));
     // Day3→Day11 途经点：起点乌鲁木齐，终点库尔勒，中间途经点按逐日路书顺序（含阿禾公路、伊昭公路）
@@ -1173,6 +1910,7 @@
       {d:'终',n:'库尔勒',p:[86.1600,41.7700],kind:'end'}
     ];
     var markObjs=[], lineObjs=[], hasShown=false, tilesReady=false, routeReady=false;
+    window.__amapLines=lineObjs;
     function showMap(){
       if(hasShown) return; hasShown=true;
       if(am){am.style.display='block';}
@@ -1226,18 +1964,18 @@
         if(el){
           var metaTxt='DAY 3（乌鲁木齐）→ DAY 11（库尔勒）· '+ways.length+' 个途经点 · 全程驾车约 '+Math.round(rt.distance/1000)+' km · 约 '+Math.round(rt.time/3600)+' 小时';
           if(!pts.length){ metaTxt+=' · 路线坐标为空'; }
-          el.innerHTML=metaTxt; el.style.color='#3fae8a';
+          el.innerHTML=metaTxt; el.style.color=cssv('--info-fg')||'#1f8378';
         }
         if(pts.length){
           // 参照官方示例 driving-custom：蓝色主线 + 深色描边 + 圆角
           var routeLine=new AMap.Polyline({
             path: pts,
             isOutline: true,
-            outlineColor: '#2a1c08',
+            outlineColor: cssv('--map-casing')||'#ffffff',
             borderWeight: 2,
             strokeWeight: 5,
             strokeOpacity: 0.95,
-            strokeColor: '#0091ff',
+            strokeColor: cssv('--route-line')||'#0091ff',
             lineJoin: 'round',
             lineCap: 'round',
             zIndex: 12
@@ -1252,6 +1990,34 @@
     addStops();
   }
   window.__amapInit=amapInit;
+})();
+</script>
+<script>
+/* ===== 配色主题切换 ===== */
+(function(){
+  var KEY='bj-theme', root=document.documentElement;
+  var NAMES=['autumn','snow','orange','desert','asphalt','oasis'];
+  var btns=[].slice.call(document.querySelectorAll('.tbtn'));
+  function apply(name){
+    if(NAMES.indexOf(name)<0){ name='autumn'; }
+    if(name==='autumn'){ root.removeAttribute('data-theme'); }
+    else{ root.setAttribute('data-theme',name); }
+    btns.forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-theme')===name ? 'true' : 'false');
+    });
+    if(window.__applyThemeColors){ try{ window.__applyThemeColors(); }catch(e){} }
+  }
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var n=b.getAttribute('data-theme');
+      try{ localStorage.setItem(KEY,n); }catch(e){}
+      apply(n);
+    });
+  });
+  var saved='autumn';
+  try{ saved=localStorage.getItem(KEY)||root.getAttribute('data-theme')||'autumn'; }
+  catch(e){ saved=root.getAttribute('data-theme')||'autumn'; }
+  apply(saved);
 })();
 </script>
 </body>
