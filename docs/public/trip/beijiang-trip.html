@@ -4,7 +4,7 @@
 <meta charset="UTF-8" data-page-node-id="e255EK9oVKq6R0jNGexRWT">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="DKDrsHtnSzaeFgbzeb7Cju">
 <title>北疆金秋环线 · 单人单骑摩旅路书</title>
-<meta name="description" content="长沙往返北疆金秋环线，13天约10343公里单人单骑摩旅逐日路书：喀纳斯、赛里木湖、独库公路、巴音布鲁克。" data-page-node-id="VzcbWtHq1jL2q9x1JhMB16">
+<meta name="description" content="长沙往返北疆金秋环线，13天约10383公里单人单骑摩旅逐日路书：喀纳斯、赛里木湖、独库公路、巴音布鲁克。" data-page-node-id="VzcbWtHq1jL2q9x1JhMB16">
 <link rel="preconnect" href="https://fonts.googleapis.com" data-page-node-id="9D12bclJ83KIgnijxfHNwh">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-page-node-id="oIaUz0t5Vy3GdwHOHAiCUF">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" data-page-node-id="iCVSpbwGMUe9Er6xpmtKwD">
@@ -773,6 +773,8 @@ html[data-theme="oasis"]{
   .gauge .gl{font-size:12px; letter-spacing:2px; color:var(--sub); margin-top:4px;}
 
   .wrap{max-width:920px; margin:0 auto; padding:0 22px;}
+  /* 加宽后的内容列：左内边距交给 .body3 统一控制，便于压缩与左侧导航的间距 */
+  @media(min-width:1200px){ .wrap{padding:0;} }
 
   /* ============ 标题 & 通用 ============ */
   h2.sec{
@@ -789,6 +791,19 @@ html[data-theme="oasis"]{
   table{width:100%; border-collapse:collapse; background:var(--card); min-width:820px;}
   th,td{padding:12px 13px; font-size:13.5px; text-align:left; border-bottom:1px solid var(--line-soft);}
   th{background:var(--th-bg); color:var(--th-fg); font-weight:600; white-space:nowrap; letter-spacing:1px; font-size:12.5px;}
+  /* 日期 / Day / 参考里程 / 参考时长 一律单行显示，不被挤断 */
+  table th:nth-child(1),table td:nth-child(1),
+  table th:nth-child(2),table td:nth-child(2),
+  table th:nth-child(4),table td:nth-child(4),
+  table th:nth-child(5),table td:nth-child(5){white-space:nowrap;}
+  table td:nth-child(1){min-width:56px;}
+  table td:nth-child(2){min-width:62px;}
+  table td:nth-child(4){min-width:88px;}
+  table td:nth-child(5){min-width:100px; font-variant-numeric:tabular-nums;}
+  /* 起点→终点 / 主要看点 / 住宿安排：给足基础宽度，只让它们吸收剩余空间 */
+  table td:nth-child(3){min-width:180px;}
+  table td:nth-child(6){min-width:210px;}
+  table td:nth-child(7){min-width:122px;}
   td{color:var(--ink-dim);}
   td b{color:var(--ink); font-weight:600;}
   tr:last-child td{border-bottom:none;}
@@ -1037,13 +1052,18 @@ html[data-theme="oasis"]{
     .day-head{padding:16px 18px 12px 20px;}
     .day-body{padding:4px 18px 18px 20px;}
   }
+  @media(max-width:1200px){
+    th,td{padding:12px 10px;}
+  }
   @media(min-width:1200px){
     #tocToggle,#tocOverlay,.toc-close{display:none !important;}
-    .page{max-width:1340px; margin:0 auto;}
-    .body3{display:flex; align-items:flex-start; flex-wrap:nowrap; padding:0 20px;}
+    .page{max-width:1400px; margin:0 auto;}
+    /* 主体与左侧导航保持 15px 呼吸间距 */
+    .body3{display:flex; align-items:flex-start; flex-wrap:nowrap; padding:0 20px 0 15px; gap:15px;}
     #toc{position:sticky; top:24px; height:calc(100vh - 48px); width:256px; flex:0 0 256px; transform:none !important; box-shadow:none; border-radius:16px; border:1px solid var(--line); margin-top:26px;}
     #toc .toc-brand{border-radius:16px 16px 0 0; margin-bottom:0;}
-    .wrap{flex:1 1 auto; min-width:0; max-width:920px; margin:0 auto;}
+    /* 主体尽量贴近左侧导航，并把宽度拉满，让总览表舒展不换行 */
+    .wrap{flex:1 1 auto; min-width:0; max-width:none; margin:0; padding:0;}
   }
   /* ===== 静态路线图配色（主题跟随） ===== */
   .mapcard .mc-panel{fill:var(--map-panel);}
@@ -1090,7 +1110,7 @@ html[data-theme="oasis"]{
 
 <header class="hero" data-page-node-id="uivXPX5kX2m8TCefLSZBU1">
   <div class="hero-inner" data-page-node-id="tRYy6t35kc9hvTeVa9IbPN">
-    <div class="hero-kicker" data-page-node-id="cNUUG4nJMXSTzCawT3WFor">MOTO RAID · SOLO RIDE · 10,587 KM</div>
+    <div class="hero-kicker" data-page-node-id="cNUUG4nJMXSTzCawT3WFor">MOTO RAID · SOLO RIDE · 10,383 KM</div>
     <h1 data-page-node-id="6eMVhmShKTiuS29cEtyldn">北疆金秋环线<br data-page-node-id="eD9ADGy1VBcJlLtMSJt1Ds">单人单骑<em data-page-node-id="ZI7jiN3NYFrK0H19PPInYU">逐日路书</em></h1>
     <p class="hero-sub" data-page-node-id="FQbKGRAO8BQw0GlsBMyGDH">长沙出发 · <b data-page-node-id="Hnekw2oD0ecYRIiaDPPbEX">2026.09.25 — 10.07</b> · 共 13 天。从湘江到阿尔泰，穿沙漠、翻达坂、环湖而居——把北疆的秋天骑个遍。</p>
     <div class="hero-chips" data-page-node-id="gA0noRV73NADk8ehw5EBHN">
@@ -1101,7 +1121,7 @@ html[data-theme="oasis"]{
 </header>
 
 <div class="dash" data-page-node-id="lQ8SiFow02A58hjPl7yUH1">
-  <div class="gauge rv" data-page-node-id="YN96UnfLkpQ1rMSZRDB2Nw"><div class="gv" data-cnt="10343" data-page-node-id="hyvI2QCc1Q7E0FzUgTRpqG">0<small data-page-node-id="vBa5FAg7PnF1bAIHH5OTdd">km</small></div><div class="gl" data-page-node-id="V6j917wyYtEXqfhXzezApz">TOTAL MILEAGE · 全程里程</div></div>
+  <div class="gauge rv" data-page-node-id="YN96UnfLkpQ1rMSZRDB2Nw"><div class="gv" data-cnt="10383" data-page-node-id="hyvI2QCc1Q7E0FzUgTRpqG">0<small data-page-node-id="vBa5FAg7PnF1bAIHH5OTdd">km</small></div><div class="gl" data-page-node-id="V6j917wyYtEXqfhXzezApz">TOTAL MILEAGE · 全程里程</div></div>
   <div class="gauge rv" data-page-node-id="XlgquK1Jf1HhF5sCie2fsb"><div class="gv" data-cnt="13" data-page-node-id="NI4sLQF9xNfE2MufMqgIhZ">0<small data-page-node-id="Mp4WJqJsQABG5pAcfUrVXo">days</small></div><div class="gl" data-page-node-id="bRNpGAw8xyZDgdVv5ibj2C">DURATION · 行程天数</div></div>
   <div class="gauge rv" data-page-node-id="aroO0nfzqa9YgX7aySi0ZF"><div class="gv" data-cnt="3220" data-page-node-id="MuwAAh7PiTnFRvPT0sxBmJ">0<small data-page-node-id="QVJgEUk3VXTQer1OgC8tGn">m</small></div><div class="gl" data-page-node-id="2cDVLfF46obYyoX3uI0otf">本段最高垭口 · 铁力买提达坂</div></div>
   <div class="gauge rv" data-page-node-id="iod3sBOtLxV3scCghHs391"><div class="gv" data-cnt="1" data-page-node-id="AQmvRtl6M4rlwfrLecDSoD">0<small data-page-node-id="q0cOMCv3qhLTsWXQmrRIot">rider</small></div><div class="gl" data-page-node-id="9tud7uSkBThRNHlyqyBDOe">CREW · 单人单骑</div></div>
@@ -1306,7 +1326,7 @@ html[data-theme="oasis"]{
       </div>
       <div class="kv" data-page-node-id="XtFltOJPUgs6h7lFVinUlh">当日光线 · 乌鲁木齐 天亮 7:33 · 日出 8:00 · 日落 19:59（阿勒泰相近）</div>
       <ul class="timeline" data-page-node-id="V4Hom19Ira5o7Z04dCrhxx">
-        <li data-page-node-id="Ty8rUUhd16ByLl8GsbHFyY"><span class="t" data-page-node-id="R29UNoIqu7WAyrua9B85KF">08:15</span>乌鲁木齐出发（日出 8:00 后启程，天已明朗）——单人首日长途，前一晚切记睡足。经<b data-page-node-id="hYG7FGnj731eDVeex7J86h">阜康</b>上 S21〈阿乌高速〉穿越古尔班通古特沙漠。</li>
+        <li data-page-node-id="Ty8rUUhd16ByLl8GsbHFyY"><span class="t" data-page-node-id="R29UNoIqu7WAyrua9B85KF">08:15</span>乌鲁木齐出发，经<b data-page-node-id="hYG7FGnj731eDVeex7J86h">阜康</b>上 S21〈阿乌高速〉穿越古尔班通古特沙漠。</li>
         <li data-page-node-id="U4CXQtG7iDwcZsdrukffWq"><span class="t" data-page-node-id="9mcX65HyPw415LoRR3QGzb">10:30</span>沙漠公路服务区停车休息、拍公路照。</li>
         <li data-page-node-id="t7G6IsjyChHi7Om38eF8Yb"><span class="t" data-page-node-id="SLjoAYxTCTry0m8tFmJO9z">13:00</span>途经<b data-page-node-id="xpKXfBXU7MZ2LFHhQrMkCZ">福海县</b>·<b data-page-node-id="naxVFXgWb2wY2G9F8Hb9bY">乌伦古湖</b>观景台停留（深秋湖水湛蓝）。
           <span class="stop" data-page-node-id="dzaHHBcP3szCK3TiO7wbUi">（赶路可跳过，直接进阿勒泰午餐。）</span></li>
@@ -1693,19 +1713,19 @@ html[data-theme="oasis"]{
   <h2 class="sec" id="budget" style="margin-top:52px;" data-page-node-id="YCQob3eITUFESgDR4Glkgb">行程预算 <span class="en" data-page-node-id="vQRrL0XiMyscxn4FPbZlzY">Trip Budget</span></h2>
   <div class="budget rv" data-page-node-id="6XAElGiUCjpGFzw3NSNOFD">
     <div class="budget-head" data-page-node-id="GWUH97QOtILh1FKBAEYgVw">
-      <div class="budget-total" data-page-node-id="dROh6aKwSteiGfkQrMcrnO"><div class="bt-num" data-page-node-id="d5KfD07AgDDGzpRaC9QOZm">8,107<small data-page-node-id="A8fLBOK5nSgd22QmPXaMZT">元</small></div><div class="bt-lab" data-page-node-id="x8mR71DFK4kQrx2cJb1RZ9">13 天总预算（约）</div></div>
+      <div class="budget-total" data-page-node-id="dROh6aKwSteiGfkQrMcrnO"><div class="bt-num" data-page-node-id="d5KfD07AgDDGzpRaC9QOZm">8,868<small data-page-node-id="A8fLBOK5nSgd22QmPXaMZT">元</small></div><div class="bt-lab" data-page-node-id="x8mR71DFK4kQrx2cJb1RZ9">13 天 12 晚总预算（约 · 含门票必选）</div></div>
       <div class="budget-chips" data-page-node-id="XqZQFN41xNC7Mub8WcTQpE">
-        <span class="bc" data-page-node-id="GaprsfvOtaCGSiAhCfsI1X">10343 km</span>
+        <span class="bc" data-page-node-id="GaprsfvOtaCGSiAhCfsI1X">10383 km</span>
         <span class="bc" data-page-node-id="AYlAIU72KBMSh1An6qG4zm">95 号汽油</span>
         <span class="bc" data-page-node-id="JunTGsGrB2wNnOFWaL7QED">油耗均值 5L/100km</span>
-        <span class="bc" data-page-node-id="un9RcnSDLdEj0ZnyBDdJRR">2 次机油保养</span>
+        <span class="bc" data-page-node-id="un9RcnSDLdEj0ZnyBDdJRR">2 次机油保养</span><span class="bc" data-page-node-id="un9RcnSDLdEj0ZnyBDdJRR2">住宿 12 晚</span>
       </div>
     </div>
     <div class="budget-rows" data-page-node-id="xW7stgbQfRG24v3JJra6Jc">
       <div class="brow" data-page-node-id="XRTMqUb4zslHNkUqTfIgtd">
         <div class="bn" data-page-node-id="qHeknREVP28qw1RZ8IWU4B">油费</div>
-        <div class="bd" data-page-node-id="rybXxJycRNlERJPvEqevmq">10343 km ÷ 100 × 5L × <b data-page-node-id="GFqyLIysHXROYMaWhyZoiN">8.32 元/L</b>（长沙 8.54 与新疆 8.10 均价）≈ 517 L</div>
-        <div class="bv" data-page-node-id="T95sHQF3dLyPFcFzA2ApAr">4,303<small data-page-node-id="RZcsfg3ex3VFZ4zBUQQKGw">元</small></div>
+        <div class="bd" data-page-node-id="rybXxJycRNlERJPvEqevmq">10383 km ÷ 100 × 5L × <b data-page-node-id="GFqyLIysHXROYMaWhyZoiN">8.32 元/L</b>（长沙 8.54 与新疆 8.10 均价）≈ 519 L</div>
+        <div class="bv" data-page-node-id="T95sHQF3dLyPFcFzA2ApAr">4,319<small data-page-node-id="RZcsfg3ex3VFZ4zBUQQKGw">元</small></div>
       </div>
       <div class="brow" data-page-node-id="SiW8r7eALaU8kiE9jfaSMT">
         <div class="bn" data-page-node-id="42efX7Kqmkfsh2LT7tXEKH">吃喝</div>
@@ -1714,25 +1734,25 @@ html[data-theme="oasis"]{
       </div>
       <div class="brow" data-page-node-id="RQeHj8fDbE2UzyOwoKJs4c">
         <div class="bn" data-page-node-id="3Z5u0c2pU8uM7K1Gs3DUUZ">住宿</div>
-        <div class="bd" data-page-node-id="8jiWSFYGZLAXD9Ahd7AeJU">按 <b data-page-node-id="04LbXbGIZ6MQJe82uJy3rx">100 元/天</b> 计 × 13 天（司机之家/县城旅馆/景区门口）</div>
-        <div class="bv" data-page-node-id="cp8O8YCNmKzGPyq9ZuuI2c">1,300<small data-page-node-id="UbWHqyJt7QFlUtcxcYfRg8">元</small></div>
+        <div class="bd" data-page-node-id="8jiWSFYGZLAXD9Ahd7AeJU"><b data-page-node-id="04LbXbGIZ6MQJe82uJy3rx">150 元/晚</b> × <b data-page-node-id="04LbXbGIZ6MQJe82uJy3rx2">12 晚</b>（逐日路书 12 个落脚点：司机之家／县城旅馆／景区门口，统一标准核算；<b data-page-node-id="04LbXbGIZ6MQJe82uJy3rx3">Day 13 到家不计</b>）</div>
+        <div class="bv" data-page-node-id="cp8O8YCNmKzGPyq9ZuuI2c">1,800<small data-page-node-id="UbWHqyJt7QFlUtcxcYfRg8">元</small></div>
       </div>
       <div class="brow" data-page-node-id="kMqCkmM9IcTQEzimBU6cLx">
         <div class="bn" data-page-node-id="qQIFOFp5SCtK0axESq3klL">景区门票</div>
-        <div class="bd" data-page-node-id="Xreyug8RnyMDDNVGwsaHgz">喀纳斯 250（门票 160＋区间车 70＋观鱼台 20）<br data-page-node-id="AAWPYlJoB3tqx4OxcKFExi">赛里木湖 190（门票 70＋自驾服务费 120）</div>
-        <div class="bv" data-page-node-id="dyBUInzoofZSUtaQAjHBUO">440<small data-page-node-id="TPJAVGgUzRAUCBbMnXX4Ti">元</small></div>
+        <div class="bd" data-page-node-id="Xreyug8RnyMDDNVGwsaHgz"><b data-page-node-id="AAWPYlJoB3tqx4OxcKFExi">按逐日路书逐项核计 · 必去 685 元</b><br>喀纳斯二进套票 270（门票 160＋区间车 110）<br>观鱼台区间车 20<br>乌尔禾魔鬼城 62（门票 42＋区间车 20）<br>赛里木湖 145（门票 70＋自驾套票 75）<br>巴音布鲁克 127（门票 65＋区间车 62）<br>天山神秘大峡谷 41<br>（可选）库车王府 55｜轮台胡杨林 68｜铁门关 8</div>
+        <div class="bv" data-page-node-id="dyBUInzoofZSUtaQAjHBUO">685<small data-page-node-id="TPJAVGgUzRAUCBbMnXX4Ti">元</small></div>
       </div>
       <div class="brow" data-page-node-id="xcfB7AeqdgZ07tGJxyPwOl">
         <div class="bn" data-page-node-id="PFnPULKt0xajkBmHJ5QHxG">保养（机油）</div>
-        <div class="bd" data-page-node-id="lZX2jh4m6I1CtN6EE71K5q">10343 km 长途更换 2 次 × <b data-page-node-id="IBre4ilyXAoRG7CrFDB39f">382 元/次</b>（约 5000 km 一换，含机滤工时）</div>
+        <div class="bd" data-page-node-id="lZX2jh4m6I1CtN6EE71K5q">10383 km 长途更换 2 次 × <b data-page-node-id="IBre4ilyXAoRG7CrFDB39f">382 元/次</b>（约 5000 km 一换，含机滤工时）</div>
         <div class="bv" data-page-node-id="APnaDVVPuFURIkNSM6YzbT">764<small data-page-node-id="igBdwSuW71ViJ2mK6aXcdz">元</small></div>
       </div>
     </div>
     <div class="budget-sum" data-page-node-id="goSWInpcScUOD2RccKq5BW">
       <div class="bs-lab" data-page-node-id="9RRjgVoDR92MrkRxO7AkO4">预算合计</div>
-      <div class="bs-val" data-page-node-id="kPCEKOBBBiVmfeYdK47fVe">8,107<small data-page-node-id="1O7jTpUNCEnhGfn4W2NE1D">元</small></div>
+      <div class="bs-val" data-page-node-id="kPCEKOBBBiVmfeYdK47fVe">8,868<small data-page-node-id="1O7jTpUNCEnhGfn4W2NE1D">元</small></div>
     </div>
-    <div class="budget-note" data-page-node-id="0NcYceTh51q0i8EYQu6ePe"><b data-page-node-id="NMVagPyqFEqCVZpsAGlrFK">说明：</b>景区门票暂只计入<b data-page-node-id="1A2JcJXYDRMMveA3yepZkS">喀纳斯</b>与<b data-page-node-id="HDUqITIUL5Xqs3rvExPFyo">赛里木湖</b>（含自驾服务费）；魔鬼城、巴音布鲁克、库车大峡谷等门票及区间车未计入；若全部景区都去，建议再加约 250–350 元。机油保养按<b data-page-node-id="1hHqpfF2xwEKXvf9IcSBh8">2 次 × 382 元</b>计入，另建议预留轮胎、链条等易损件备用金。</div>
+    <div class="budget-note" data-page-node-id="0NcYceTh51q0i8EYQu6ePe"><b data-page-node-id="NMVagPyqFEqCVZpsAGlrFK">说明：</b>门票已按<b data-page-node-id="1A2JcJXYDRMMveA3yepZkS">逐日路书</b>逐项核计（Day 5–11 收费景区：喀纳斯二进＋观鱼台、魔鬼城、赛里木湖、巴音布鲁克、天山神秘大峡谷）；库车王府、轮台胡杨林、铁门关按<b data-page-node-id="HDUqITIUL5Xqs3rvExPFyo">可选</b>另计，全去再加约 131 元，对应总额约 8,999 元；若临时增加禾木／白哈巴，需另换喀纳斯<b data-page-node-id="1hHqpfF2xwEKXvf9IcSBh8">全域票 375 元</b>。住宿按逐日路书 <b data-page-node-id="1hHqpfF2xwEKXvf9IcSBh9">12 晚 × 150 元/晚</b> 统一核算（Day 13 到家不计）；贾登峪与赛里木湖东门在国庆旺季实际常高于该标准，若这两晚订到高价房源需另加约 600–1200 元。喀纳斯二进套票 270 元、巴音布鲁克区间车 62 元、赛里木湖自驾套票按人 75 元均已核至最新公示价，仍建议预留约 300 元机动。</div>
   </div>
 
   <h2 class="sec" id="practical" data-page-node-id="vjxzripy7RgLlSwIjBnHOx">装备清单与注意事项 <span class="en" data-page-node-id="Bz7cAVCzsHTkizDiJqvBRZ">Gear &amp; Safety</span></h2>
@@ -1758,15 +1778,15 @@ html[data-theme="oasis"]{
     </ol>
     <h3 data-page-node-id="dlZEgIIekSi6MkOEICFt9Y">门票与费用参考（2026 旺季，均以官方当日为准）</h3>
     <ol data-page-node-id="e7epw4AGYRBUIfhVNtbM0a">
-      <li data-page-node-id="HTWKkbcA5zN7eJMj4trxQh"><b data-page-node-id="owAPM0aTBE2eTx9dZAMeGw">喀纳斯</b>：门票 160 元＋区间车一进 70 元／二进 110 元；<b data-page-node-id="LvxL0d6tyH3yQ9RWLdVkVH">观鱼台</b>区间车 20 元另计。</li>
-      <li data-page-node-id="zAFTEj2HFClGJtWfZCDGhB"><b data-page-node-id="KJ6UORvCcOekRZSx1I2VDA">乌尔禾魔鬼城</b>：门票约 42 元＋区间车 20 元。</li>
-      <li data-page-node-id="VCwpnVvWJjSunV0AvGC7zm"><b data-page-node-id="1gaBhVKjHGN94oI7o8QZrD">赛里木湖</b>：门票 70 元（旺季）＋自驾服务费按车约 120 元／车（5 座及以下，需预约）／区间车 60 元。</li>
-      <li data-page-node-id="H2JhpPXlZfaRfm0xxOEIvv"><b data-page-node-id="Na08EEOz0uEsgz7iC9SMo1">巴音布鲁克</b>：门票 65 元＋区间车约 62–75 元＋九曲十八弯观光车 20 元。</li>
-      <li data-page-node-id="1urB1Do3sI7bd8gr3a1RCt"><b data-page-node-id="GnLudKYfFIH1rkGiFBYSiy">库车大峡谷（天山神秘大峡谷）</b>：门票约 40–41 元。</li>
-      <li data-page-node-id="ZBO7dCRFYadjaRAgwaOpKc"><b data-page-node-id="BEsdJQ58eeT2J2TKM7d0QG">库车王府</b>：约 55 元。</li>
+      <li data-page-node-id="HTWKkbcA5zN7eJMj4trxQh"><b data-page-node-id="owAPM0aTBE2eTx9dZAMeGw">喀纳斯</b>：门票 160 元。区间车<b data-page-node-id="LvxL0d6tyH3yQ9RWLdVkVH">一进套票 230 元</b>（门票＋车 70）／<b data-page-node-id="LvxL0d6tyH3yQ9RWLdVkVH2">二进套票 270 元</b>（门票＋车 110）；住贾登峪、次日晨再进看三湾晨雾须选二进。观鱼台区间车 20 元另计。</li>
+      <li data-page-node-id="zAFTEj2HFClGJtWfZCDGhB"><b data-page-node-id="KJ6UORvCcOekRZSx1I2VDA">乌尔禾魔鬼城</b>：门票 42 元＋区间车 20 元（成人套票 62 元）。</li>
+      <li data-page-node-id="VCwpnVvWJjSunV0AvGC7zm"><b data-page-node-id="1gaBhVKjHGN94oI7o8QZrD">赛里木湖</b>：门票 70 元（旺季）＋自驾服务费<b data-page-node-id="1gaBhVKjHGN94oI7o8QZrD2">按人 75 元</b>（摩托车环湖同样购入自驾套票，合计 145 元）／不自驾改乘区间车 60 元。</li>
+      <li data-page-node-id="H2JhpPXlZfaRfm0xxOEIvv"><b data-page-node-id="Na08EEOz0uEsgz7iC9SMo1">巴音布鲁克</b>：门票 65 元＋区间车 62 元；九曲十八弯观景台观光车原 20 元，按当日公告为准。</li>
+      <li data-page-node-id="1urB1Do3sI7bd8gr3a1RCt"><b data-page-node-id="GnLudKYfFIH1rkGiFBYSiy">天山神秘大峡谷</b>：门票 41 元。<b data-page-node-id="BEsdJQ58eeT2J2TKM7d0QG">库车王府</b>：55 元。</li>
+      <li data-page-node-id="ZBO7dCRFYadjaRAgwaOpKc"><b data-page-node-id="BEsdJQ58eeT2J2TKM7d0QG2">禾木／白哈巴</b>：<b data-page-node-id="BEsdJQ58eeT2J2TKM7d0QG3">全域通用票 375 元</b>（门票 195＋区间车 180），本次行程不改动则不需购买。</li>
       <li data-page-node-id="58XCj5JF6gudtgcpuwXy5N"><b data-page-node-id="KeIeBL6coRtvyY67KygWLv">可选</b>：轮台塔里木胡杨林公园门票 45 元＋区间车 23 元；铁门关约 8 元。</li>
     </ol>
-    <div class="how" data-page-node-id="hYzLMPnRlLQMTEzzz6hO7K"><b data-page-node-id="lIOSToeeB7JM7NuDXova5f">备注：</b>65 岁以上／学生／现役军人等多有减免；赛里木湖 2026 年 8 月起自驾服务费改为按车收费，摩托车进出政策请行前单独确认；喀纳斯旺季须提前线上预约、刷身份证入园。</div>
+    <div class="how" data-page-node-id="hYzLMPnRlLQMTEzzz6hO7K"><b data-page-node-id="lIOSToeeB7JM7NuDXova5f">备注：</b>65 岁以上／学生／现役军人等多有减免；赛里木湖自驾服务费现按<b data-page-node-id="lIOSToeeB7JM7NuDXova5f2">每人 75 元</b>收取（不再是按车 120 元），摩托车环湖同样需购自驾套票，行前再确认一次；喀纳斯旺季须提前线上预约、刷身份证入园。以上票价核至最新公示：喀纳斯、巴音布鲁克取自景区管委会公告，库车景点取自阿克苏地区行署 A 级景区价目表，出行前均以景区当日公告为准。</div>
   </div>
 
   <footer data-page-node-id="qAMnaGXLzCaZkCcBzCGUY1">
