@@ -21,3 +21,6 @@ yarn-error.log*
 
 /.trae-html-share-packages/
 /.workbuddy/
+
+# pnpm 本地依赖存储
+/.pnpm-store/

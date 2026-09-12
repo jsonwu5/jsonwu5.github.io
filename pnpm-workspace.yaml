@@ -1,0 +1,6 @@
+packages:
+  - '.'
+
+# pnpm 10+ 默认阻止依赖的构建脚本，这里放行 esbuild（pnpm 8/9 会忽略此项）
+allowBuilds:
+  esbuild: true

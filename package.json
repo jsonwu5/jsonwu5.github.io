@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/jsonwu5/learning#readme",
   "devDependencies": {
-    "vitepress": "1.0.0-rc.45",
-    "vue": "^3.4.21"
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.42"
   }
 }
