@@ -1,1 +1,0 @@
-import{_ as s,c as i,o as a,a2 as n}from"./chunks/framework.Bx6qu0xe.js";const y=JSON.parse('{"title":"scss常用mixins","description":"","frontmatter":{},"headers":[],"relativePath":"css/scss.md","filePath":"css/scss.md"}'),l={name:"css/scss.md"},h=n("",3),p=[h];function k(t,e,E,r,d,c){return a(),i("div",null,p)}const o=s(l,[["render",k]]);export{y as __pageData,o as default};
