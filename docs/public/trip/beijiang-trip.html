@@ -757,6 +757,50 @@ html[data-theme="oasis"]{
     background:var(--chip-bg); backdrop-filter:blur(4px);
   }
 
+  /* 出发倒计时 */
+  .countdown{
+    display:flex; width:max-content; max-width:100%; flex-direction:column; gap:10px;
+    margin-top:26px; padding:14px 20px 16px;
+    border:1px solid var(--chip-bd); border-radius:14px;
+    background:var(--chip-bg); backdrop-filter:blur(6px);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .countdown.is-done{opacity:0; transform:translateY(-8px); pointer-events:none;}
+  .cd-lab{font-size:12px; letter-spacing:1.5px; color:var(--hero-sub-fg);}
+  .cd-lab b{color:var(--hero-fg); font-weight:600;}
+  .cd-en{font-family:var(--num); font-size:10px; letter-spacing:2.5px; color:var(--hero-kicker); margin-left:8px;}
+  .cd-units{display:flex; align-items:baseline; gap:20px;}
+  .cd-u{display:flex; align-items:baseline; gap:5px;}
+  /* 数字滚轮：数值滚动变化（与里程卡片的计数动画同源） */
+  .cd-n{
+    font-family:var(--num); font-size:34px; font-weight:700; line-height:1; min-width:2ch;
+    color:var(--hero-em); font-variant-numeric:tabular-nums;
+    display:inline-flex; overflow:hidden; height:1.15em;
+  }
+  .cd-digit{display:block; height:1.15em; overflow:hidden;}
+  .cd-reel{display:block; will-change:transform; transition:transform .5s cubic-bezier(.22,1,.36,1);}
+  .cd-reel b{display:block; height:1.15em; line-height:1.15em; font-weight:700;}
+  @media(prefers-reduced-motion:reduce){ .cd-reel{transition:none;} }
+  .cd-t{font-size:12px; color:var(--hero-sub-fg);}
+  /* 行程中：当天路线 + 进度条 */
+  .cd-live{display:flex; flex-direction:column; gap:10px; min-width:210px;}
+  .cd-live[hidden]{display:none;}
+  .cd-route{font-family:var(--serif); font-size:17px; font-weight:700; color:var(--hero-fg); letter-spacing:.5px;}
+  .cd-bar{height:5px; border-radius:4px; overflow:hidden; background:rgba(0,0,0,.32);}
+  .cd-bar i{display:block; height:100%; width:0; border-radius:4px;
+    background:linear-gradient(90deg,var(--amber),var(--hero-em));
+    transition:width .6s cubic-bezier(.22,1,.36,1);}
+  .countdown.is-live .cd-units,
+  .countdown.is-done .cd-units{display:none;}
+  .countdown.is-live .cd-lab b,
+  .countdown.is-done .cd-lab b{color:var(--hero-em);}
+  @media(max-width:760px){
+    .countdown{margin-top:20px; padding:12px 16px 14px;}
+    .cd-units{gap:14px;}
+    .cd-n{font-size:26px;}
+    .cd-en{display:none;}
+  }
+
   /* 仪表数据带 */
   .dash{
     position:relative; z-index:5; max-width:1080px; margin:-38px auto 0; padding:0 24px;
@@ -997,6 +1041,22 @@ html[data-theme="oasis"]{
     opacity:.55; transition:opacity .2s;
   }
   #tocToggle:hover, #tocToggle:focus-visible{opacity:1;}
+
+  /* 回到顶部（右下角） */
+  #toTop{
+    position:fixed; right:22px; bottom:26px; z-index:60;
+    width:44px; height:44px; padding:0; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%; border:1px solid var(--line);
+    background:var(--card2); color:var(--gold-hi);
+    box-shadow:0 4px 16px var(--sh-2);
+    opacity:0; visibility:hidden; transform:translateY(8px);
+    transition:opacity .25s, transform .25s, visibility .25s, color .2s, border-color .2s;
+  }
+  #toTop.show{opacity:1; visibility:visible; transform:none;}
+  #toTop:hover, #toTop:focus-visible{color:var(--cream); border-color:var(--gold);}
+  #toTop svg{width:20px; height:20px; display:block;}
+  @media(max-width:760px){ #toTop{right:14px; bottom:16px; width:40px; height:40px;} }
   #tocOverlay{position:fixed; inset:0; background:var(--overlay); z-index:64; opacity:0; visibility:hidden; transition:.25s;}
   #tocOverlay.show{opacity:1; visibility:visible;}
   #toc{
@@ -1106,6 +1166,9 @@ html[data-theme="oasis"]{
 
 <button id="tocToggle" title="行程目录" aria-label="展开行程目录" data-page-node-id="HGSaJ980lPkECWmOC92mYl">☰ 路书</button>
 <div id="tocOverlay" data-page-node-id="DHphOauWHpX2q7LrgmpNhb"></div>
+<button id="toTop" type="button" aria-label="回到顶部" title="回到顶部">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
 <div class="page" data-page-node-id="Vk5z2kBkzC7lJSARjnQLZk">
 
 <header class="hero" data-page-node-id="uivXPX5kX2m8TCefLSZBU1">
@@ -1116,6 +1179,19 @@ html[data-theme="oasis"]{
     <div class="hero-chips" data-page-node-id="gA0noRV73NADk8ehw5EBHN">
       <span class="chip" data-page-node-id="aTLsiYeF6FGyVGot7obZEv">喀纳斯晨雾</span><span class="chip" data-page-node-id="0cfMuXtgykLQ8oRiLOYrNd">喀纳斯湖</span><span class="chip" data-page-node-id="nHbHgO1Vgg8RSqFYrRuuae">S21 沙漠公路</span>
       <span class="chip" data-page-node-id="AwVIhwH1O29MbnjfFcd7M7">赛里木湖</span><span class="chip" data-page-node-id="7D17MVN4SHWSJ0qooyxYs4">独库公路南段</span><span class="chip" data-page-node-id="4k3AfKO9QW07tgEMARJRGj">巴音布鲁克日落</span>
+    </div>
+    <div class="countdown" id="countdown" aria-label="距出发倒计时">
+      <div class="cd-lab" id="cdLab">距 <b>2026.09.25</b> 出发 <span class="cd-en">DEPARTURE COUNTDOWN</span></div>
+      <div class="cd-units">
+        <div class="cd-u"><span class="cd-n" id="cdD">--</span><span class="cd-t">天</span></div>
+        <div class="cd-u"><span class="cd-n" id="cdH">--</span><span class="cd-t">时</span></div>
+        <div class="cd-u"><span class="cd-n" id="cdM">--</span><span class="cd-t">分</span></div>
+        <div class="cd-u"><span class="cd-n" id="cdS">--</span><span class="cd-t">秒</span></div>
+      </div>
+      <div class="cd-live" id="cdLive" hidden>
+        <div class="cd-route" id="cdRoute"></div>
+        <div class="cd-bar"><i id="cdBar"></i></div>
+      </div>
     </div>
   </div>
 </header>
@@ -1826,8 +1902,22 @@ html[data-theme="oasis"]{
         p=max>0?(h.scrollTop/max)*100:0;
     rpm.style.width=p+'%';
   }
-  document.addEventListener('scroll',function(){spy();prog();},{passive:true});
-  spy(); prog();
+  /* ===== 回到顶部 ===== */
+  var topBtn=document.getElementById('toTop');
+  function syncTop(){
+    if(!topBtn)return;
+    var y=window.pageYOffset||document.documentElement.scrollTop||0;
+    topBtn.classList.toggle('show',y>420);
+  }
+  if(topBtn){
+    topBtn.addEventListener('click',function(){
+      var sm=!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      try{ window.scrollTo({top:0,behavior:sm?'smooth':'auto'}); }catch(e){ window.scrollTo(0,0); }
+      topBtn.blur();
+    });
+  }
+  document.addEventListener('scroll',function(){spy();prog();syncTop();},{passive:true});
+  spy(); prog(); syncTop();
 
   /* ===== 表格行点击跳转 ===== */
   [].slice.call(document.querySelectorAll('tr[data-href]')).forEach(function(tr){
@@ -1873,6 +1963,84 @@ html[data-theme="oasis"]{
   }else{
     gauges.forEach(count);
   }
+
+  /* ===== 出发倒计时（长沙时区，Day 1 06:00 发车） ===== */
+  (function(){
+    var box=document.getElementById('countdown');
+    if(!box)return;
+    var lab=document.getElementById('cdLab'),
+        units=box.querySelector('.cd-units'),
+        live=document.getElementById('cdLive'),
+        route=document.getElementById('cdRoute'),
+        bar=document.getElementById('cdBar'),
+        elD=document.getElementById('cdD'), elH=document.getElementById('cdH'),
+        elM=document.getElementById('cdM'), elS=document.getElementById('cdS');
+    var START=new Date('2026-09-25T06:00:00+08:00').getTime(),
+        END=new Date('2026-10-08T00:00:00+08:00').getTime(),
+        timer=null;
+    function p2(v){return (v<10?'0':'')+v;}
+    /* 数字滚轮：初始化从 0 滚到目标值，之后按位平滑滚动（走秒不再跳变） */
+    function makeRoll(el){
+      var reels=[], cur='';
+      function build(len){
+        el.textContent=''; reels=[];
+        for(var i=0;i<len;i++){
+          var d=document.createElement('span'); d.className='cd-digit';
+          var r=document.createElement('span'); r.className='cd-reel';
+          for(var k=0;k<10;k++){var b=document.createElement('b'); b.textContent=k; r.appendChild(b);}
+          d.appendChild(r); el.appendChild(d); reels.push(r);
+        }
+        void el.offsetWidth; /* 强制重排：确保新滚轮从 0 位开始过渡 */
+      }
+      return {
+        set:function(val){
+          var s=String(val);
+          if(!el||s===cur)return;
+          cur=s;
+          if(reels.length!==s.length)build(s.length);
+          for(var i=0;i<s.length;i++){
+            reels[i].style.transform='translateY(-'+((+s.charAt(i))*10)+'%)';
+          }
+        }
+      };
+    }
+    var rollD=makeRoll(elD), rollH=makeRoll(elH), rollM=makeRoll(elM), rollS=makeRoll(elS);
+    function render(ms){
+      var s=Math.max(0,Math.floor(ms/1000));
+      rollD.set(Math.floor(s/86400));
+      rollH.set(p2(Math.floor(s%86400/3600)));
+      rollM.set(p2(Math.floor(s%3600/60)));
+      rollS.set(p2(s%60));
+    }
+    function showDay(n){
+      if(live)live.hidden=false;
+      var card=document.getElementById('d'+n),
+          t=card?card.querySelector('.day-title'):null;
+      if(route)route.textContent=t?t.textContent.trim():'在路上';
+      if(bar)bar.style.width=Math.min(100,n/13*100)+'%';
+    }
+    function tick(){
+      var now=Date.now();
+      if(now<START){ render(START-now); return; }
+      if(timer){ clearInterval(timer); timer=null; }
+      if(units)units.style.display='none';
+      if(now<END){
+        var n=Math.floor((now-START)/86400000)+1;
+        box.classList.add('is-live');
+        lab.innerHTML='行程进行中 · <b>第 '+n+' 天</b> / 共 13 天';
+        showDay(n);
+      }else{
+        box.classList.add('is-done');
+        setTimeout(function(){ box.style.display='none'; }, 700);
+      }
+    }
+    tick();
+    if(!timer)timer=setInterval(tick,1000);
+    document.addEventListener('visibilitychange',function(){
+      if(document.hidden){ if(timer){clearInterval(timer); timer=null;} }
+      else if(!timer && Date.now()<START){ tick(); timer=setInterval(tick,1000); }
+    });
+  })();
 })();
 </script>
 <script>
