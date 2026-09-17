@@ -855,41 +855,6 @@ html[data-theme="oasis"]{
   table tbody tr:hover{background:var(--tr-hover);}
   .tdot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px; vertical-align:1px;}
 
-  /* ===== 旅程进行中：高亮"今天" + 当天 24h 进度条 ===== */
-  .today-chip{
-    display:inline-block; margin-left:7px; padding:1px 7px; border-radius:999px;
-    font-size:10px; font-weight:700; letter-spacing:1px; vertical-align:1px;
-    background:var(--gold); color:var(--on-acc);
-  }
-  table tbody tr.is-today,
-  table tbody tr.is-today:hover{background:color-mix(in srgb, var(--gold) 14%, transparent);}
-  table tbody tr.is-today td:first-child{box-shadow:inset 3px 0 0 var(--gold);}
-  tr.daybar{cursor:default;}
-  tr.daybar>td{
-    padding:7px 13px 10px; border-bottom:1px solid var(--line-soft);
-    background:color-mix(in srgb, var(--gold) 8%, transparent);
-  }
-  .tprog-wrap{display:flex; align-items:center; gap:10px;}
-  .tprog{
-    flex:1 1 auto; height:6px; border-radius:4px; overflow:hidden;
-    background:#221a0d; border:1px solid var(--line-soft);
-  }
-  .tprog>i{
-    display:block; height:100%; width:0; border-radius:4px;
-    background:linear-gradient(90deg,var(--amber),var(--gold-hi));
-    box-shadow:0 0 8px color-mix(in srgb, var(--gold) 50%, transparent);
-    transition:width 1s linear;
-  }
-  .tprog-lab{
-    flex:none; min-width:36px; text-align:right; font-family:var(--num);
-    font-size:11px; font-weight:600; color:var(--gold); letter-spacing:.5px;
-  }
-  /* 逐日卡片：高亮"今天" */
-  .day.is-today{
-    border-color:var(--gold);
-    box-shadow:0 0 0 1px color-mix(in srgb, var(--gold) 45%, transparent), 0 10px 30px var(--sh-3);
-  }
-
   /* ============ 路线图卡 ============ */
   .mapcard{background:var(--card); border:1px solid var(--line); border-radius:18px; margin:26px 0 4px; padding:20px 22px 18px; box-shadow:0 10px 34px var(--sh-1);}
   .mapcard-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:12px;}
@@ -2076,65 +2041,6 @@ html[data-theme="oasis"]{
     document.addEventListener('visibilitychange',function(){
       if(document.hidden){ if(timer){clearInterval(timer); timer=null;} }
       else if(!timer && Date.now()<START){ tick(); timer=setInterval(tick,1000); }
-    });
-  })();
-
-  /* ===== 旅程进行中：高亮"今天"所在行/卡片 + 当天 24h 进度条 ===== */
-  (function(){
-    var BASE=new Date('2026-09-25T00:00:00+08:00').getTime(),
-        DAY=86400000, TOTAL=13;
-    function p2(v){return (v<10?'0':'')+v;}
-    function bj(){
-      var t=new Date(Date.now()+8*3600000);
-      return {y:t.getUTCFullYear(), mo:t.getUTCMonth()+1, d:t.getUTCDate(), h:t.getUTCHours(), mi:t.getUTCMinutes()};
-    }
-    /* 测试：?date=2026-09-27 或 ?date=2026-09-27T14:30 */
-    var q=/[?&]date=(\d{4}-\d{2}-\d{2})(?:T(\d{2}):(\d{2}))?/.exec(location.search),
-        sim=q?{d:q[1], h:(q[2]!==undefined?+q[2]:null), mi:(q[3]!==undefined?+q[3]:0)}:null;
-    function todayKey(){
-      if(sim)return sim.d;
-      var b=bj(); return b.y+'-'+p2(b.mo)+'-'+p2(b.d);
-    }
-    function dayNo(k){
-      var n=Math.round((new Date(k+'T00:00:00+08:00').getTime()-BASE)/DAY)+1;
-      return (n>=1&&n<=TOTAL)?n:0;
-    }
-    function progress(){
-      if(sim&&sim.h!==null)return (sim.h*60+sim.mi)/1440;
-      var b=bj(); return (b.h*60+b.mi)/1440;
-    }
-    var n=dayNo(todayKey());
-    if(!n)return; /* 不在行程日期范围内则不做任何高亮 */
-    function mkChip(){var s=document.createElement('span'); s.className='today-chip'; s.textContent='今天'; return s;}
-    var fill=null, lab=null;
-    var row=document.querySelector('tr[data-href="#d'+n+'"]');
-    if(row){
-      row.classList.add('is-today');
-      var dc=row.children[1];
-      if(dc&&!dc.querySelector('.today-chip'))dc.appendChild(mkChip());
-      var bar=document.createElement('tr');
-      bar.className='daybar';
-      bar.innerHTML='<td colspan="7"><div class="tprog-wrap"><div class="tprog"><i></i></div><span class="tprog-lab">--%</span></div></td>';
-      row.parentNode.insertBefore(bar,row.nextSibling);
-      fill=bar.querySelector('.tprog>i'); lab=bar.querySelector('.tprog-lab');
-    }
-    var card=document.getElementById('d'+n);
-    if(card){
-      card.classList.add('is-today');
-      var dt=card.querySelector('.day-title');
-      if(dt&&!dt.querySelector('.today-chip'))dt.appendChild(mkChip());
-    }
-    function paint(){
-      if(!fill)return;
-      var p=Math.max(0,Math.min(1,progress()));
-      fill.style.width=(p*100).toFixed(2)+'%';
-      if(lab)lab.textContent=Math.round(p*100)+'%';
-    }
-    paint();
-    var t2=setInterval(paint,1000);
-    document.addEventListener('visibilitychange',function(){
-      if(document.hidden){ if(t2){clearInterval(t2); t2=null;} }
-      else if(!t2){ paint(); t2=setInterval(paint,1000); }
     });
   })();
 })();
