@@ -57,6 +57,12 @@ export default defineConfig({
      */
     vite: {
         server: {
+            /*
+             * 监听所有网卡（0.0.0.0），localhost 与局域网 IP 均可访问，
+             * 便于用手机、平板或同网段的其他电脑预览。
+             * 若只想本机访问，把 host 改为 false 或删掉这一行即可。
+             */
+            host: true,
             watch: {
                 ignored: [
                     '**/.*.tmpdir/**',

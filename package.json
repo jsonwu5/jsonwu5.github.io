@@ -9,8 +9,8 @@
   },
   "scripts": {
     "build": "vitepress build docs",
-    "dev": "vitepress dev docs --port=8732",
-    "docs:dev": "vitepress dev docs",
+    "dev": "vitepress dev docs --port=8732 --host",
+    "docs:dev": "vitepress dev docs --host",
     "docs:build": "vitepress build docs"
   },
   "repository": {
