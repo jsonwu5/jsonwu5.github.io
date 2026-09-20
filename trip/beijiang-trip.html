@@ -1059,6 +1059,54 @@ html[data-theme="oasis"]{
   #toTop:hover, #toTop:focus-visible{color:var(--cream); border-color:var(--gold);}
   #toTop svg{width:20px; height:20px; display:block;}
   @media(max-width:760px){ #toTop{right:14px; bottom:16px; width:40px; height:40px;} }
+
+  /* 扫码直达（右下角悬浮，位于回到顶部上方） */
+  #qrBtn{
+    position:fixed; right:22px; bottom:82px; z-index:60;
+    width:44px; height:44px; padding:0; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%; border:1px solid var(--line);
+    background:var(--card2); color:var(--gold-hi);
+    box-shadow:0 4px 16px var(--sh-2);
+    transition:color .2s, border-color .2s, transform .2s;
+  }
+  #qrBtn:hover, #qrBtn:focus-visible, #qrBtn.on{color:var(--cream); border-color:var(--gold);}
+  #qrBtn svg{width:20px; height:20px; display:block;}
+  #qrCard{
+    position:fixed; right:22px; bottom:138px; z-index:61;
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:14px 14px 10px; text-align:center;
+    box-shadow:0 10px 30px var(--sh-2);
+    opacity:0; visibility:hidden; transform:translateY(8px);
+    transition:opacity .22s, transform .22s, visibility .22s;
+  }
+  #qrCard.show{opacity:1; visibility:visible; transform:none;}
+  #qrCard img{width:132px; height:132px; border-radius:8px; background:#fff; padding:5px; display:block;}
+  #qrCard .qr-t{font-size:12px; color:var(--gold-hi); letter-spacing:1.5px; margin-top:9px; font-weight:600;}
+  #qrCard .qr-s{font-size:11px; color:var(--sub); margin-top:2px; letter-spacing:.5px;}
+  @media(max-width:760px){
+    #qrBtn{right:14px; bottom:66px; width:40px; height:40px;}
+    #qrCard{right:14px; bottom:116px;}
+  }
+
+  /* PC 端：倒计时右侧的内联二维码卡（移动端隐藏，用悬浮按钮代替） */
+  .hero-row{display:flex; align-items:stretch; gap:12px; flex-wrap:wrap;}
+  .qr-inline{display:none;}
+  @media(min-width:761px){
+    #qrBtn, #qrCard{display:none !important;}
+    .qr-inline{
+      display:flex; align-items:center; gap:11px;
+      margin-top:26px; padding:10px 13px; border-radius:14px;
+      border:1px solid color-mix(in srgb, var(--chip-bd) 70%, transparent);
+      background:color-mix(in srgb, var(--chip-bg) 55%, transparent);
+      backdrop-filter:blur(6px);
+      transition:border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .qr-inline:hover{border-color:var(--gold); transform:translateY(-2px); box-shadow:0 8px 20px var(--sh-2);}
+    .qr-inline img{width:66px; height:66px; border-radius:7px; background:#fff; padding:3px; display:block;}
+    .qr-inline-t{font-size:11px; line-height:1.6; letter-spacing:1.5px; color:var(--gold-hi); white-space:nowrap;}
+    .qr-inline-t small{display:block; font-size:9.5px; letter-spacing:2.5px; color:var(--sub); font-family:var(--num); text-transform:uppercase;}
+  }
   #tocOverlay{position:fixed; inset:0; background:var(--overlay); z-index:64; opacity:0; visibility:hidden; transition:.25s;}
   #tocOverlay.show{opacity:1; visibility:visible;}
   #toc{
@@ -1174,6 +1222,14 @@ html[data-theme="oasis"]{
 <button id="toTop" type="button" aria-label="回到顶部" title="回到顶部">
   <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
 </button>
+<button id="qrBtn" type="button" aria-label="手机扫码打开本页" title="手机扫码打开">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/><path d="M14 14h3v3h-3z"/><path d="M21 14v2"/><path d="M21 21h-2"/><path d="M14 21h2"/></svg>
+</button>
+<div id="qrCard" role="dialog" aria-label="手机扫码打开本路书">
+  <img src="/trip/beijiang-trip-qr.png" alt="手机扫码打开本路书"/>
+  <div class="qr-t">扫码直达</div>
+  <div class="qr-s">手机扫码 · 同步阅读</div>
+</div>
 <div class="page" data-page-node-id="Vk5z2kBkzC7lJSARjnQLZk">
 
 <header class="hero" data-page-node-id="uivXPX5kX2m8TCefLSZBU1">
@@ -1185,6 +1241,7 @@ html[data-theme="oasis"]{
       <span class="chip" data-page-node-id="aTLsiYeF6FGyVGot7obZEv">喀纳斯晨雾</span><span class="chip" data-page-node-id="0cfMuXtgykLQ8oRiLOYrNd">喀纳斯湖</span><span class="chip" data-page-node-id="nHbHgO1Vgg8RSqFYrRuuae">S21 沙漠公路</span>
       <span class="chip" data-page-node-id="AwVIhwH1O29MbnjfFcd7M7">赛里木湖</span><span class="chip" data-page-node-id="7D17MVN4SHWSJ0qooyxYs4">独库公路南段</span><span class="chip" data-page-node-id="4k3AfKO9QW07tgEMARJRGj">巴音布鲁克日落</span>
     </div>
+    <div class="hero-row">
     <div class="countdown" id="countdown" aria-label="距出发倒计时">
       <div class="cd-lab" id="cdLab">距 <b>2026.09.25</b> 出发 <span class="cd-en">DEPARTURE COUNTDOWN</span></div>
       <div class="cd-units">
@@ -1197,6 +1254,11 @@ html[data-theme="oasis"]{
         <div class="cd-route" id="cdRoute"></div>
         <div class="cd-bar"><i id="cdBar"></i></div>
       </div>
+    </div>
+    <div class="qr-inline" title="手机扫码打开本路书">
+      <img src="/trip/beijiang-trip-qr.png" alt="手机扫码打开本路书"/>
+      <div class="qr-inline-t">手机扫码<small>同步阅读</small></div>
+    </div>
     </div>
   </div>
 </header>
@@ -1239,15 +1301,6 @@ html[data-theme="oasis"]{
 </nav>
 
 <div class="wrap" data-page-node-id="BlVZgJGzclaCePCj49dafb">
-
-  <div data-page-node-id="QrOnlineCard" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:4px 0 8px;box-shadow:0 2px 8px rgba(0,0,0,.15);">
-    <img src="/trip/beijiang-trip-qr.png" alt="线上页面二维码" style="width:96px;height:96px;border-radius:8px;border:2px solid #fff;background:#fff;padding:4px;flex:0 0 auto;"/>
-    <div style="flex:1;min-width:200px;">
-      <div style="font-weight:700;color:var(--gold);font-size:15px;letter-spacing:.5px;">线上页面 · 扫码直达</div>
-      <div style="color:var(--ink-dim);font-size:13px;margin-top:4px;word-break:break-all;">https://www.jsonwu.com/trip/beijiang-trip.html</div>
-      <div style="color:var(--sub);font-size:12px;margin-top:6px;">手机扫码即可在手机上打开本路书</div>
-    </div>
-  </div>
 
   <h2 class="sec" id="overview" data-page-node-id="mnwIwWx5zR0lDVEoyJDj9C">总览 <span class="en" data-page-node-id="kMY4ZqlQbsmn0O0o3LNy8S">Route Overview</span><div class="themebar" role="group" aria-label="主题配色"><span class="themebar-lab">THEME</span><button type="button" class="tbtn tb-autumn" data-theme="autumn" title="金秋 · 原色" aria-label="金秋 · 原色配色" aria-pressed="false"><i></i></button><button type="button" class="tbtn tb-snow" data-theme="snow" title="雪山白 · 天空蓝" aria-label="雪山白 · 天空蓝配色" aria-pressed="false"><i></i></button><button type="button" class="tbtn tb-orange" data-theme="orange" title="高亮橙" aria-label="高亮橙配色" aria-pressed="false"><i></i></button><button type="button" class="tbtn tb-desert" data-theme="desert" title="沙漠黄" aria-label="沙漠黄配色" aria-pressed="false"><i></i></button><button type="button" class="tbtn tb-asphalt" data-theme="asphalt" title="沥青黑" aria-label="沥青黑配色" aria-pressed="false"><i></i></button><button type="button" class="tbtn tb-oasis" data-theme="oasis" title="绿洲绿" aria-label="绿洲绿配色" aria-pressed="false"><i></i></button></div></h2>
   <div class="table-scroll rv" data-page-node-id="n5MFxujHrGHekOSzwiVCrD">
@@ -1932,6 +1985,16 @@ html[data-theme="oasis"]{
   }
   document.addEventListener('scroll',function(){spy();prog();syncTop();},{passive:true});
   spy(); prog(); syncTop();
+
+  /* ===== 扫码弹层 ===== */
+  var qrBtn=document.getElementById('qrBtn'), qrCard=document.getElementById('qrCard');
+  if(qrBtn&&qrCard){
+    function qrSet(open){qrCard.classList.toggle('show',open);qrBtn.classList.toggle('on',open);}
+    qrBtn.addEventListener('click',function(e){e.stopPropagation();qrSet(!qrCard.classList.contains('show'));qrBtn.blur();});
+    qrCard.addEventListener('click',function(e){e.stopPropagation();});
+    document.addEventListener('click',function(){qrSet(false);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')qrSet(false);});
+  }
 
   /* ===== 表格行点击跳转 ===== */
   [].slice.call(document.querySelectorAll('tr[data-href]')).forEach(function(tr){
